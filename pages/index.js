@@ -24,6 +24,7 @@ const StyledSection = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 20px;
 `;
 
 const StyledHeadline = styled.h1`
