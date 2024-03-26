@@ -1,4 +1,4 @@
-const examples = [
+export const initialProjects = [
   {
     id: 1,
     title: "Wooden Shelf",
