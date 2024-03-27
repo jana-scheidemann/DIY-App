@@ -5,8 +5,12 @@ export default function ModalDelete({ onConfirm, onCancel }) {
     <StyledBackground>
       <StyledContainer>
         <p>Are you sure you want to delete this project?</p>
-        <button onClick={onConfirm}>Yes</button>
-        <button onClick={onCancel}>No</button>
+        <button type="button" onClick={onConfirm}>
+          Yes
+        </button>
+        <button type="button" onClick={onCancel}>
+          No
+        </button>
       </StyledContainer>
     </StyledBackground>
   );
