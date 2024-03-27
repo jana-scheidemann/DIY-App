@@ -13,6 +13,7 @@ export default function HomePage() {
             title={initialProject.title}
             duration={initialProject.duration}
             complexity={initialProject.complexity}
+            id={initialProject.id}
           />
         ))}
       </StyledSection>
