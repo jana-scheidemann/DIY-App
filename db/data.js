@@ -13,7 +13,7 @@ export const initialProjects = [
       { id: 4, desc: "Sand the shelf to smooth out rough edges." },
       { id: 5, desc: "Paint or stain the shelf as desired." },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "2",
@@ -43,7 +43,7 @@ export const initialProjects = [
         desc: "Water the plants lightly and place the terrarium in a sunny spot.",
       },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "3",
@@ -65,7 +65,7 @@ export const initialProjects = [
       { id: 4, desc: "Allow the glue to dry completely." },
       { id: 5, desc: "Hang the finished wall art on your wall." },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "4",
@@ -97,7 +97,7 @@ export const initialProjects = [
         desc: "Allow the stand to dry completely before placing plants on it.",
       },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "5",
@@ -129,7 +129,7 @@ export const initialProjects = [
         desc: "Hang the macramé planter in a suitable location and enjoy!",
       },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "6",
@@ -161,7 +161,7 @@ export const initialProjects = [
         desc: "Place plants inside the concrete planters and display them indoors or outdoors.",
       },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "7",
@@ -190,7 +190,7 @@ export const initialProjects = [
         desc: "Cut cork sheets into circles slightly smaller than the coaster diameter and glue them to the bottom of the rope coil.",
       },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "8",
@@ -221,7 +221,7 @@ export const initialProjects = [
         desc: "Place plants inside the painted pots and display them around your home or garden.",
       },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "9",
@@ -250,7 +250,7 @@ export const initialProjects = [
         desc: "Use the beeswax wraps to cover bowls, wrap sandwiches, or store food items.",
       },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "10",
@@ -276,7 +276,7 @@ export const initialProjects = [
         desc: "Decorate the shelves with plants, books, or other decorative items.",
       },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "11",
@@ -313,7 +313,7 @@ export const initialProjects = [
         desc: "Trim wicks and place candles in holders for a modern, industrial look.",
       },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "12",
@@ -344,7 +344,7 @@ export const initialProjects = [
         desc: "Monitor the herbs' growth and water as needed until ready for harvest.",
       },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "13",
@@ -376,7 +376,7 @@ export const initialProjects = [
         desc: "Regularly refill the feeder and enjoy watching the visiting birds.",
       },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "14",
@@ -407,7 +407,7 @@ export const initialProjects = [
         desc: "Enjoy the cozy ambiance created by the flickering candlelight.",
       },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
   {
     id: "15",
@@ -439,6 +439,6 @@ export const initialProjects = [
         desc: "Use shelves for storing books, displaying decor items, or organizing household essentials.",
       },
     ],
-    image: "/../public/images/dummy-image-diy.jpg",
+    image: "/images/dummy-image-diy.jpg",
   },
 ];
