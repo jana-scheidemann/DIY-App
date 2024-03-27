@@ -1,9 +1,35 @@
 import styled from "styled-components";
 import Image from "next/image";
+import ModalDelete from "@/components/ModalDelete";
+import { useState } from "react";
+import router from "next/router";
 
-export default function ProjectDetails({ currentProject }) {
-  const { title, description, materials, duration, complexity, steps, image } =
-    currentProject;
+export default function ProjectDetails({ currentProject, onDeleteProject }) {
+  const [modalDelete, setModalDelete] = useState(false);
+  const {
+    id,
+    title,
+    description,
+    materials,
+    duration,
+    complexity,
+    steps,
+    image,
+  } = currentProject;
+
+  function handleDelete() {
+    setModalDelete(true);
+  }
+
+  function handleCancel() {
+    setModalDelete(false);
+  }
+
+  function handleConfirm() {
+    onDeleteProject(id);
+    setModalDelete(false);
+    router.push("/");
+  }
 
   return (
     <>
@@ -38,7 +64,11 @@ export default function ProjectDetails({ currentProject }) {
             <li key={step.id}>{step.desc}</li>
           ))}
         </ol>
+        <button onClick={handleDelete}>Delete</button>
       </StyledProjectContainer>
+      {modalDelete && (
+        <ModalDelete onConfirm={handleConfirm} onCancel={handleCancel} />
+      )}
     </>
   );
 }
