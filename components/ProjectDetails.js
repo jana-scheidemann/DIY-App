@@ -1,17 +1,27 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 export default function ProjectDetails({ currentProject }) {
-  const { title, description, materials, duration, complexity, steps } =
+  const { title, description, materials, duration, complexity, steps, image } =
     currentProject;
 
   return (
     <>
       <StyledProjectContainer>
         <StyledHeadline2>{title}</StyledHeadline2>
+
         <StyledProjectDetailsContainer>
           <p>Duration: {duration}</p>
           <p>Complexity: {complexity}</p>
         </StyledProjectDetailsContainer>
+
+        <Image
+          src={image}
+          width={320}
+          height={213}
+          alt="dummy image with nails and hammer"
+        />
+
         <p>
           Description:
           <br /> {description}
