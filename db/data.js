@@ -1,6 +1,6 @@
 export const initialProjects = [
   {
-    id: 1,
+    id: "1",
     title: "Wooden Shelf",
     description: "Build a simple wooden shelf for your home.",
     materials: ["Wooden boards", "Screws", "Drill"],
@@ -13,10 +13,10 @@ export const initialProjects = [
       { id: 4, desc: "Sand the shelf to smooth out rough edges." },
       { id: 5, desc: "Paint or stain the shelf as desired." },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 2,
+    id: "2",
     title: "Succulent Terrarium",
     description: "Create a beautiful terrarium for your succulent plants.",
     materials: [
@@ -43,10 +43,10 @@ export const initialProjects = [
         desc: "Water the plants lightly and place the terrarium in a sunny spot.",
       },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 3,
+    id: "3",
     title: "Wall Art",
     description: "Create a unique piece of wall art using recycled materials.",
     materials: ["Cardboard", "Paint", "Glue", "Scissors"],
@@ -65,10 +65,10 @@ export const initialProjects = [
       { id: 4, desc: "Allow the glue to dry completely." },
       { id: 5, desc: "Hang the finished wall art on your wall." },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 4,
+    id: "4",
     title: "Wooden Plant Stand",
     description:
       "Craft a stylish wooden plant stand to showcase your indoor plants.",
@@ -97,10 +97,10 @@ export const initialProjects = [
         desc: "Allow the stand to dry completely before placing plants on it.",
       },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 5,
+    id: "5",
     title: "Hanging Macramé Planter",
     description:
       "Create a trendy macramé planter to hang your favorite indoor plants.",
@@ -129,10 +129,10 @@ export const initialProjects = [
         desc: "Hang the macramé planter in a suitable location and enjoy!",
       },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 6,
+    id: "6",
     title: "Concrete Planters",
     description:
       "Craft modern concrete planters to display your favorite succulents or cacti.",
@@ -161,10 +161,10 @@ export const initialProjects = [
         desc: "Place plants inside the concrete planters and display them indoors or outdoors.",
       },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 7,
+    id: "7",
     title: "Rope Coasters",
     description:
       "Make rustic rope coasters to protect your tabletops from hot and cold drinks.",
@@ -190,10 +190,10 @@ export const initialProjects = [
         desc: "Cut cork sheets into circles slightly smaller than the coaster diameter and glue them to the bottom of the rope coil.",
       },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 8,
+    id: "8",
     title: "Terracotta Pot Painting",
     description: "Personalize plain terracotta pots with colorful designs.",
     materials: ["Terracotta pots", "Acrylic paint", "Paintbrushes", "Sealer"],
@@ -221,10 +221,10 @@ export const initialProjects = [
         desc: "Place plants inside the painted pots and display them around your home or garden.",
       },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 9,
+    id: "9",
     title: "Beeswax Wrap",
     description:
       "Make eco-friendly beeswax wraps to use as an alternative to plastic cling wrap.",
@@ -250,10 +250,10 @@ export const initialProjects = [
         desc: "Use the beeswax wraps to cover bowls, wrap sandwiches, or store food items.",
       },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 10,
+    id: "10",
     title: "Floating Shelves",
     description:
       "Build sleek floating shelves to display decorative items or books.",
@@ -276,10 +276,10 @@ export const initialProjects = [
         desc: "Decorate the shelves with plants, books, or other decorative items.",
       },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 11,
+    id: "11",
     title: "Concrete Candle Holders",
     description:
       "Craft minimalist concrete candle holders to add a modern touch to your home decor.",
@@ -313,10 +313,10 @@ export const initialProjects = [
         desc: "Trim wicks and place candles in holders for a modern, industrial look.",
       },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 12,
+    id: "12",
     title: "Herb Garden",
     description: "Create a small herb garden to grow fresh herbs for cooking.",
     materials: ["Planter box", "Potting soil", "Herb seeds", "Watering can"],
@@ -344,10 +344,10 @@ export const initialProjects = [
         desc: "Monitor the herbs' growth and water as needed until ready for harvest.",
       },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 13,
+    id: "13",
     title: "Bird Feeder",
     description:
       "Construct a bird feeder to attract birds to your garden or balcony.",
@@ -376,10 +376,10 @@ export const initialProjects = [
         desc: "Regularly refill the feeder and enjoy watching the visiting birds.",
       },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 14,
+    id: "14",
     title: "Mason Jar Lanterns",
     description: "Make decorative lanterns using mason jars and tea lights.",
     materials: ["Mason jars", "Tea lights", "Twine", "Decorative stones"],
@@ -407,10 +407,10 @@ export const initialProjects = [
         desc: "Enjoy the cozy ambiance created by the flickering candlelight.",
       },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
   {
-    id: 15,
+    id: "15",
     title: "DIY Fruit Crate Shelves",
     description:
       "Repurpose old fruit crates into rustic shelves for storage or display.",
@@ -439,6 +439,6 @@ export const initialProjects = [
         desc: "Use shelves for storing books, displaying decor items, or organizing household essentials.",
       },
     ],
-    image: "http://localhost:3000/images/dummy-image-diy.jpg",
+    image: "/../public/images/dummy-image-diy.jpg",
   },
 ];

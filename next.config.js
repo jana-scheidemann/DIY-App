@@ -3,9 +3,6 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  images: {
-    domains: ["localhost"],
-  },
   reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({

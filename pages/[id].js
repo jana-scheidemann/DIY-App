@@ -8,7 +8,7 @@ export default function ProjectDetailPage() {
   const { id } = router.query;
 
   const currentProject = initialProjects.find(
-    (initialProject) => initialProject.id.toString() === id
+    (initialProject) => initialProject.id === id
   );
 
   if (!currentProject) {

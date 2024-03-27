@@ -26,16 +26,14 @@ export default function ProjectDetails({ currentProject }) {
           Description:
           <br /> {description}
         </p>
+        <p>Materials:</p>
         <ul>
-          Materials:
-          <br />
           {materials.map((material, index) => (
             <li key={index}>{material}</li>
           ))}
         </ul>
+        <p>Steps:</p>
         <ol>
-          Steps:
-          <br />
           {steps.map((step) => (
             <li key={step.id}>{step.desc}</li>
           ))}
