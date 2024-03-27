@@ -5,7 +5,7 @@ import { initialProjects } from "@/db/data";
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
 
-  function deleteProject(id) {
+  function handleDeleteProject(id) {
     setProjects(projects.filter((project) => project.id !== id));
   }
 
@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
       <Component
         {...pageProps}
         projects={projects}
-        onDeleteProject={deleteProject}
+        onDeleteProject={handleDeleteProject}
       />
     </>
   );
