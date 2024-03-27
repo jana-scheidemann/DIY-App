@@ -64,7 +64,7 @@ export default function ProjectDetails({ currentProject, onDeleteProject }) {
             <li key={step.id}>{step.desc}</li>
           ))}
         </ol>
-        <button onClick={() => handleDelete()}>Delete</button>
+        <button onClick={handleDelete}>Delete</button>
       </StyledProjectContainer>
       {modalDelete && (
         <ModalDelete onConfirm={handleConfirm} onCancel={handleCancel} />
