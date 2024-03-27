@@ -4,7 +4,7 @@ import ModalDelete from "@/components/ModalDelete";
 import { useState } from "react";
 import router from "next/router";
 
-export default function ProjectDetails({ currentProject, onDelete }) {
+export default function ProjectDetails({ currentProject, onDeleteProject }) {
   const [modalDelete, setModalDelete] = useState(false);
   const {
     id,
@@ -26,7 +26,7 @@ export default function ProjectDetails({ currentProject, onDelete }) {
   }
 
   function handleConfirm() {
-    onDelete(id);
+    onDeleteProject(id);
     setModalDelete(false);
     router.push("/");
   }

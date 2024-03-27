@@ -2,7 +2,7 @@ import ProjectDetails from "@/components/ProjectDetails";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-export default function ProjectDetailPage({ projects, setProjects }) {
+export default function ProjectDetailPage({ projects, onDeleteProject }) {
   const router = useRouter();
   const { id } = router.query;
 
@@ -12,15 +12,11 @@ export default function ProjectDetailPage({ projects, setProjects }) {
     return null;
   }
 
-  function deleteProject(id) {
-    setProjects(projects.filter((project) => project.id !== id));
-  }
-
   return (
     <>
       <ProjectDetails
         currentProject={currentProject}
-        onDelete={deleteProject}
+        onDeleteProject={onDeleteProject}
       />
       <Link href={"/"}>← back to all projects</Link>
     </>
