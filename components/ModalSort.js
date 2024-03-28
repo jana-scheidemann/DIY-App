@@ -1,41 +1,58 @@
 import styled from "styled-components";
 
-export default function ModalSort() {
+export default function ModalSort({
+  onSortComplexityStartHigh,
+  onSortComplexityStartLow,
+  onSortDurationStartLong,
+  onSortDurationStartShort,
+  onCancelSort,
+}) {
   return (
     <StyledBackground>
       <StyledContainer>
         <p>Sort projects by ...</p>
-        <input
-          type="radio"
-          id="duration"
-          name="sort"
-          value="duration-start-short"
-        />
-        <label htmlFor="duration">Duration: short to long</label>
-        <br />
-        <input
-          type="radio"
-          id="duration"
-          name="sort"
-          value="duration-start-long"
-        />
-        <label htmlFor="duration">Duration: long to short</label>
-        <br />
-        <input
-          type="radio"
-          id="complexity"
-          name="sort"
-          value="complexity-start-beginner"
-        />
-        <label htmlFor="complexity">Complexity: Beginner to Advanced</label>
-        <br />
-        <input
-          type="radio"
-          id="complexity"
-          name="sort"
-          value="complexity-start-advanced"
-        />
-        <label htmlFor="complexity">Complexity: Adcanced to Beginner</label>
+        <StyledSortButton type="button" onClick={onSortDurationStartShort}>
+          <input
+            type="radio"
+            id="duration-short"
+            name="sort"
+            value="duration"
+          />
+          <label htmlFor="duration-short">Duration: short to long</label>
+        </StyledSortButton>
+
+        <StyledSortButton type="button" onClick={onSortDurationStartLong}>
+          <input type="radio" id="duration-long" name="sort" value="duration" />
+          <label htmlFor="duration-long">Duration: long to short</label>
+        </StyledSortButton>
+
+        <StyledSortButton type="button" onClick={onSortComplexityStartLow}>
+          <input
+            type="radio"
+            id="complexity-low"
+            name="sort"
+            value="complexity"
+          />
+          <label htmlFor="complexity-low">
+            Complexity: Beginner to Advanced
+          </label>
+        </StyledSortButton>
+
+        <StyledSortButton type="button" onClick={onSortComplexityStartHigh}>
+          <input
+            type="radio"
+            id="complexity-high"
+            name="sort"
+            value="complexityd"
+          />
+          <label htmlFor="complexity-high">
+            Complexity: Adcanced to Beginner
+          </label>
+        </StyledSortButton>
+        <hr />
+        <button type="button" onClick={onCancelSort}>
+          Cancel sorting
+        </button>
       </StyledContainer>
     </StyledBackground>
   );
@@ -58,4 +75,9 @@ const StyledContainer = styled.div`
   background-color: white;
   border: 1px solid black;
   padding: 0px 20px 20px 20px;
+`;
+
+const StyledSortButton = styled.button`
+  border: none;
+  background-color: white;
 `;
