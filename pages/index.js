@@ -1,12 +1,22 @@
 import Project from "@/components/Project";
 import styled from "styled-components";
 import Navigation from "@/components/Navigation";
+import { useState } from "react";
+import ModalSort from "@/components/ModalSort";
 
 export default function HomePage({ projects }) {
+  const [modalSort, setModalSort] = useState(false);
+  function handleSort() {
+    setModalSort(true);
+  }
+
   return (
     <>
       <StyledHeadline>DIY APP</StyledHeadline>
       <Navigation />
+      <button type="button" onClick={handleSort}>
+        sort projects by ...
+      </button>
       <StyledSection>
         {projects.map((project) => (
           <Project
@@ -15,9 +25,10 @@ export default function HomePage({ projects }) {
             duration={project.duration}
             complexity={project.complexity}
             id={project.id}
-       />
+          />
         ))}
       </StyledSection>
+      {modalSort && <ModalSort />}
     </>
   );
 }
