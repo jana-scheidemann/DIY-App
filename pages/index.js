@@ -22,22 +22,22 @@ export default function HomePage({
   }
 
   function handleSortComplexityStartHigh() {
-    onSortProjectsByComplexityStartHigh(complexity);
+    onSortProjectsByComplexityStartHigh();
     setModalSort(false);
   }
 
   function handleSortComplexityStartLow() {
-    onSortProjectsByComplexityStartLow(complexity);
+    onSortProjectsByComplexityStartLow();
     setModalSort(false);
   }
 
   function handleSortDurationStartLong() {
-    onSortProjectsByDurationStartLong(duration);
+    onSortProjectsByDurationStartLong();
     setModalSort(false);
   }
 
   function handleSortDurationStartShort() {
-    onSortProjectsByDurationStartShort(duration);
+    onSortProjectsByDurationStartShort();
     setModalSort(false);
   }
 

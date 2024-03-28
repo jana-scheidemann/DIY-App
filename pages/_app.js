@@ -29,10 +29,52 @@ export default function App({ Component, pageProps }) {
     );
   }
   function handleSortProjectsByDurationStartLong() {
-    setProjects();
+    const durationToHours = (duration) => {
+      const durationValue = parseInt(duration);
+      if (duration.toLowerCase() && duration.includes("hour")) {
+        return durationValue;
+      } else if (duration.toLowerCase() && duration.includes("day")) {
+        return durationValue * 24;
+      } else if (duration.toLowerCase() && duration.includes("week")) {
+        return durationValue * 24 * 7;
+      } else if (duration.toLowerCase() && duration.includes("month")) {
+        return durationValue * 24 * 30;
+      } else if (duration.toLowerCase() && duration.includes("year")) {
+        return durationValue * 24 * 365;
+      }
+      return duration;
+    };
+    setProjects(
+      projects.sort((a, b) => {
+        const durationA = durationToHours(a.duration);
+        const durationB = durationToHours(b.duration);
+        return durationB - durationA;
+      })
+    );
   }
   function handleSortProjectsByDurationStartShort() {
-    setProjects();
+    const durationToHours = (duration) => {
+      const durationValue = parseInt(duration);
+      if (duration.toLowerCase() && duration.includes("hour")) {
+        return durationValue;
+      } else if (duration.toLowerCase() && duration.includes("day")) {
+        return durationValue * 24;
+      } else if (duration.toLowerCase() && duration.includes("week")) {
+        return durationValue * 24 * 7;
+      } else if (duration.toLowerCase() && duration.includes("month")) {
+        return durationValue * 24 * 30;
+      } else if (duration.toLowerCase() && duration.includes("year")) {
+        return durationValue * 24 * 365;
+      }
+      return duration;
+    };
+    setProjects(
+      projects.sort((a, b) => {
+        const durationA = durationToHours(a.duration);
+        const durationB = durationToHours(b.duration);
+        return durationA - durationB;
+      })
+    );
   }
 
   return (
