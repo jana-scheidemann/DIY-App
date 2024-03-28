@@ -14,7 +14,8 @@ export default function HomePage({ projects }) {
             title={project.title}
             duration={project.duration}
             complexity={project.complexity}
-          />
+            id={project.id}
+       />
         ))}
       </StyledSection>
     </>

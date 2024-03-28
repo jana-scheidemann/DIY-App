@@ -1,8 +1,12 @@
 import styled from "styled-components";
-export default function Project({ title, duration, complexity }) {
+import Link from "next/link";
+
+export default function Project({ title, duration, complexity, id }) {
   return (
     <StyledArticle>
-      <h2>{title}</h2>
+      <Link href={`/${id}`}>
+        <h2>{title}</h2>
+      </Link>
       <p>Duration: {duration}</p>
       <p>Complexity: {complexity}</p>
     </StyledArticle>
