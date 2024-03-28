@@ -1,10 +1,12 @@
 import Project from "@/components/Project";
 import styled from "styled-components";
+import Navigation from "@/components/Navigation";
 
 export default function HomePage({ projects }) {
   return (
     <>
       <StyledHeadline>DIY APP</StyledHeadline>
+      <Navigation />
       <StyledSection>
         {projects.map((project) => (
           <Project
@@ -13,7 +15,7 @@ export default function HomePage({ projects }) {
             duration={project.duration}
             complexity={project.complexity}
             id={project.id}
-          />
+       />
         ))}
       </StyledSection>
     </>
