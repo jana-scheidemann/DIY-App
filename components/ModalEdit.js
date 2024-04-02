@@ -5,17 +5,25 @@ import { uid } from "uid";
 export default function ModalEdit({ currentProject, onSave, onCancel }) {
   const [updateProject, setUpdateProject] = useState(currentProject);
   const [selectSteps, setSelectSteps] = useState({});
-  const [editSteps, setEditSteps] = useState(false);
+  const [updateSteps, setUpdateSteps] = useState(false);
+  const [updateMaterials, setUpdateMaterials] = useState(
+    currentProject.materials.join(", ")
+  );
   const complexityLevels = ["Beginner", "Intermediate", "Advanced"];
+
+  console.log("UPDATE PROJECT", updateProject);
 
   function handleChange(event) {
     const materialName = event.target.name;
     const materialValue = event.target.value;
 
     if (materialName === "materials") {
+      setUpdateMaterials(materialValue);
       setUpdateProject((prevProject) => ({
         ...prevProject,
-        [materialName]: materialValue.split(","),
+        [materialName]: materialValue
+          .split(",")
+          .map((material) => material.trim()),
       }));
     } else {
       setUpdateProject((prevProject) => ({
@@ -49,12 +57,12 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
 
   function handleStepEdit(event) {
     event.preventDefault();
-    setEditSteps(true);
+    setUpdateSteps(true);
   }
 
   function handleStepEditCancel(event) {
     event.preventDefault();
-    setEditSteps(false);
+    setUpdateSteps(false);
   }
 
   function handleStepSelect(id) {
@@ -102,7 +110,7 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
                 name="materials"
                 id="materials"
                 size="40"
-                value={updateProject.materials.join(", ")}
+                value={updateMaterials}
                 onChange={handleChange}
                 required
               />
@@ -135,12 +143,35 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
               </div>
             ))}
             <StyledTitle>Steps</StyledTitle>
+            {updateSteps ? (
+              <>
+                <StyledContainerSteps>
+                  <ul>
+                    <li>
+                      To add a step, click the &quot;Add Step&quot; button
+                    </li>
+                    <li>
+                      To delete a step, select the checkbox of the step to
+                      delete and confirm the deletetion by clicking the
+                      &quot;Delete Step&quot; button
+                    </li>
+                  </ul>
+                </StyledContainerSteps>
+                <button onClick={handleStepAdd}>Add Step</button>
+                <button onClick={handleStepDelete}>Delete Step</button>
+                <button onClick={handleStepEditCancel}>
+                  Close Update Steps
+                </button>
+              </>
+            ) : (
+              <button onClick={handleStepEdit}>Update Steps</button>
+            )}
             {updateProject.steps.map((step, stepIndex) => (
               <div key={step.id}>
                 <label htmlFor={`step${stepIndex + 1}`}>
                   <StyledTitleStep>Step {stepIndex + 1} &nbsp;</StyledTitleStep>
                 </label>
-                {editSteps && (
+                {updateSteps && (
                   <input
                     type="checkbox"
                     onChange={() => handleStepSelect(step.id)}
@@ -166,19 +197,9 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
               </div>
             ))}
             <p>
-              <button onClick={handleStepAdd}>Add Step</button>
-              {editSteps ? (
-                <>
-                  <button onClick={handleStepDelete}>Delete Step</button>
-                  <button onClick={handleStepEditCancel}>Cancel Edit</button>
-                </>
-              ) : (
-                <button onClick={handleStepEdit}>Edit Steps</button>
-              )}
-            </p>
-            <p>
-              <button type="submit">Save</button>
-              <button onClick={onCancel}>Cancel</button>
+              <StyledTitle>Confirm Changes</StyledTitle>
+              <button type="submit">Update Project</button>
+              <button onClick={onCancel}>Cancel Update Project</button>
             </p>
           </form>
         </StyledContainerForm>
@@ -219,6 +240,10 @@ const StyledContainerForm = styled.div`
   align-items: start;
 `;
 
+const StyledContainerSteps = styled.div`
+  width: 60%;
+`;
+
 const StyledHeading = styled.div`
   font-size: 48px;
   font-weight: bold;
@@ -239,5 +264,5 @@ const StyledTitleStep = styled.div`
 const StyledInput = styled.input`
   width: 90%;
   box-sizing: border-box;
-  padding: 0.5em;
+  padding: 0.3em 0.3em 0.3em 0.2em;
 `;
