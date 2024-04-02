@@ -11,6 +11,7 @@ export default function HomePage({
   onSortProjectsByComplexityStartLow,
   onSortProjectsByDurationStartLong,
   onSortProjectsByDurationStartShort,
+  onFilterProjects,
 }) {
   const [modalSort, setModalSort] = useState(false);
   function handleSort() {
@@ -43,6 +44,10 @@ export default function HomePage({
   function handleCancelFilter() {
     setModalFilter(false);
   }
+  function handleApplyFilter(filterData) {
+    onFilterProjects(filterData);
+    setModalFilter(false);
+  }
 
   return (
     <>
@@ -65,7 +70,12 @@ export default function HomePage({
       <button type="button" onClick={handleFilter}>
         filter projects by ...
       </button>
-      {modalFilter && <ModalFilter onCancelFilter={handleCancelFilter} />}
+      {modalFilter && (
+        <ModalFilter
+          onCancelFilter={handleCancelFilter}
+          onSubmit={handleApplyFilter}
+        />
+      )}
 
       <StyledSection>
         {projects.map((project) => (
