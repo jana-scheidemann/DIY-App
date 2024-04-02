@@ -11,8 +11,6 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
   );
   const complexityLevels = ["Beginner", "Intermediate", "Advanced"];
 
-  console.log("UPDATE PROJECT", updateProject);
-
   function handleChange(event) {
     const materialName = event.target.name;
     const materialValue = event.target.value;
