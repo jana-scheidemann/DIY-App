@@ -3,8 +3,13 @@ import Image from "next/image";
 import ModalDelete from "@/components/ModalDelete";
 import { useState } from "react";
 import router from "next/router";
+import FavoriteButton from "./FavoriteButton";
 
-export default function ProjectDetails({ currentProject, onDeleteProject }) {
+export default function ProjectDetails({
+  currentProject,
+  onDeleteProject,
+  onToggleFavorite,
+}) {
   const [modalDelete, setModalDelete] = useState(false);
   const {
     id,
@@ -15,6 +20,7 @@ export default function ProjectDetails({ currentProject, onDeleteProject }) {
     complexity,
     steps,
     image,
+    favorite,
   } = currentProject;
 
   function handleDelete() {
@@ -40,6 +46,11 @@ export default function ProjectDetails({ currentProject, onDeleteProject }) {
           <p>Duration: {duration}</p>
           <p>Complexity: {complexity}</p>
         </StyledProjectDetailsContainer>
+        <FavoriteButton
+          id={id}
+          onToggleFavorite={onToggleFavorite}
+          isFavorite={currentProject.favorite}
+        />
 
         <Image
           src={image}
