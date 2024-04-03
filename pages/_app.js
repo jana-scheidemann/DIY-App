@@ -12,11 +12,11 @@ export default function App({ Component, pageProps }) {
     setProjects(projects.filter((project) => project.id !== id));
   }
 
-  const complexityOrder = { Advanced: 0, Intermediate: 1, Beginner: 2 };
+  const complexityOrder = { Beginner: 0, Intermediate: 1, Advanced: 2 };
   function handleSortProjectsByComplexityStartHigh() {
     setProjects(
       projects.toSorted((a, b) => {
-        return complexityOrder[a.complexity] - complexityOrder[b.complexity];
+        return complexityOrder[b.complexity] - complexityOrder[a.complexity];
       })
     );
   }

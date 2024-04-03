@@ -14,6 +14,7 @@ export default function HomePage({
   onFilterProjects,
 }) {
   const [modalSort, setModalSort] = useState(false);
+  const [modalFilter, setModalFilter] = useState(false);
   function handleSort() {
     setModalSort(true);
   }
@@ -37,7 +38,6 @@ export default function HomePage({
     setModalSort(false);
   }
 
-  const [modalFilter, setModalFilter] = useState(false);
   function handleFilter() {
     setModalFilter(true);
   }
