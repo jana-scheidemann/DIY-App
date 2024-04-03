@@ -11,4 +11,11 @@ export default createGlobalStyle`
     margin: 0;
     font-family: system-ui;
   }
+  .favorite-button-active {
+    background-image
+   }
+  .favorite-button { }
+  
+
+
 `;
