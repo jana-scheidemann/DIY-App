@@ -1,0 +1,47 @@
+import FavoriteButton from "@/components/FavoriteButton";
+import Link from "next/link";
+import styled from "styled-components";
+import Navigation from "@/components/Navigation";
+import Project from "@/components/Project";
+
+export default function FavoritesPage({ projects, onToggleFavorite }) {
+  const favoriteProjects = projects.filter((project) => {
+    return project.favorite;
+  });
+
+  return (
+    <>
+      <StyledHeadline>Favorite Projects</StyledHeadline>
+      <Navigation />
+      <StyledSection>
+        {favoriteProjects.map((project) => (
+          <Project
+            key={project.id}
+            title={project.title}
+            duration={project.duration}
+            complexity={project.complexity}
+            id={project.id}
+            onToggleFavorite={onToggleFavorite}
+            isFavorite={project.favorite}
+          />
+        ))}
+      </StyledSection>
+    </>
+  );
+}
+
+const StyledArticle = styled.article`
+  border: 1px solid black;
+  padding: 0px 0px 0px 10px;
+  width: 90vw;
+`;
+const StyledSection = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+`;
+
+const StyledHeadline = styled.h1`
+  text-align: center;
+`;
