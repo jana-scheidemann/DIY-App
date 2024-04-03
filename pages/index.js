@@ -7,46 +7,27 @@ import ModalFilter from "@/components/ModalFilter";
 
 export default function HomePage({
   projects,
-  onSortProjectsByComplexityStartHigh,
-  onSortProjectsByComplexityStartLow,
-  onSortProjectsByDurationStartLong,
-  onSortProjectsByDurationStartShort,
   onFilterProjects,
+  onResetFilters,
+  onSortProjects,
 }) {
   const [modalSort, setModalSort] = useState(false);
-  function handleSort() {
-    setModalSort(true);
-  }
-  function handleCancelSort() {
-    setModalSort(false);
-  }
-  function handleSortComplexityStartHigh() {
-    onSortProjectsByComplexityStartHigh();
-    setModalSort(false);
-  }
-  function handleSortComplexityStartLow() {
-    onSortProjectsByComplexityStartLow();
-    setModalSort(false);
-  }
-  function handleSortDurationStartLong() {
-    onSortProjectsByDurationStartLong();
-    setModalSort(false);
-  }
-  function handleSortDurationStartShort() {
-    onSortProjectsByDurationStartShort();
-    setModalSort(false);
+  const [modalFilter, setModalFilter] = useState(false);
+
+  // kann in einer Funktion zusammengefasst werden, die den State toggled.
+  function toogleFilterModal() {
+    setModalFilter(!modalFilter);
   }
 
-  const [modalFilter, setModalFilter] = useState(false);
-  function handleFilter() {
-    setModalFilter(true);
+  // Das gleiche gilt auch für den sort state :)
+  function toogleSortModal() {
+    setModalSort(!modalSort);
   }
-  function handleCancelFilter() {
-    setModalFilter(false);
-  }
-  function handleApplyFilter(filterData) {
-    onFilterProjects(filterData);
-    setModalFilter(false);
+
+  // in eine Function zusammenfassen
+  function handleSort(callback) {
+    callback();
+    toogleSortModal();
   }
 
   return (
@@ -54,28 +35,46 @@ export default function HomePage({
       <StyledHeadline>DIY APP</StyledHeadline>
       <Navigation />
 
-      <button type="button" onClick={handleSort}>
-        sort projects by ...
-      </button>
-      {modalSort && (
-        <ModalSort
-          onCancelSort={handleCancelSort}
-          onSortComplexityStartHigh={handleSortComplexityStartHigh}
-          onSortComplexityStartLow={handleSortComplexityStartLow}
-          onSortDurationStartLong={handleSortDurationStartLong}
-          onSortDurationStartShort={handleSortDurationStartShort}
-        />
-      )}
+      <StyledButtonGroup>
+        <button type="button" onClick={toogleSortModal}>
+          sort projects by ...
+        </button>
+        {modalSort && (
+          <ModalSort
+            onSortProjects={onSortProjects}
+            onCancelSort={toogleSortModal}
+            onSortComplexityStartHigh={() =>
+              handleSort(onSortProjectsByComplexityStartHigh)
+            }
+            onSortComplexityStartLow={() =>
+              handleSort(onSortProjectsByComplexityStartLow)
+            }
+            onSortDurationStartLong={() =>
+              handleSort(onSortProjectsByDurationStartLong)
+            }
+            onSortDurationStartShort={() =>
+              handleSort(onSortProjectsByDurationStartShort)
+            }
+          />
+        )}
 
-      <button type="button" onClick={handleFilter}>
-        filter projects by ...
-      </button>
-      {modalFilter && (
-        <ModalFilter
-          onCancelFilter={handleCancelFilter}
-          onSubmit={handleApplyFilter}
-        />
-      )}
+        <button type="button" onClick={toogleFilterModal}>
+          filter projects by ...
+        </button>
+        {modalFilter && (
+          <ModalFilter
+            onToggleFilterModal={toogleFilterModal}
+            // prob besser umschreiben - weil submit findet im form statt
+            onFilterProjects={onFilterProjects}
+          />
+        )}
+
+        <button type="button" onClick={onResetFilters}>
+          reset filter
+        </button>
+
+        <span>{projects.length} projects</span>
+      </StyledButtonGroup>
 
       <StyledSection>
         {projects.map((project) => (
@@ -101,4 +100,11 @@ const StyledSection = styled.section`
 
 const StyledHeadline = styled.h1`
   text-align: center;
+`;
+
+// selbe Component wie aus ModalFilter - könnte als ausgelagert werden
+const StyledButtonGroup = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem;
 `;

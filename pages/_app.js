@@ -3,8 +3,66 @@ import { useState } from "react";
 import { initialProjects } from "@/db/data";
 import { uid } from "uid";
 
+const complexityOrder = {
+  Beginner: 1,
+  Intermediate: 2,
+  Advanced: 3,
+};
+
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
+  const [projectFilter, setProjectFilter] = useState({});
+
+  function handleSortProjects(field, direction) {
+    const sortedProjects = [...projects].sort((a, b) => {
+      let valueA = field === "duration" ? durationToHours(a[field]) : a[field];
+      let valueB = field === "duration" ? durationToHours(b[field]) : b[field];
+
+      if (field === "complexity") {
+        valueA = complexityOrder[valueA];
+        valueB = complexityOrder[valueB];
+      }
+
+      return direction === "asc" ? valueA - valueB : valueB - valueA;
+    });
+
+    setProjects(sortedProjects);
+  }
+
+  function resetProjectFilter() {
+    setProjectFilter({});
+    setProjects(initialProjects);
+  }
+
+  function handleProjectFilter(filterData) {
+    setProjectFilter(filterData);
+  }
+
+  const filteredProjects = projects.filter((project) => {
+    // Ist true, falls kein Dauerfilter gesetzt ist
+    let durationMatch = true;
+    if (projectFilter.duration) {
+      if (projectFilter.duration === "short") {
+        durationMatch = durationToHours(project.duration) <= 2;
+      } else if (projectFilter.duration === "medium") {
+        durationMatch =
+          durationToHours(project.duration) > 2 &&
+          durationToHours(project.duration) <= 23;
+      } else if (projectFilter.duration === "long") {
+        durationMatch = durationToHours(project.duration) > 23;
+      }
+    }
+
+    // ist true, falls kein Komplexitätsfilter gesetzt ist
+    let complexityMatch = true;
+    if (projectFilter.complexity) {
+      complexityMatch = project.complexity === projectFilter.complexity;
+    }
+
+    // return projects die beiden Kriterien entsprechen
+    return durationMatch && complexityMatch;
+  });
+
   function handleAddProject(newProject) {
     setProjects([{ id: uid(), ...newProject }, ...projects]);
   }
@@ -12,23 +70,8 @@ export default function App({ Component, pageProps }) {
     setProjects(projects.filter((project) => project.id !== id));
   }
 
-  const complexityOrder = { Advanced: 0, Intermediate: 1, Beginner: 2 };
-  function handleSortProjectsByComplexityStartHigh() {
-    setProjects(
-      projects.toSorted((a, b) => {
-        return complexityOrder[a.complexity] - complexityOrder[b.complexity];
-      })
-    );
-  }
-  function handleSortProjectsByComplexityStartLow() {
-    setProjects(
-      projects.toSorted((a, b) => {
-        return complexityOrder[a.complexity] - complexityOrder[b.complexity];
-      })
-    );
-  }
-
-  const durationToHours = (duration) => {
+  // besser function declaration wegen hoisting
+  function durationToHours(duration) {
     const durationValue = parseInt(duration);
     if (duration.toLowerCase() && duration.includes("hour")) {
       return durationValue;
@@ -42,52 +85,6 @@ export default function App({ Component, pageProps }) {
       return durationValue * 24 * 365;
     }
     return duration;
-  };
-  function handleSortProjectsByDurationStartLong() {
-    setProjects(
-      projects.sort((a, b) => {
-        const durationA = durationToHours(a.duration);
-        const durationB = durationToHours(b.duration);
-        return durationB - durationA;
-      })
-    );
-  }
-  function handleSortProjectsByDurationStartShort() {
-    setProjects(
-      projects.sort((a, b) => {
-        const durationA = durationToHours(a.duration);
-        const durationB = durationToHours(b.duration);
-        return durationA - durationB;
-      })
-    );
-  }
-
-  function handleFilterProjects(filterData) {
-    let filteredProjects = projects;
-
-    if (filterData.duration === "short") {
-      filteredProjects = filteredProjects.filter(
-        (project) => durationToHours(project.duration) <= 2
-      );
-    } else if (filterData.duration === "medium") {
-      filteredProjects = filteredProjects.filter(
-        (project) =>
-          durationToHours(project.duration) > 2 &&
-          durationToHours(project.duration) <= 23
-      );
-    } else if (filterData.duration === "long") {
-      filteredProjects = filteredProjects.filter(
-        (project) => durationToHours(project.duration) > 23
-      );
-    }
-
-    if (filterData.complexity) {
-      filteredProjects = filteredProjects.filter(
-        (project) => project.complexity === filterData.complexity
-      );
-    }
-
-    setProjects(filteredProjects);
   }
 
   return (
@@ -95,22 +92,13 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <Component
         {...pageProps}
-        projects={projects}
+        // use filteredProjects
+        projects={filteredProjects}
         onAddProject={handleAddProject}
         onDeleteProject={handleDeleteProject}
-        onSortProjectsByComplexityStartHigh={
-          handleSortProjectsByComplexityStartHigh
-        }
-        onSortProjectsByComplexityStartLow={
-          handleSortProjectsByComplexityStartLow
-        }
-        onSortProjectsByDurationStartLong={
-          handleSortProjectsByDurationStartLong
-        }
-        onSortProjectsByDurationStartShort={
-          handleSortProjectsByDurationStartShort
-        }
-        onFilterProjects={handleFilterProjects}
+        onFilterProjects={handleProjectFilter}
+        onResetFilters={resetProjectFilter}
+        onSortProjects={handleSortProjects}
       />
     </>
   );
