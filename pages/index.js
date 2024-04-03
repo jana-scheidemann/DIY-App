@@ -2,7 +2,7 @@ import Project from "@/components/Project";
 import styled from "styled-components";
 import Navigation from "@/components/Navigation";
 
-export default function HomePage({ projects }) {
+export default function HomePage({ projects, onToggleFavorite }) {
   return (
     <>
       <StyledHeadline>DIY APP</StyledHeadline>
@@ -15,7 +15,9 @@ export default function HomePage({ projects }) {
             duration={project.duration}
             complexity={project.complexity}
             id={project.id}
-       />
+            onToggleFavorite={onToggleFavorite}
+            isFavorite={project.favorite}
+          />
         ))}
       </StyledSection>
     </>
