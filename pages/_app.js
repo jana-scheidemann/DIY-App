@@ -31,13 +31,17 @@ export default function App({ Component, pageProps }) {
 
   function resetProjectFilter() {
     setProjectFilter({});
-    setProjects(initialProjects);
+
+    //setProjects(initialProjects);
   }
 
   function handleProjectFilter(filterData) {
     setProjectFilter(filterData);
   }
 
+  // const favProject
+
+  // projectFilter = {}
   const filteredProjects = projects.filter((project) => {
     // Ist true, falls kein Dauerfilter gesetzt ist
     let durationMatch = true;
@@ -87,12 +91,13 @@ export default function App({ Component, pageProps }) {
     return duration;
   }
 
+  const condition = true;
+
   return (
     <>
       <GlobalStyle />
       <Component
         {...pageProps}
-        // use filteredProjects
         projects={filteredProjects}
         onAddProject={handleAddProject}
         onDeleteProject={handleDeleteProject}
