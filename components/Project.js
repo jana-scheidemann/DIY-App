@@ -1,7 +1,15 @@
 import styled from "styled-components";
 import Link from "next/link";
+import FavoriteButton from "./FavoriteButton";
 
-export default function Project({ title, duration, complexity, id }) {
+export default function Project({
+  title,
+  duration,
+  complexity,
+  id,
+  onToggleFavorite,
+  isFavorite,
+}) {
   return (
     <StyledArticle>
       <Link href={`/${id}`}>
@@ -9,6 +17,11 @@ export default function Project({ title, duration, complexity, id }) {
       </Link>
       <p>Duration: {duration}</p>
       <p>Complexity: {complexity}</p>
+      <FavoriteButton
+        id={id}
+        onToggleFavorite={onToggleFavorite}
+        isFavorite={isFavorite}
+      />
     </StyledArticle>
   );
 }

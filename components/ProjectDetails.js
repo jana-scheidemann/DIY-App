@@ -4,10 +4,12 @@ import ModalDelete from "@/components/ModalDelete";
 import ModalEdit from "@/components/ModalEdit";
 import { useState } from "react";
 import router from "next/router";
+import FavoriteButton from "./FavoriteButton";
 
 export default function ProjectDetails({
   currentProject,
   onDeleteProject,
+  onToggleFavorite,
   onEditProject,
 }) {
   const [modalEdit, setModalEdit] = useState(false);
@@ -21,6 +23,7 @@ export default function ProjectDetails({
     complexity,
     steps,
     image,
+    favorite,
   } = currentProject;
 
   function handleEdit() {
@@ -59,6 +62,11 @@ export default function ProjectDetails({
           <p>Duration: {duration}</p>
           <p>Complexity: {complexity}</p>
         </StyledProjectDetailsContainer>
+        <FavoriteButton
+          id={id}
+          onToggleFavorite={onToggleFavorite}
+          isFavorite={currentProject.favorite}
+        />
 
         <Image
           src={image}
@@ -117,8 +125,4 @@ const StyledHeadline2 = styled.h2`
 const StyledProjectDetailsContainer = styled.div`
   display: flex;
   justify-content: space-around;
-`;
-
-const StyledList = styled.ol`
-  align-self: self-start;
 `;

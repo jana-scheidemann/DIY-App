@@ -13,6 +13,15 @@ export default function App({ Component, pageProps }) {
     setProjects(projects.filter((project) => project.id !== id));
   }
 
+  function handleToggleFavorite(id) {
+    setProjects(
+      projects.map((project) =>
+        project.id === id
+          ? { ...project, favorite: !project.favorite }
+          : project
+        )
+    );
+  }
   function handleEditProject(updatedProject) {
     setProjects(
       projects.map((project) =>
@@ -29,6 +38,7 @@ export default function App({ Component, pageProps }) {
         projects={projects}
         onAddProject={handleAddProject}
         onDeleteProject={handleDeleteProject}
+        onToggleFavorite={handleToggleFavorite}
         onEditProject={handleEditProject}
       />
     </>

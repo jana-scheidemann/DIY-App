@@ -9,6 +9,9 @@ export default function Navigation() {
         <li>
           <Link href="/create">New Project</Link>
         </li>
+        <li>
+          <Link href="/favorites">Favorite Projects</Link>
+        </li>
       </ul>
     </nav>
   );

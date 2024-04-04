@@ -1,14 +1,18 @@
-import Project from "@/components/Project";
 import styled from "styled-components";
 import Navigation from "@/components/Navigation";
+import Project from "@/components/Project";
 
-export default function HomePage({ projects, onToggleFavorite }) {
+export default function FavoritesPage({ projects, onToggleFavorite }) {
+  const favoriteProjects = projects.filter((project) => {
+    return project.favorite;
+  });
+
   return (
     <>
-      <StyledHeadline>DIY APP</StyledHeadline>
+      <StyledHeadline>Favorite Projects</StyledHeadline>
       <Navigation />
       <StyledSection>
-        {projects.map((project) => (
+        {favoriteProjects.map((project) => (
           <Project
             key={project.id}
             title={project.title}
