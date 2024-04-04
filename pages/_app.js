@@ -19,6 +19,9 @@ export default function App({ Component, pageProps }) {
         project.id === id
           ? { ...project, favorite: !project.favorite }
           : project
+        )
+    );
+  }
   function handleEditProject(updatedProject) {
     setProjects(
       projects.map((project) =>
