@@ -6,6 +6,7 @@ export default function ProjectDetailPage({
   projects,
   onDeleteProject,
   onToggleFavorite,
+  onEditProject,
 }) {
   const router = useRouter();
   const { id } = router.query;
@@ -22,6 +23,7 @@ export default function ProjectDetailPage({
         currentProject={currentProject}
         onDeleteProject={onDeleteProject}
         onToggleFavorite={onToggleFavorite}
+        onEditProject={onEditProject}
       />
       <Link href={"/"}>← back to all projects</Link>
     </>
