@@ -10,8 +10,7 @@ export default function ProjectDetails({
   currentProject,
   onDeleteProject,
   onToggleFavorite,
-}) {
- onEditProject,
+  onEditProject,
 }) {
   const [modalEdit, setModalEdit] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
