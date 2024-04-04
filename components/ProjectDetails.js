@@ -100,7 +100,3 @@ const StyledProjectDetailsContainer = styled.div`
   display: flex;
   justify-content: space-around;
 `;
-
-const StyledList = styled.ol`
-  align-self: self-start;
-`;
