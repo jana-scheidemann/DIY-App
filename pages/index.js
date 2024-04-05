@@ -28,8 +28,8 @@ export default function HomePage({
     onSortProjectsByComplexityStartLow();
     toogleSortModal();
   }
-  function handleSortDuration() {
-    onSortProjectsByDuration();
+  function handleSortDuration(direction) {
+    onSortProjectsByDuration(direction);
     toogleSortModal();
   }
 
