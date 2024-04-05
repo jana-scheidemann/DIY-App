@@ -45,21 +45,14 @@ export default function App({ Component, pageProps }) {
     }
     return duration;
   }
-  function handleSortProjectsByDurationStartLong() {
+  function handleSortProjectsByDuration(direction = "long") {
     setProjects(
       projects.toSorted((a, b) => {
         const durationA = durationToHours(a.duration);
         const durationB = durationToHours(b.duration);
-        return durationB - durationA;
-      })
-    );
-  }
-  function handleSortProjectsByDurationStartShort() {
-    setProjects(
-      projects.toSorted((a, b) => {
-        const durationA = durationToHours(a.duration);
-        const durationB = durationToHours(b.duration);
-        return durationA - durationB;
+        return direction === "long"
+          ? durationB - durationA
+          : durationA - durationB;
       })
     );
   }
@@ -112,12 +105,7 @@ export default function App({ Component, pageProps }) {
         onSortProjectsByComplexityStartLow={
           handleSortProjectsByComplexityStartLow
         }
-        onSortProjectsByDurationStartLong={
-          handleSortProjectsByDurationStartLong
-        }
-        onSortProjectsByDurationStartShort={
-          handleSortProjectsByDurationStartShort
-        }
+        onSortProjectsByDuration={handleSortProjectsByDuration}
       />
     </>
   );

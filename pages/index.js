@@ -11,8 +11,7 @@ export default function HomePage({
   onResetFilters,
   onSortProjectsByComplexityStartHigh,
   onSortProjectsByComplexityStartLow,
-  onSortProjectsByDurationStartLong,
-  onSortProjectsByDurationStartShort,
+  onSortProjectsByDuration,
 }) {
   const [modalSort, setModalSort] = useState(false);
   const [modalFilter, setModalFilter] = useState(false);
@@ -29,12 +28,8 @@ export default function HomePage({
     onSortProjectsByComplexityStartLow();
     toogleSortModal();
   }
-  function handleSortDurationStartLong() {
-    onSortProjectsByDurationStartLong();
-    toogleSortModal();
-  }
-  function handleSortDurationStartShort() {
-    onSortProjectsByDurationStartShort();
+  function handleSortDuration() {
+    onSortProjectsByDuration();
     toogleSortModal();
   }
 
@@ -55,8 +50,7 @@ export default function HomePage({
           onToogleSortModal={toogleSortModal}
           onSortComplexityStartHigh={handleSortComplexityStartHigh}
           onSortComplexityStartLow={handleSortComplexityStartLow}
-          onSortDurationStartLong={handleSortDurationStartLong}
-          onSortDurationStartShort={handleSortDurationStartShort}
+          onSortDuration={handleSortDuration}
         />
       )}
 
