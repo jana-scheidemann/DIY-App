@@ -1,7 +1,8 @@
-import GlobalStyle from "../styles";
+import { uid } from "uid";
 import { useState } from "react";
 import { initialProjects } from "@/db/data";
-import { uid } from "uid";
+import GlobalStyle from "../styles";
+import Navigation from "../components/Navigation";
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
@@ -19,7 +20,7 @@ export default function App({ Component, pageProps }) {
         project.id === id
           ? { ...project, favorite: !project.favorite }
           : project
-        )
+      )
     );
   }
   function handleEditProject(updatedProject) {
@@ -32,15 +33,24 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <GlobalStyle />
-      <Component
-        {...pageProps}
-        projects={projects}
-        onAddProject={handleAddProject}
-        onDeleteProject={handleDeleteProject}
-        onToggleFavorite={handleToggleFavorite}
-        onEditProject={handleEditProject}
-      />
+      <div className="App" id="outer-container">
+        <Navigation
+          onAddProject={handleAddProject}
+          pageWrapId={"page-wrap"}
+          outerContainerId={"outer-container"}
+        />
+        <div id="page-wrap">
+          <GlobalStyle />
+          <Component
+            {...pageProps}
+            projects={projects}
+            onAddProject={handleAddProject}
+            onDeleteProject={handleDeleteProject}
+            onToggleFavorite={handleToggleFavorite}
+            onEditProject={handleEditProject}
+          />
+        </div>
+      </div>
     </>
   );
 }
