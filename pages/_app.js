@@ -5,6 +5,8 @@ import { uid } from "uid";
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
+  const [projectFilter, setProjectFilter] = useState({});
+
   function handleAddProject(newProject) {
     setProjects([{ id: uid(), ...newProject }, ...projects]);
   }
@@ -28,7 +30,7 @@ export default function App({ Component, pageProps }) {
     );
   }
 
-  const durationToHours = (duration) => {
+  function durationToHours(duration) {
     const durationValue = parseInt(duration);
     if (duration.toLowerCase() && duration.includes("hour")) {
       return durationValue;
@@ -42,10 +44,10 @@ export default function App({ Component, pageProps }) {
       return durationValue * 24 * 365;
     }
     return duration;
-  };
+  }
   function handleSortProjectsByDurationStartLong() {
     setProjects(
-      projects.sort((a, b) => {
+      projects.toSorted((a, b) => {
         const durationA = durationToHours(a.duration);
         const durationB = durationToHours(b.duration);
         return durationB - durationA;
@@ -54,7 +56,7 @@ export default function App({ Component, pageProps }) {
   }
   function handleSortProjectsByDurationStartShort() {
     setProjects(
-      projects.sort((a, b) => {
+      projects.toSorted((a, b) => {
         const durationA = durationToHours(a.duration);
         const durationB = durationToHours(b.duration);
         return durationA - durationB;
@@ -62,42 +64,48 @@ export default function App({ Component, pageProps }) {
     );
   }
 
-  function handleFilterProjects(filterData) {
-    let filteredProjects = projects;
-
-    if (filterData.duration === "short") {
-      filteredProjects = filteredProjects.filter(
-        (project) => durationToHours(project.duration) <= 2
-      );
-    } else if (filterData.duration === "medium") {
-      filteredProjects = filteredProjects.filter(
-        (project) =>
-          durationToHours(project.duration) > 2 &&
-          durationToHours(project.duration) <= 23
-      );
-    } else if (filterData.duration === "long") {
-      filteredProjects = filteredProjects.filter(
-        (project) => durationToHours(project.duration) > 23
-      );
-    }
-
-    if (filterData.complexity) {
-      filteredProjects = filteredProjects.filter(
-        (project) => project.complexity === filterData.complexity
-      );
-    }
-
-    setProjects(filteredProjects);
+  function resetProjectFilter() {
+    setProjectFilter({});
   }
+  function handleProjectFilter(filterData) {
+    setProjectFilter(filterData);
+  }
+
+  const filteredProjects = projects.filter((project) => {
+    let durationMatch = true;
+    if (projectFilter.duration) {
+      if (projectFilter.duration === "short") {
+        durationMatch = durationToHours(project.duration) <= 2;
+      } else if (projectFilter.duration === "medium") {
+        durationMatch =
+          durationToHours(project.duration) > 2 &&
+          durationToHours(project.duration) <= 23;
+      } else if (projectFilter.duration === "long") {
+        durationMatch = durationToHours(project.duration) > 23;
+      }
+    }
+
+    let complexityMatch = true;
+    if (projectFilter.complexity) {
+      complexityMatch = project.complexity === projectFilter.complexity;
+    }
+
+    return durationMatch && complexityMatch;
+  });
+
+  const displayedProjects =
+    Object.keys(projectFilter) === 0 ? projects : filteredProjects;
 
   return (
     <>
       <GlobalStyle />
       <Component
         {...pageProps}
-        projects={projects}
+        projects={displayedProjects}
         onAddProject={handleAddProject}
         onDeleteProject={handleDeleteProject}
+        onFilterProjects={handleProjectFilter}
+        onResetFilters={resetProjectFilter}
         onSortProjectsByComplexityStartHigh={
           handleSortProjectsByComplexityStartHigh
         }
@@ -110,7 +118,6 @@ export default function App({ Component, pageProps }) {
         onSortProjectsByDurationStartShort={
           handleSortProjectsByDurationStartShort
         }
-        onFilterProjects={handleFilterProjects}
       />
     </>
   );

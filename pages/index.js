@@ -7,46 +7,39 @@ import ModalFilter from "@/components/ModalFilter";
 
 export default function HomePage({
   projects,
+  onFilterProjects,
+  onResetFilters,
   onSortProjectsByComplexityStartHigh,
   onSortProjectsByComplexityStartLow,
   onSortProjectsByDurationStartLong,
   onSortProjectsByDurationStartShort,
-  onFilterProjects,
 }) {
   const [modalSort, setModalSort] = useState(false);
   const [modalFilter, setModalFilter] = useState(false);
-  function handleSort() {
-    setModalSort(true);
+
+  function toogleSortModal() {
+    setModalSort(!modalSort);
   }
-  function handleCancelSort() {
-    setModalSort(false);
-  }
+
   function handleSortComplexityStartHigh() {
     onSortProjectsByComplexityStartHigh();
-    setModalSort(false);
+    toogleSortModal();
   }
   function handleSortComplexityStartLow() {
     onSortProjectsByComplexityStartLow();
-    setModalSort(false);
+    toogleSortModal();
   }
   function handleSortDurationStartLong() {
     onSortProjectsByDurationStartLong();
-    setModalSort(false);
+    toogleSortModal();
   }
   function handleSortDurationStartShort() {
     onSortProjectsByDurationStartShort();
-    setModalSort(false);
+    toogleSortModal();
   }
 
-  function handleFilter() {
-    setModalFilter(true);
-  }
-  function handleCancelFilter() {
-    setModalFilter(false);
-  }
-  function handleApplyFilter(filterData) {
-    onFilterProjects(filterData);
-    setModalFilter(false);
+  function toogleFilterModal() {
+    setModalFilter(!modalFilter);
   }
 
   return (
@@ -54,12 +47,12 @@ export default function HomePage({
       <StyledHeadline>DIY APP</StyledHeadline>
       <Navigation />
 
-      <button type="button" onClick={handleSort}>
+      <button type="button" onClick={toogleSortModal}>
         sort projects by ...
       </button>
       {modalSort && (
         <ModalSort
-          onCancelSort={handleCancelSort}
+          onToogleSortModal={toogleSortModal}
           onSortComplexityStartHigh={handleSortComplexityStartHigh}
           onSortComplexityStartLow={handleSortComplexityStartLow}
           onSortDurationStartLong={handleSortDurationStartLong}
@@ -67,15 +60,19 @@ export default function HomePage({
         />
       )}
 
-      <button type="button" onClick={handleFilter}>
+      <button type="button" onClick={toogleFilterModal}>
         filter projects by ...
       </button>
       {modalFilter && (
         <ModalFilter
-          onCancelFilter={handleCancelFilter}
-          onSubmit={handleApplyFilter}
+          onToggleFilterModal={toogleFilterModal}
+          onFilterProjects={onFilterProjects}
         />
       )}
+      <button type="button" onClick={onResetFilters}>
+        reset filter
+      </button>
+      <span>{projects.length} projects</span>
 
       <StyledSection>
         {projects.map((project) => (
