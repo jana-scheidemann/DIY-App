@@ -12,57 +12,32 @@ export default function ModalFilter({ onToggleFilterModal, onFilterProjects }) {
     <StyledBackground>
       <StyledFormContainer onSubmit={handleFilterSubmit}>
         <p>Filter projects by ...</p>
+
         <p>Duration:</p>
-        <StyledSortButton type="button">
-          <input
-            type="radio"
-            id="duration-short"
-            name="duration"
-            value="short"
-          />
-          <label htmlFor="duration-short">2 hours or less</label>
-        </StyledSortButton>
-        <StyledSortButton type="button">
-          <input
-            type="radio"
-            id="duration-medium"
-            name="duration"
-            value="medium"
-          />
-          <label htmlFor="duration-medium">2 - 23 hours</label>
-        </StyledSortButton>
-        <StyledSortButton type="button">
-          <input type="radio" id="duration-long" name="duration" value="long" />
-          <label htmlFor="duration-long">more than 23 hours</label>
-        </StyledSortButton>
+        <input type="radio" id="duration-short" name="duration" value="short" />
+        <label htmlFor="duration-short">2 hours or less</label>
+        <input
+          type="radio"
+          id="duration-medium"
+          name="duration"
+          value="medium"
+        />
+        <label htmlFor="duration-medium">2 - 23 hours</label>
+        <input type="radio" id="duration-long" name="duration" value="long" />
+        <label htmlFor="duration-long">more than 23 hours</label>
+
         <p>Complexity:</p>
-        <StyledSortButton type="button">
-          <input
-            type="radio"
-            id="beginner"
-            name="complexity"
-            value="Beginner"
-          />
-          <label htmlFor="beginner">Beginner</label>
-        </StyledSortButton>
-        <StyledSortButton type="button">
-          <input
-            type="radio"
-            id="intermediate"
-            name="complexity"
-            value="Intermediate"
-          />
-          <label htmlFor="intermediate">Intermediate</label>
-        </StyledSortButton>
-        <StyledSortButton type="button">
-          <input
-            type="radio"
-            id="advanced"
-            name="complexity"
-            value="Advanced"
-          />
-          <label htmlFor="advanced">Advanced</label>
-        </StyledSortButton>
+        <input type="radio" id="beginner" name="complexity" value="Beginner" />
+        <label htmlFor="beginner">Beginner</label>
+        <input
+          type="radio"
+          id="intermediate"
+          name="complexity"
+          value="Intermediate"
+        />
+        <label htmlFor="intermediate">Intermediate</label>
+        <input type="radio" id="advanced" name="complexity" value="Advanced" />
+        <label htmlFor="advanced">Advanced</label>
         <hr />
         <button type="submit">Apply filter</button>
         <input type="reset" value="Clear all filter" />
@@ -91,9 +66,4 @@ const StyledFormContainer = styled.form`
   background-color: white;
   border: 1px solid black;
   padding: 0px 20px 20px 20px;
-`;
-
-const StyledSortButton = styled.button`
-  border: none;
-  background-color: white;
 `;
