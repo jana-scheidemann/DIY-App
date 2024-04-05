@@ -1,17 +1,16 @@
 import Project from "@/components/Project";
 import styled from "styled-components";
-import Navigation from "@/components/Navigation";
 
 export default function HomePage({ projects, onToggleFavorite }) {
   return (
     <>
       <StyledHeadline>DIY APP</StyledHeadline>
-      <Navigation />
       <StyledSection>
         {projects.map((project) => (
           <Project
             key={project.id}
             title={project.title}
+            slug={project.slug}
             duration={project.duration}
             complexity={project.complexity}
             id={project.id}
