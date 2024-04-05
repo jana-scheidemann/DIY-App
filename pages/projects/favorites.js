@@ -16,6 +16,7 @@ export default function FavoritesPage({ projects, onToggleFavorite }) {
           <Project
             key={project.id}
             title={project.title}
+            slug={project.slug}
             duration={project.duration}
             complexity={project.complexity}
             id={project.id}
