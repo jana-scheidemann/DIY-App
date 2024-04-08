@@ -33,24 +33,16 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <div className="App" id="outer-container">
-        <Navigation
-          onAddProject={handleAddProject}
-          pageWrapId={"page-wrap"}
-          outerContainerId={"outer-container"}
-        />
-        <div id="page-wrap">
-          <GlobalStyle />
-          <Component
-            {...pageProps}
-            projects={projects}
-            onAddProject={handleAddProject}
-            onDeleteProject={handleDeleteProject}
-            onToggleFavorite={handleToggleFavorite}
-            onEditProject={handleEditProject}
-          />
-        </div>
-      </div>
+      <Navigation onAddProject={handleAddProject} />
+      <GlobalStyle />
+      <Component
+        {...pageProps}
+        projects={projects}
+        onAddProject={handleAddProject}
+        onDeleteProject={handleDeleteProject}
+        onToggleFavorite={handleToggleFavorite}
+        onEditProject={handleEditProject}
+      />
     </>
   );
 }
