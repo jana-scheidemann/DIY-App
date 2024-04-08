@@ -1,9 +1,15 @@
 import styled from "styled-components";
+import ProjectFormNew from "@/components/ProjectFormNew";
 
-export default function ModalAdd() {
+export default function ModalAdd({ onAddProject, onToggleAddModal }) {
   return (
     <StyledBackground>
-      <StyledContainer></StyledContainer>
+      <StyledContainer>
+        <ProjectFormNew
+          onSubmit={onAddProject}
+          onToggleAddModal={onToggleAddModal}
+        />
+      </StyledContainer>
     </StyledBackground>
   );
 }
