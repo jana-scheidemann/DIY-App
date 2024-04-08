@@ -12,6 +12,7 @@ export default function HomePage({
   onSortProjectsByComplexityStartHigh,
   onSortProjectsByComplexityStartLow,
   onSortProjectsByDuration,
+  onToggleFavorite,
 }) {
   const [modalSort, setModalSort] = useState(false);
   const [modalFilter, setModalFilter] = useState(false);
@@ -37,7 +38,6 @@ export default function HomePage({
     setModalFilter(!modalFilter);
   }
 
-export default function HomePage({ projects, onToggleFavorite }) {
   return (
     <>
       <StyledHeadline>DIY APP</StyledHeadline>
