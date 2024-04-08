@@ -89,6 +89,23 @@ export default function App({ Component, pageProps }) {
   const displayedProjects =
     Object.keys(projectFilter) === 0 ? projects : filteredProjects;
 
+  function handleToggleFavorite(id) {
+    setProjects(
+      projects.map((project) =>
+        project.id === id
+          ? { ...project, favorite: !project.favorite }
+          : project
+        )
+    );
+  }
+  function handleEditProject(updatedProject) {
+    setProjects(
+      projects.map((project) =>
+        project.id === updatedProject.id ? updatedProject : project
+      )
+    );
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -106,6 +123,8 @@ export default function App({ Component, pageProps }) {
           handleSortProjectsByComplexityStartLow
         }
         onSortProjectsByDuration={handleSortProjectsByDuration}
+        onToggleFavorite={handleToggleFavorite}
+        onEditProject={handleEditProject}
       />
     </>
   );

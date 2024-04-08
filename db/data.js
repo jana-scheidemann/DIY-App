@@ -14,6 +14,7 @@ export const initialProjects = [
       { id: 5, desc: "Paint or stain the shelf as desired." },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "2",
@@ -44,6 +45,7 @@ export const initialProjects = [
       },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "3",
@@ -66,6 +68,7 @@ export const initialProjects = [
       { id: 5, desc: "Hang the finished wall art on your wall." },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "4",
@@ -98,6 +101,7 @@ export const initialProjects = [
       },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "5",
@@ -130,6 +134,7 @@ export const initialProjects = [
       },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "6",
@@ -162,6 +167,7 @@ export const initialProjects = [
       },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "7",
@@ -191,6 +197,7 @@ export const initialProjects = [
       },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "8",
@@ -222,6 +229,7 @@ export const initialProjects = [
       },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "9",
@@ -251,6 +259,7 @@ export const initialProjects = [
       },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "10",
@@ -277,6 +286,7 @@ export const initialProjects = [
       },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "11",
@@ -314,6 +324,7 @@ export const initialProjects = [
       },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "12",
@@ -345,6 +356,7 @@ export const initialProjects = [
       },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "13",
@@ -377,6 +389,7 @@ export const initialProjects = [
       },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "14",
@@ -408,6 +421,7 @@ export const initialProjects = [
       },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
   {
     id: "15",
@@ -440,5 +454,6 @@ export const initialProjects = [
       },
     ],
     image: "/images/dummy-image-diy.jpg",
+    favorite: false,
   },
 ];

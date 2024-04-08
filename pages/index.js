@@ -37,6 +37,7 @@ export default function HomePage({
     setModalFilter(!modalFilter);
   }
 
+export default function HomePage({ projects, onToggleFavorite }) {
   return (
     <>
       <StyledHeadline>DIY APP</StyledHeadline>
@@ -76,6 +77,8 @@ export default function HomePage({
             duration={project.duration}
             complexity={project.complexity}
             id={project.id}
+            onToggleFavorite={onToggleFavorite}
+            isFavorite={project.favorite}
           />
         ))}
       </StyledSection>
