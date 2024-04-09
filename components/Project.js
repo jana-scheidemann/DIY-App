@@ -4,6 +4,7 @@ import FavoriteButton from "./FavoriteButton";
 
 export default function Project({
   title,
+  slug,
   duration,
   complexity,
   id,
@@ -12,7 +13,7 @@ export default function Project({
 }) {
   return (
     <StyledArticle>
-      <Link href={`/${id}`}>
+      <Link href={`/projects/${slug}`}>
         <h2>{title}</h2>
       </Link>
       <p>Duration: {duration}</p>
