@@ -5,16 +5,17 @@ import styled from "styled-components";
 import { useState } from "react";
 import ModalAdd from "./ModalAdd";
 
-export default function Navigation() {
+export default function Navigation({ onAddProject }) {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
 
   function toggleNavigation() {
     setIsNavigationOpen(!isNavigationOpen);
   }
-  
+
   function toggleAddModal() {
     setModalAdd(!modalAdd);
+    setIsNavigationOpen(!isNavigationOpen);
   }
 
   return (
@@ -33,16 +34,14 @@ export default function Navigation() {
           <StyledNavigationLink href="/" onClick={toggleNavigation}>
             HomePage
           </StyledNavigationLink>
-          <StyledNavigationLink href="" onClick={toggleNavigation}>
-            <button type="button" onClick={toggleAddModal}>
-              Add New Project
-            </button>
-          {modalAdd && (
-            <ModalAdd
-             onAddProject={onAddProject}
-             onToggleAddModal={toggleAddModal}
-            />
-          )}
+          <StyledNavigationLink href="" onClick={toggleAddModal}>
+            Add New Project
+            {modalAdd && (
+              <ModalAdd
+                onAddProject={onAddProject}
+                onToggleAddModal={toggleAddModal}
+              />
+            )}
           </StyledNavigationLink>
           <StyledNavigationLink
             href="/projects/favorites"
