@@ -13,6 +13,7 @@ export default function HomePage({
   onSortProjectsByComplexityStartLow,
   onSortProjectsByDuration,
   onToggleFavorite,
+  onAddProject
 }) {
   const [modalSort, setModalSort] = useState(false);
   const [modalFilter, setModalFilter] = useState(false);
@@ -41,7 +42,7 @@ export default function HomePage({
   return (
     <>
       <StyledHeadline>DIY APP</StyledHeadline>
-      <Navigation />
+      <Navigation onAddProject={onAddProject} />
 
       <button type="button" onClick={toogleSortModal}>
         sort projects by ...

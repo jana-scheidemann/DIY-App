@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function ProjectFormNew({ onSubmit }) {
+export default function ProjectFormNew({ onSubmit, onToggleAddModal }) {
   const [steps, setSteps] = useState([1]);
   const router = useRouter();
 
@@ -26,6 +26,7 @@ export default function ProjectFormNew({ onSubmit }) {
     };
 
     onSubmit(newProject);
+    onToggleAddModal();
     router.push("/");
   }
 
