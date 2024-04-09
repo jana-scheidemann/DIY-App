@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import { useState } from "react";
 import ModalSort from "@/components/ModalSort";
 import ModalFilter from "@/components/ModalFilter";
+import Fuse from "fuse.js";
 
 export default function HomePage({
   projects,
@@ -13,10 +14,11 @@ export default function HomePage({
   onSortProjectsByComplexityStartLow,
   onSortProjectsByDuration,
   onToggleFavorite,
-  onAddProject
+  onAddProject,
 }) {
   const [modalSort, setModalSort] = useState(false);
   const [modalFilter, setModalFilter] = useState(false);
+  const [query, setQuery] = useState("");
 
   function toogleSortModal() {
     setModalSort(!modalSort);
@@ -37,6 +39,22 @@ export default function HomePage({
 
   function toogleFilterModal() {
     setModalFilter(!modalFilter);
+  }
+
+  const fuse = new Fuse(projects, {
+    keys: ["title", "description", "materials", "steps.desc"],
+    includeScore: true,
+    shouldSort: true,
+    ignoreLocation: true,
+    ignoreFieldNorm: true,
+  });
+  const results = fuse.search(query);
+  console.log("results: ", results);
+  const searchResults = query ? results.map((result) => result.item) : projects;
+
+  function handleSearch(event) {
+    const { value } = event.target;
+    setQuery(value);
   }
 
   return (
@@ -69,9 +87,18 @@ export default function HomePage({
         reset filter
       </button>
       <span>{projects.length} projects</span>
+      <br />
+      <label htmlFor="search">Search: </label>
+      <input
+        type="search"
+        id="search"
+        name="search"
+        value={query}
+        onChange={handleSearch}
+      ></input>
 
       <StyledSection>
-        {projects.map((project) => (
+        {searchResults.map((project) => (
           <Project
             key={project.id}
             title={project.title}
