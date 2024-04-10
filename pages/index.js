@@ -44,6 +44,7 @@ export default function HomePage({
   const fuse = new Fuse(projects, {
     keys: ["title", "description", "materials", "steps.desc"],
     includeScore: true,
+    threshold: 0.3,
     shouldSort: true,
     ignoreLocation: true,
     ignoreFieldNorm: true,
@@ -96,7 +97,6 @@ export default function HomePage({
         value={query}
         onChange={handleSearch}
       ></input>
-
 
       <StyledSection>
         {searchResults.map((project) => (

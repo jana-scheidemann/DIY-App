@@ -1,6 +1,7 @@
 import Link from "next/link";
 import NavigationMeuIcon from "../public/icons/icon-bruger-menu.svg";
 import NavigationMenuCloseIcon from "../public/icons/icon-cancel.svg";
+import StyledSearchIcon from "../public/icons/icon-search.svg";
 import styled from "styled-components";
 import { useState } from "react";
 import ModalAdd from "./ModalAdd";
@@ -21,9 +22,14 @@ export default function Navigation({ onAddProject }) {
   return (
     <>
       {!isNavigationOpen && (
-        <StyledNavigationMenu onClick={toggleNavigation}>
-          <NavigationMeuIcon width={35} height={35} />
-        </StyledNavigationMenu>
+        <>
+          <StyledSearchMenu>
+            <StyledSearchIcon width={35} height={35} />
+          </StyledSearchMenu>
+          <StyledNavigationMenu onClick={toggleNavigation}>
+            <NavigationMeuIcon width={35} height={35} />
+          </StyledNavigationMenu>
+        </>
       )}
 
       {isNavigationOpen && (
@@ -65,6 +71,13 @@ const StyledNavigationMenu = styled.div`
   position: fixed;
   top: 1rem;
   right: 1rem;
+  cursor: pointer;
+`;
+
+const StyledSearchMenu = styled.div`
+  position: fixed;
+  top: 1rem;
+  right: 4rem;
   cursor: pointer;
 `;
 
