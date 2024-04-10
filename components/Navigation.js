@@ -10,6 +10,7 @@ export default function Navigation({
   onAddProject,
   toogleSortModal,
   toogleFilterModal,
+  showSearchField,
 }) {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
@@ -26,6 +27,11 @@ export default function Navigation({
   function toggleAddModal() {
     setModalAdd(!modalAdd);
     setIsNavigationOpen(!isNavigationOpen);
+  }
+
+  function openSearch() {
+    setIsSearchBarOpen(!isSearchBarOpen);
+    showSearchField();
   }
 
   function openSortModal() {
@@ -79,7 +85,9 @@ export default function Navigation({
 
       {isSearchBarOpen && (
         <StyledSearchBar>
-          <StyledNavigationLink href="/">Search</StyledNavigationLink>
+          <StyledNavigationLink href="/" onClick={openSearch}>
+            Search
+          </StyledNavigationLink>
           <StyledNavigationLink href="/" onClick={openSortModal}>
             Sort Projects
           </StyledNavigationLink>
