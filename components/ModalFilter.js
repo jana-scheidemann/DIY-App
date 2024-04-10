@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
-export default function ModalFilter({ onToggleFilterModal, onFilterProjects }) {
+export default function ModalFilter({
+  toogleFilterModal,
+  onFilterProjects,
+  onResetFilters,
+}) {
   function handleFilterSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const filterData = Object.fromEntries(formData);
     onFilterProjects(filterData);
-    onToggleFilterModal();
+    toogleFilterModal();
   }
   return (
     <StyledBackground>
@@ -41,7 +45,10 @@ export default function ModalFilter({ onToggleFilterModal, onFilterProjects }) {
         <hr />
         <button type="submit">Apply filter</button>
         <input type="reset" value="Clear all filter" />
-        <button type="button" onClick={onToggleFilterModal}>
+        <button type="button" onClick={onResetFilters}>
+          reset filter
+        </button>
+        <button type="button" onClick={toogleFilterModal}>
           Cancel filtering
         </button>
       </StyledFormContainer>

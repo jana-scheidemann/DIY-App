@@ -61,11 +61,15 @@ export default function HomePage({
   return (
     <>
       <StyledHeadline>DIY APP</StyledHeadline>
-      <Navigation onAddProject={onAddProject} />
+      <Navigation
+        onAddProject={onAddProject}
+        toogleSortModal={toogleSortModal}
+        toogleFilterModal={toogleFilterModal}
+      />
 
-      <button type="button" onClick={toogleSortModal}>
+      {/* <button type="button" onClick={toogleSortModal}>
         sort projects by ...
-      </button>
+      </button> */}
       {modalSort && (
         <ModalSort
           onToogleSortModal={toogleSortModal}
@@ -75,18 +79,19 @@ export default function HomePage({
         />
       )}
 
-      <button type="button" onClick={toogleFilterModal}>
+      {/* <button type="button" onClick={toogleFilterModal}>
         filter projects by ...
-      </button>
+      </button> */}
       {modalFilter && (
         <ModalFilter
-          onToggleFilterModal={toogleFilterModal}
+          toogleFilterModal={toogleFilterModal}
           onFilterProjects={onFilterProjects}
+          onResetFilters={onResetFilters}
         />
       )}
-      <button type="button" onClick={onResetFilters}>
+      {/* <button type="button" onClick={onResetFilters}>
         reset filter
-      </button>
+      </button> */}
       <span>{projects.length} projects</span>
       <br />
       <label htmlFor="search">Search: </label>

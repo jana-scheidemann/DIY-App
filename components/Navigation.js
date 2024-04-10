@@ -6,7 +6,11 @@ import styled from "styled-components";
 import { useState } from "react";
 import ModalAdd from "./ModalAdd";
 
-export default function Navigation({ onAddProject }) {
+export default function Navigation({
+  onAddProject,
+  toogleSortModal,
+  toogleFilterModal,
+}) {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
@@ -22,6 +26,16 @@ export default function Navigation({ onAddProject }) {
   function toggleAddModal() {
     setModalAdd(!modalAdd);
     setIsNavigationOpen(!isNavigationOpen);
+  }
+
+  function openSortModal() {
+    setIsSearchBarOpen(!isSearchBarOpen);
+    toogleSortModal();
+  }
+
+  function openFilterModal() {
+    setIsSearchBarOpen(!isSearchBarOpen);
+    toogleFilterModal();
   }
 
   return (
@@ -66,8 +80,12 @@ export default function Navigation({ onAddProject }) {
       {isSearchBarOpen && (
         <StyledSearchBar>
           <StyledNavigationLink href="/">Search</StyledNavigationLink>
-          <StyledNavigationLink href="/">Sort</StyledNavigationLink>
-          <StyledNavigationLink href="/">Filter</StyledNavigationLink>
+          <StyledNavigationLink href="/" onClick={openSortModal}>
+            Sort Projects
+          </StyledNavigationLink>
+          <StyledNavigationLink href="/" onClick={openFilterModal}>
+            Filter Projects
+          </StyledNavigationLink>
         </StyledSearchBar>
       )}
     </>
@@ -96,7 +114,7 @@ const StyledSearchMenu = styled.div`
 
 const StyledSearchBar = styled.div`
   position: fixed;
-  top: 3rem;
+  top: 3.5rem;
   right: 4rem;
   background-color: white;
   border: 1px solid black;
