@@ -8,10 +8,15 @@ import ModalAdd from "./ModalAdd";
 
 export default function Navigation({ onAddProject }) {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
+  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
 
   function toggleNavigation() {
     setIsNavigationOpen(!isNavigationOpen);
+  }
+
+  function toggleSearchBar() {
+    setIsSearchBarOpen(!isSearchBarOpen);
   }
 
   function toggleAddModal() {
@@ -23,7 +28,7 @@ export default function Navigation({ onAddProject }) {
     <>
       {!isNavigationOpen && (
         <>
-          <StyledSearchMenu>
+          <StyledSearchMenu onClick={toggleSearchBar}>
             <StyledSearchIcon width={35} height={35} />
           </StyledSearchMenu>
           <StyledNavigationMenu onClick={toggleNavigation}>
@@ -57,6 +62,14 @@ export default function Navigation({ onAddProject }) {
           </StyledNavigationLink>
         </StyledNavigationMenuBar>
       )}
+
+      {isSearchBarOpen && (
+        <StyledSearchBar>
+          <StyledNavigationLink href="/">Search</StyledNavigationLink>
+          <StyledNavigationLink href="/">Sort</StyledNavigationLink>
+          <StyledNavigationLink href="/">Filter</StyledNavigationLink>
+        </StyledSearchBar>
+      )}
     </>
   );
 }
@@ -79,6 +92,19 @@ const StyledSearchMenu = styled.div`
   top: 1rem;
   right: 4rem;
   cursor: pointer;
+`;
+
+const StyledSearchBar = styled.div`
+  position: fixed;
+  top: 3rem;
+  right: 4rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: 0px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #373a47;
 `;
 
 const StyledNavigationMenuBar = styled.nav`
