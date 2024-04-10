@@ -97,11 +97,13 @@ export default function HomePage({
         onChange={handleSearch}
       ></input>
 
+
       <StyledSection>
         {searchResults.map((project) => (
           <Project
             key={project.id}
             title={project.title}
+            slug={project.slug}
             duration={project.duration}
             complexity={project.complexity}
             id={project.id}

@@ -1,7 +1,8 @@
-import GlobalStyle from "../styles";
+import { uid } from "uid";
 import { useState } from "react";
 import { initialProjects } from "@/db/data";
-import { uid } from "uid";
+import GlobalStyle from "../styles";
+import Navigation from "../components/Navigation";
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
@@ -95,7 +96,7 @@ export default function App({ Component, pageProps }) {
         project.id === id
           ? { ...project, favorite: !project.favorite }
           : project
-        )
+      )
     );
   }
   function handleEditProject(updatedProject) {
@@ -108,6 +109,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+      <Navigation onAddProject={handleAddProject} />
       <GlobalStyle />
       <Component
         {...pageProps}

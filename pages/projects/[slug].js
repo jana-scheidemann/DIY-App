@@ -9,9 +9,9 @@ export default function ProjectDetailPage({
   onEditProject,
 }) {
   const router = useRouter();
-  const { id } = router.query;
+  const { slug } = router.query;
 
-  const currentProject = projects.find((project) => project.id === id);
+  const currentProject = projects.find((project) => project.slug === slug);
 
   if (!currentProject) {
     return null;

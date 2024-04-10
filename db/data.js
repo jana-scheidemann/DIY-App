@@ -2,6 +2,7 @@ export const initialProjects = [
   {
     id: "1",
     title: "Wooden Shelf",
+    slug: "wooden-shelf",
     description: "Build a simple wooden shelf for your home.",
     materials: ["Wooden boards", "Screws", "Drill"],
     duration: "1 day",
@@ -19,6 +20,7 @@ export const initialProjects = [
   {
     id: "2",
     title: "Succulent Terrarium",
+    slug: "succulent-terrarium",
     description: "Create a beautiful terrarium for your succulent plants.",
     materials: [
       "Glass container",
@@ -50,6 +52,7 @@ export const initialProjects = [
   {
     id: "3",
     title: "Wall Art",
+    slug: "wall-art",
     description: "Create a unique piece of wall art using recycled materials.",
     materials: ["Cardboard", "Paint", "Glue", "Scissors"],
     duration: "3 hours",
@@ -73,6 +76,7 @@ export const initialProjects = [
   {
     id: "4",
     title: "Wooden Plant Stand",
+    slug: "wooden-plant-stand",
     description:
       "Craft a stylish wooden plant stand to showcase your indoor plants.",
     materials: ["Wooden dowels", "Wood glue", "Wood stain", "Paintbrush"],
@@ -106,6 +110,7 @@ export const initialProjects = [
   {
     id: "5",
     title: "Hanging Macramé Planter",
+    slug: "hanging-macrame-planter",
     description:
       "Create a trendy macramé planter to hang your favorite indoor plants.",
     materials: ["Macramé cord", "Wooden ring", "Plant pot", "Scissors"],
@@ -139,6 +144,7 @@ export const initialProjects = [
   {
     id: "6",
     title: "Concrete Planters",
+    slug: "concrete-planters",
     description:
       "Craft modern concrete planters to display your favorite succulents or cacti.",
     materials: ["Concrete mix", "Plastic molds", "Release agent", "Sandpaper"],
@@ -172,6 +178,7 @@ export const initialProjects = [
   {
     id: "7",
     title: "Rope Coasters",
+    slug: "rope-coasters",
     description:
       "Make rustic rope coasters to protect your tabletops from hot and cold drinks.",
     materials: ["Rope", "Hot glue gun", "Cork sheet", "Scissors"],
@@ -202,6 +209,7 @@ export const initialProjects = [
   {
     id: "8",
     title: "Terracotta Pot Painting",
+    slug: "terracotta-pot-painting",
     description: "Personalize plain terracotta pots with colorful designs.",
     materials: ["Terracotta pots", "Acrylic paint", "Paintbrushes", "Sealer"],
     duration: "2 hours",
@@ -234,6 +242,7 @@ export const initialProjects = [
   {
     id: "9",
     title: "Beeswax Wrap",
+    slug: "beeswax-wrap",
     description:
       "Make eco-friendly beeswax wraps to use as an alternative to plastic cling wrap.",
     materials: ["Cotton fabric", "Beeswax pellets", "Parchment paper", "Iron"],
@@ -264,6 +273,7 @@ export const initialProjects = [
   {
     id: "10",
     title: "Floating Shelves",
+    slug: "floating-shelves",
     description:
       "Build sleek floating shelves to display decorative items or books.",
     materials: ["Wood boards", "Floating shelf brackets", "Screws", "Drill"],
@@ -291,6 +301,7 @@ export const initialProjects = [
   {
     id: "11",
     title: "Concrete Candle Holders",
+    slug: "concrete-candle-holders",
     description:
       "Craft minimalist concrete candle holders to add a modern touch to your home decor.",
     materials: [
@@ -329,6 +340,7 @@ export const initialProjects = [
   {
     id: "12",
     title: "Herb Garden",
+    slug: "herb-garden",
     description: "Create a small herb garden to grow fresh herbs for cooking.",
     materials: ["Planter box", "Potting soil", "Herb seeds", "Watering can"],
     duration: "1 week",
@@ -361,6 +373,7 @@ export const initialProjects = [
   {
     id: "13",
     title: "Bird Feeder",
+    slug: "bird-feeder",
     description:
       "Construct a bird feeder to attract birds to your garden or balcony.",
     materials: ["Wooden planks", "Screws", "Birdseed", "Drill"],
@@ -394,6 +407,7 @@ export const initialProjects = [
   {
     id: "14",
     title: "Mason Jar Lanterns",
+    slug: "mason-jar-lanterns",
     description: "Make decorative lanterns using mason jars and tea lights.",
     materials: ["Mason jars", "Tea lights", "Twine", "Decorative stones"],
     duration: "1 hour",
@@ -426,6 +440,7 @@ export const initialProjects = [
   {
     id: "15",
     title: "DIY Fruit Crate Shelves",
+    slug: "diy-fruit-crate-shelves",
     description:
       "Repurpose old fruit crates into rustic shelves for storage or display.",
     materials: ["Fruit crates", "Screws", "Wall anchors", "Paint or stain"],
