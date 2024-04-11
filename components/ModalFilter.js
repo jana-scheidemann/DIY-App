@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StyledModal from "./StyledComponents.js/StyledModal";
 
 export default function ModalFilter({
   toggleFilterModal,
@@ -13,8 +14,8 @@ export default function ModalFilter({
     toggleFilterModal();
   }
   return (
-    <StyledBackground>
-      <StyledFormContainer onSubmit={handleFilterSubmit}>
+    <StyledModal>
+      <form onSubmit={handleFilterSubmit}>
         <p>Filter projects by ...</p>
 
         <p>Duration:</p>
@@ -51,26 +52,7 @@ export default function ModalFilter({
         <button type="button" onClick={toggleFilterModal}>
           Cancel filtering
         </button>
-      </StyledFormContainer>
-    </StyledBackground>
+      </form>
+    </StyledModal>
   );
 }
-
-const StyledBackground = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-`;
-
-const StyledFormContainer = styled.form`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border: 1px solid black;
-  padding: 0px 20px 20px 20px;
-`;
