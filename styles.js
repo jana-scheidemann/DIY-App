@@ -28,13 +28,9 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family: system-ui;
-
   }
 h4{
   margin-block-end: 0;
   font-size: 16px;
-  
-
-}
-
+  }
 `;
