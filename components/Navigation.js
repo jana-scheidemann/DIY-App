@@ -64,7 +64,7 @@ const StyledNavigationLink = styled(Link)`
 const StyledNavigationMenu = styled.div`
   position: fixed;
   top: 1rem;
-  right: 1rem;
+  right: 2rem;
   cursor: pointer;
 `;
 
