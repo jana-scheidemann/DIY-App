@@ -118,10 +118,12 @@ const StyledSearchMenu = styled.div`
   top: 1rem;
   right: 4rem;
   cursor: pointer;
+  z-index: 1000;
 `;
 
 const StyledSearchBar = styled.div`
   position: fixed;
+  z-index: 1000;
   top: 3.5rem;
   right: 4rem;
   background-color: white;
