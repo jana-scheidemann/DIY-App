@@ -37,6 +37,7 @@ export default StyledButton;
 `;
 
 // A new component based on Button, but with some override styles
+
 const TomatoButton = styled(Button)`
   color: tomato;
   border-color: tomato;
