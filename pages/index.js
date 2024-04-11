@@ -44,11 +44,11 @@ export default function HomePage({
     <>
       <StyledHeadline>DIY APP</StyledHeadline>
       <Navigation onAddProject={onAddProject} />
+
       <div style={{ display: "flex" }}>
         <StyledButton type="button" onClick={toogleSortModal}>
           Sort Projects
         </StyledButton>
-
         {modalSort && (
           <ModalSort
             onToogleSortModal={toogleSortModal}
@@ -57,7 +57,6 @@ export default function HomePage({
             onSortDuration={handleSortDuration}
           />
         )}
-
         <StyledButton type="button" onClick={toogleFilterModal}>
           Filter Projects
         </StyledButton>
@@ -71,9 +70,7 @@ export default function HomePage({
           Reset Filter
         </StyledButton>
       </div>
-
       <StyledProjectsDiv>{projects.length} Projects</StyledProjectsDiv>
-
       <StyledSection>
         {projects.map((project) => (
           <Project
