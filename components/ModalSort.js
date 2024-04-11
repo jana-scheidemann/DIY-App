@@ -4,7 +4,7 @@ export default function ModalSort({
   onSortComplexityStartHigh,
   onSortComplexityStartLow,
   onSortDuration,
-  onToogleSortModal,
+  onToggleSortModal,
 }) {
   return (
     <StyledBackground>
@@ -52,7 +52,7 @@ export default function ModalSort({
         </label>
 
         <hr />
-        <button type="button" onClick={onToogleSortModal}>
+        <button type="button" onClick={onToggleSortModal}>
           Cancel sorting
         </button>
       </StyledContainer>

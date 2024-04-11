@@ -8,8 +8,8 @@ import ModalAdd from "./ModalAdd";
 
 export default function Navigation({
   onAddProject,
-  toogleSortModal,
-  toogleFilterModal,
+  toggleSortModal,
+  toggleFilterModal,
   showSearchField,
 }) {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
@@ -36,12 +36,12 @@ export default function Navigation({
 
   function openSortModal() {
     setIsSearchBarOpen(!isSearchBarOpen);
-    toogleSortModal();
+    toggleSortModal();
   }
 
   function openFilterModal() {
     setIsSearchBarOpen(!isSearchBarOpen);
-    toogleFilterModal();
+    toggleFilterModal();
   }
 
   return (

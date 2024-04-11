@@ -21,24 +21,24 @@ export default function HomePage({
   const [query, setQuery] = useState("");
   const [isHidden, setIsHidden] = useState(true);
 
-  function toogleSortModal() {
+  function toggleSortModal() {
     setModalSort(!modalSort);
   }
 
   function handleSortComplexityStartHigh() {
     onSortProjectsByComplexityStartHigh();
-    toogleSortModal();
+    toggleSortModal();
   }
   function handleSortComplexityStartLow() {
     onSortProjectsByComplexityStartLow();
-    toogleSortModal();
+    toggleSortModal();
   }
   function handleSortDuration(direction) {
     onSortProjectsByDuration(direction);
-    toogleSortModal();
+    toggleSortModal();
   }
 
-  function toogleFilterModal() {
+  function toggleFilterModal() {
     setModalFilter(!modalFilter);
   }
 
@@ -55,7 +55,6 @@ export default function HomePage({
     ignoreFieldNorm: true,
   });
   const results = fuse.search(query);
-  console.log("results: ", results);
   const searchResults = query ? results.map((result) => result.item) : projects;
 
   function handleSearch(event) {
@@ -68,14 +67,14 @@ export default function HomePage({
       <StyledHeadline>DIY APP</StyledHeadline>
       <Navigation
         onAddProject={onAddProject}
-        toogleSortModal={toogleSortModal}
-        toogleFilterModal={toogleFilterModal}
+        toggleSortModal={toggleSortModal}
+        toggleFilterModal={toggleFilterModal}
         showSearchField={showSearchField}
       />
 
       {modalSort && (
         <ModalSort
-          onToogleSortModal={toogleSortModal}
+          onToggleSortModal={toggleSortModal}
           onSortComplexityStartHigh={handleSortComplexityStartHigh}
           onSortComplexityStartLow={handleSortComplexityStartLow}
           onSortDuration={handleSortDuration}
@@ -84,7 +83,7 @@ export default function HomePage({
 
       {modalFilter && (
         <ModalFilter
-          toogleFilterModal={toogleFilterModal}
+          toggleFilterModal={toggleFilterModal}
           onFilterProjects={onFilterProjects}
           onResetFilters={onResetFilters}
         />
