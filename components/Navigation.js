@@ -1,16 +1,27 @@
 import Link from "next/link";
 import NavigationMeuIcon from "../public/icons/icon-bruger-menu.svg";
 import NavigationMenuCloseIcon from "../public/icons/icon-cancel.svg";
+import StyledSearchIcon from "../public/icons/icon-search.svg";
 import styled from "styled-components";
 import { useState } from "react";
 import ModalAdd from "./ModalAdd";
 
-export default function Navigation({ onAddProject }) {
+export default function Navigation({
+  onAddProject,
+  toggleSortModal,
+  toggleFilterModal,
+  showSearchField,
+}) {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
+  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
 
   function toggleNavigation() {
     setIsNavigationOpen(!isNavigationOpen);
+  }
+
+  function toggleSearchBar() {
+    setIsSearchBarOpen(!isSearchBarOpen);
   }
 
   function toggleAddModal() {
@@ -18,12 +29,32 @@ export default function Navigation({ onAddProject }) {
     setIsNavigationOpen(!isNavigationOpen);
   }
 
+  function openSearch() {
+    setIsSearchBarOpen(!isSearchBarOpen);
+    showSearchField();
+  }
+
+  function openSortModal() {
+    setIsSearchBarOpen(!isSearchBarOpen);
+    toggleSortModal();
+  }
+
+  function openFilterModal() {
+    setIsSearchBarOpen(!isSearchBarOpen);
+    toggleFilterModal();
+  }
+
   return (
     <>
       {!isNavigationOpen && (
-        <StyledNavigationMenu onClick={toggleNavigation}>
-          <NavigationMeuIcon width={35} height={35} />
-        </StyledNavigationMenu>
+        <>
+          <StyledSearchMenu onClick={toggleSearchBar}>
+            <StyledSearchIcon width={35} height={35} />
+          </StyledSearchMenu>
+          <StyledNavigationMenu onClick={toggleNavigation}>
+            <NavigationMeuIcon width={35} height={35} />
+          </StyledNavigationMenu>
+        </>
       )}
 
       {isNavigationOpen && (
@@ -51,6 +82,20 @@ export default function Navigation({ onAddProject }) {
           </StyledNavigationLink>
         </StyledNavigationMenuBar>
       )}
+
+      {isSearchBarOpen && (
+        <StyledSearchBar>
+          <StyledNavigationLink href="/" onClick={openSearch}>
+            Search
+          </StyledNavigationLink>
+          <StyledNavigationLink href="/" onClick={openSortModal}>
+            Sort Projects
+          </StyledNavigationLink>
+          <StyledNavigationLink href="/" onClick={openFilterModal}>
+            Filter Projects
+          </StyledNavigationLink>
+        </StyledSearchBar>
+      )}
     </>
   );
 }
@@ -66,6 +111,26 @@ const StyledNavigationMenu = styled.div`
   top: 1rem;
   right: 1rem;
   cursor: pointer;
+`;
+
+const StyledSearchMenu = styled.div`
+  position: fixed;
+  top: 1rem;
+  right: 4rem;
+  cursor: pointer;
+`;
+
+const StyledSearchBar = styled.div`
+  position: fixed;
+  top: 3.5rem;
+  right: 4rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: 0px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #373a47;
 `;
 
 const StyledNavigationMenuBar = styled.nav`
