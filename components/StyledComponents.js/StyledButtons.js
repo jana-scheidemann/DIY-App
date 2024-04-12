@@ -18,16 +18,21 @@ const StyledButton = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1);
     transition: 0.4s;
   }
 `;
 
 export default StyledButton;
 
-/*const Button = styled.button`
+// export const StyledBackButton = styled(StyledButton)`
+//   background-color: var(--background-color-blue);
+// `;
+
+/* const Button = styled.button`
   color: #BF4F74;
   font-size: 1em;
   margin: 1em;
@@ -38,7 +43,7 @@ export default StyledButton;
 
 // A new component based on Button, but with some override styles
 
-const TomatoButton = styled(Button)`
+const Back2AllButton = styled(Button)`
   color: tomato;
   border-color: tomato;
 `;
