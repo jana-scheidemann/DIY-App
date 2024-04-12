@@ -67,7 +67,6 @@ export default function ProjectDetails({
           isFavorite={currentProject.favorite}
         />
       </StyledProjectTitleContainer>
-
       <StyledProjectDetailsContainer>
         <h4>Duration: {duration}</h4>
         <h4>Complexity: {complexity}</h4>
@@ -96,7 +95,6 @@ export default function ProjectDetails({
           <li key={step.id}>{step.desc}</li>
         ))}
       </ol>
-
       <StyledProjectDetailsContainer>
         <StyledLink href={"/"}>Back to all Projects</StyledLink>
         <StyledButton onClick={handleEdit}>Edit</StyledButton>
@@ -119,16 +117,6 @@ export default function ProjectDetails({
     </>
   );
 }
-
-// const StyledProjectContainer = styled.div`
-//   //background-color: #5086f2;
-//   background-color: white;
-//   // border: 1px solid black;
-//   //border-radius: 20px;
-//   margin-left: 40px;
-//   margin-right: 40px;
-//   border-radius: 50px;
-// `;
 
 const StyledHeadline = styled.h1`
   text-align: center;
