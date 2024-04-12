@@ -1,10 +1,8 @@
 import Link from "next/link";
-import NavigationMeuIcon from "../public/icons/icon-bruger-menu.svg";
-import NavigationMenuCloseIcon from "../public/icons/icon-cancel.svg";
-import StyledSearchIcon from "../public/icons/icon-search.svg";
 import styled from "styled-components";
 import { useState } from "react";
 import ModalAdd from "./ModalAdd";
+import Image from "next/image";
 
 export default function Navigation({
   onAddProject,
@@ -49,10 +47,10 @@ export default function Navigation({
       {!isNavigationOpen && (
         <>
           <StyledSearchMenu onClick={toggleSearchBar}>
-            <StyledSearchIcon width={35} height={35} />
+          <Image src={"/icons/search.png"} width={35}  height={35} alt= {"search icon"}/>
           </StyledSearchMenu>
           <StyledNavigationMenu onClick={toggleNavigation}>
-            <NavigationMeuIcon width={35} height={35} />
+          <Image src={"/icons/burger_menu.png"} width={35}  height={35} alt= {"burger menu icon"}/>
           </StyledNavigationMenu>
         </>
       )}
@@ -60,7 +58,7 @@ export default function Navigation({
       {isNavigationOpen && (
         <StyledNavigationMenuBar>
           <StyledNavigationMenu onClick={toggleNavigation}>
-            <NavigationMenuCloseIcon width={35} height={35} fill={"#b8b7ad"} />
+          <Image src={"/icons/cancel.png"} width={35}  height={35} alt= {"cancel icon"}/>
           </StyledNavigationMenu>
           <StyledNavigationLink href="/" onClick={toggleNavigation}>
             HomePage
@@ -102,7 +100,7 @@ export default function Navigation({
 
 const StyledNavigationLink = styled(Link)`
   color: #b8b7ad;
-  font-size: 2rem;
+  font-size: 1.3rem;
   margin: 0.4rem;
 `;
 
