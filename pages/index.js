@@ -131,7 +131,7 @@ const StyledSection = styled.section`
   margin: 10px;
   background-color: var(--background-color);
   border-radius: 20px;
-`;
+  `;
 
 const StyledHeadline = styled.h1`
   text-align: center;
