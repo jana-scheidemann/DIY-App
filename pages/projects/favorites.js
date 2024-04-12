@@ -7,6 +7,8 @@ export default function FavoritesPage({ projects, onToggleFavorite }) {
     return project.favorite;
   });
 
+  //white space at bottom of page/ GlobalStyledContainer?
+
   return (
     <>
       <StyledHeadline>Favorite Projects</StyledHeadline>
