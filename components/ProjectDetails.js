@@ -59,12 +59,14 @@ export default function ProjectDetails({
   return (
     <>
       <StyledHeadline>DIY APP</StyledHeadline>
-      <StyledHeadline2>{title}</StyledHeadline2>
-      <FavoriteButton
-        id={id}
-        onToggleFavorite={onToggleFavorite}
-        isFavorite={currentProject.favorite}
-      />
+      <StyledProjectTitleContainer>
+        <StyledHeadline2>{title}</StyledHeadline2>
+        <FavoriteButton
+          id={id}
+          onToggleFavorite={onToggleFavorite}
+          isFavorite={currentProject.favorite}
+        />
+      </StyledProjectTitleContainer>
 
       <StyledProjectDetailsContainer>
         <h4>Duration: {duration}</h4>
@@ -96,7 +98,7 @@ export default function ProjectDetails({
       </ol>
 
       <StyledProjectDetailsContainer>
-        <StyledLink href={"/"}>← Back to all projects</StyledLink>
+        <StyledLink href={"/"}>Back to all Projects</StyledLink>
         <StyledButton onClick={handleEdit}>Edit</StyledButton>
         <StyledButton onClick={handleDelete}>Delete</StyledButton>
       </StyledProjectDetailsContainer>
@@ -128,24 +130,34 @@ export default function ProjectDetails({
 //   border-radius: 50px;
 // `;
 
+const StyledHeadline = styled.h1`
+  text-align: center;
+`;
+
 const StyledHeadline2 = styled.h2`
-  background-color: var(--background-color-blue);
+  //background-color: var(--background-color-blue);
   text-align: left;
   border-radius: 10px;
   padding: 10px;
   font-size: 20px;
+  margin: 0;
 `;
 
 const StyledProjectDetailsContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   text-align: center;
 `;
+
+const StyledProjectTitleContainer = styled.div`
+  background-color: var(--background-color-blue);
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px;
+`;
+
 const StyledDescription = styled.p`
   padding-left: 40px;
-`;
-const StyledHeadline = styled.h1`
-  text-align: center;
 `;
 
 const StyledLink = styled(Link)`
