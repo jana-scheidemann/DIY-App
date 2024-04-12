@@ -200,33 +200,6 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
     </StyledModal>
   );
 }
-
-// const StyledBackground = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background-color: rgba(0, 0, 0, 0.5);
-// `;
-
-// const StyledContainer = styled.div`
-//   position: fixed;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   background-color: white;
-//   border: 1px solid black;
-//   padding: 20px;
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   align-items: center;
-//   width: 80vw;
-//   height: 90vh;
-//   overflow: auto;
-// `;
-
 const StyledContainerForm = styled.div`
   display: flex;
   flex-direction: column;
@@ -244,7 +217,7 @@ const StyledHeading = styled.div`
 `;
 
 const StyledTitle = styled.div`
-  fonst-size: 2.7em;
+  font-size: 2.7em;
   font-weight: bold;
   margin: 1em 0 0.2em 0;
 `;
