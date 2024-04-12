@@ -28,23 +28,3 @@ const StyledButton = styled.button`
 
 export default StyledButton;
 
-// export const StyledBackButton = styled(StyledButton)`
-//   background-color: var(--background-color-blue);
-// `;
-
-/* const Button = styled.button`
-  color: #BF4F74;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid #BF4F74;
-  border-radius: 3px;
-`;
-
-// A new component based on Button, but with some override styles
-
-const Back2AllButton = styled(Button)`
-  color: tomato;
-  border-color: tomato;
-`;
- */

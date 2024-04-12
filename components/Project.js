@@ -33,7 +33,6 @@ export default function Project({
 
 const StyledArticle = styled.article`
   background-color: white;
-  //border: 1px solid black;
   border-radius: 20px;
   width: 90vw;
   transform: scale(0.9);
@@ -50,7 +49,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 const StyledHeadline = styled.h2`
-  //text-align: center;
   font-size: 20px;
   color: #282828;
   margin: 7px;
