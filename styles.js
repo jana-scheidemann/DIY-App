@@ -1,5 +1,10 @@
 import { createGlobalStyle } from "styled-components";
+import { Figtree } from "@next/font/google";
+
+const figtree = Figtree({ subsets: ["latin"] });
+
 export default createGlobalStyle`
+
 
 :root{
     --background-color: #F2F2F2; //F2F2F2 = Off-white color
@@ -27,7 +32,8 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: system-ui;
+    font-family: ${figtree.style.fontFamily};
+    background-color: var(--background-color);
   }
 h4{
   margin-block-end: 0;

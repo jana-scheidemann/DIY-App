@@ -4,9 +4,6 @@ import { initialProjects } from "@/db/data";
 import GlobalStyle from "../styles";
 import Navigation from "../components/Navigation";
 import { StyledGlobalContainer } from "@/components/StyledComponents.js/StyledGlobalContainer";
-//import { Figtree } from "@next/font/google";
-
-//const figtree = Figtree({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
@@ -112,9 +109,8 @@ export default function App({ Component, pageProps }) {
   }
 
   return (
-    //main className={figtree.className}
     <>
-      <StyledGlobalContainer>
+      <StyledGlobalContainer >
         <Navigation onAddProject={handleAddProject} />
         <GlobalStyle />
         <Component
