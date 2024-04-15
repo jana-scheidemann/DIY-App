@@ -5,7 +5,7 @@ import ModalEdit from "@/components/ModalEdit";
 import { useState } from "react";
 import router from "next/router";
 import FavoriteButton from "./FavoriteButton";
-import StyledButton from "./StyledComponents.js/StyledButtons";
+import StyledButton from "./StyledComponents/StyledButtons";
 import Link from "next/link";
 
 export default function ProjectDetails({

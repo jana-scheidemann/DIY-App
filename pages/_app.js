@@ -3,7 +3,7 @@ import { useState } from "react";
 import { initialProjects } from "@/db/data";
 import GlobalStyle from "../styles";
 import Navigation from "../components/Navigation";
-import { StyledGlobalContainer } from "@/components/StyledComponents.js/StyledGlobalContainer";
+import { StyledGlobalContainer } from "@/components/StyledComponents/StyledGlobalContainer";
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
@@ -110,7 +110,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <StyledGlobalContainer >
+      <StyledGlobalContainer>
         <Navigation onAddProject={handleAddProject} />
         <GlobalStyle />
         <Component

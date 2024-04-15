@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import StyledModal from "./StyledComponents.js/StyledModal";
+import StyledModal from "./StyledComponents/StyledModal";
 
 export default function ModalSort({
   onSortComplexityStartHigh,
