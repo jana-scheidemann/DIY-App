@@ -5,6 +5,8 @@ import ModalEdit from "@/components/ModalEdit";
 import { useState } from "react";
 import router from "next/router";
 import FavoriteButton from "./FavoriteButton";
+import StyledButton from "./StyledComponents.js/StyledButtons";
+import Link from "next/link";
 
 export default function ProjectDetails({
   currentProject,
@@ -55,45 +57,49 @@ export default function ProjectDetails({
 
   return (
     <>
-      <StyledProjectContainer>
+      <StyledHeadline>DIY APP</StyledHeadline>
+      <StyledProjectTitleContainer>
         <StyledHeadline2>{title}</StyledHeadline2>
-
-        <StyledProjectDetailsContainer>
-          <p>Duration: {duration}</p>
-          <p>Complexity: {complexity}</p>
-        </StyledProjectDetailsContainer>
         <FavoriteButton
           id={id}
           onToggleFavorite={onToggleFavorite}
           isFavorite={currentProject.favorite}
         />
+      </StyledProjectTitleContainer>
+      <StyledProjectDetailsContainer>
+        <h4>Duration: {duration}</h4>
+        <h4>Complexity: {complexity}</h4>
+      </StyledProjectDetailsContainer>
 
-        <Image
-          src={image}
-          width={320}
-          height={213}
-          alt="dummy image with nails and hammer"
-        />
+      <Image
+        style={{ marginBlockStart: "1.33em" }}
+        src={image}
+        width={320}
+        height={213}
+        layout="responsive"
+        alt="dummy image with nails and hammer"
+      />
 
-        <p>
-          Description:
-          <br /> {description}
-        </p>
-        <p>Materials:</p>
-        <ul>
-          {materials.map((material, index) => (
-            <li key={index}>{material}</li>
-          ))}
-        </ul>
-        <p>Steps:</p>
-        <ol>
-          {steps.map((step) => (
-            <li key={step.id}>{step.desc}</li>
-          ))}
-        </ol>
-        <button onClick={handleEdit}>Edit</button>
-        <button onClick={handleDelete}>Delete</button>
-      </StyledProjectContainer>
+      <h4>Description:</h4>
+      <StyledDescription>{description}</StyledDescription>
+      <h4>Materials:</h4>
+      <ul>
+        {materials.map((material, index) => (
+          <li key={index}>{material}</li>
+        ))}
+      </ul>
+      <h4>Steps:</h4>
+      <ol>
+        {steps.map((step) => (
+          <li key={step.id}>{step.desc}</li>
+        ))}
+      </ol>
+      <StyledProjectDetailsContainer>
+        <StyledLink href={"/"}>Back to all Projects</StyledLink>
+        <StyledButton onClick={handleEdit}>Edit</StyledButton>
+        <StyledButton onClick={handleDelete}>Delete</StyledButton>
+      </StyledProjectDetailsContainer>
+
       {modalEdit && (
         <ModalEdit
           currentProject={currentProject}
@@ -111,18 +117,47 @@ export default function ProjectDetails({
   );
 }
 
-const StyledProjectContainer = styled.div`
-  border: solid black;
-  width: 80vw;
-  padding: 2vw;
-  margin: 5vw 10vw;
+const StyledHeadline = styled.h1`
+  text-align: center;
 `;
 
 const StyledHeadline2 = styled.h2`
-  text-align: center;
+  //background-color: var(--background-color-blue);
+  text-align: left;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+  margin: 0;
 `;
 
 const StyledProjectDetailsContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  text-align: center;
+`;
+
+const StyledProjectTitleContainer = styled.div`
+  background-color: var(--background-color-blue);
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px;
+`;
+
+const StyledDescription = styled.p`
+  padding-left: 40px;
+`;
+
+const StyledLink = styled(Link)`
+  background-color: var(--background-color-blue);
+  color: var(--text-color);
+  font-size: 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  padding: 5px;
+  margin: 5px 0;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { initialProjects } from "@/db/data";
 import GlobalStyle from "../styles";
 import Navigation from "../components/Navigation";
+import { StyledGlobalContainer } from "@/components/StyledComponents.js/StyledGlobalContainer";
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
@@ -109,25 +110,27 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <Navigation onAddProject={handleAddProject} />
-      <GlobalStyle />
-      <Component
-        {...pageProps}
-        projects={displayedProjects}
-        onAddProject={handleAddProject}
-        onDeleteProject={handleDeleteProject}
-        onFilterProjects={handleProjectFilter}
-        onResetFilters={resetProjectFilter}
-        onSortProjectsByComplexityStartHigh={
-          handleSortProjectsByComplexityStartHigh
-        }
-        onSortProjectsByComplexityStartLow={
-          handleSortProjectsByComplexityStartLow
-        }
-        onSortProjectsByDuration={handleSortProjectsByDuration}
-        onToggleFavorite={handleToggleFavorite}
-        onEditProject={handleEditProject}
-      />
+      <StyledGlobalContainer >
+        <Navigation onAddProject={handleAddProject} />
+        <GlobalStyle />
+        <Component
+          {...pageProps}
+          projects={displayedProjects}
+          onAddProject={handleAddProject}
+          onDeleteProject={handleDeleteProject}
+          onFilterProjects={handleProjectFilter}
+          onResetFilters={resetProjectFilter}
+          onSortProjectsByComplexityStartHigh={
+            handleSortProjectsByComplexityStartHigh
+          }
+          onSortProjectsByComplexityStartLow={
+            handleSortProjectsByComplexityStartLow
+          }
+          onSortProjectsByDuration={handleSortProjectsByDuration}
+          onToggleFavorite={handleToggleFavorite}
+          onEditProject={handleEditProject}
+        />
+      </StyledGlobalContainer>
     </>
   );
 }

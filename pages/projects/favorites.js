@@ -9,6 +9,7 @@ export default function FavoritesPage({ projects, onToggleFavorite }) {
 
   return (
     <>
+    <StyledHeadline>DIY APP</StyledHeadline>
       <StyledHeadline>Favorite Projects</StyledHeadline>
       <Navigation />
       <StyledSection>
