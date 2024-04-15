@@ -5,7 +5,6 @@ import { useState } from "react";
 import ModalSort from "@/components/ModalSort";
 import ModalFilter from "@/components/ModalFilter";
 import Fuse from "fuse.js";
-import StyledButton from "@/components/StyledComponents/StyledButtons";
 
 export default function HomePage({
   projects,
@@ -65,7 +64,6 @@ export default function HomePage({
 
   return (
     <>
-      <StyledHeadline>DIY APP</StyledHeadline>
       <Navigation
         onAddProject={onAddProject}
         toggleSortModal={toggleSortModal}
@@ -131,10 +129,6 @@ const StyledSection = styled.section`
   margin: 10px;
   background-color: var(--background-color);
   border-radius: 20px;
-`;
-
-const StyledHeadline = styled.h1`
-  text-align: center;
 `;
 
 const StyledSearchField = styled.article`

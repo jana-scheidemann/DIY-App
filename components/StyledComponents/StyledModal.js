@@ -10,7 +10,7 @@ export default function StyledModal({ children }) {
 
 const StyledBackground = styled.div`
   position: fixed;
-  z-index: 100;
+  z-index: 90;
   top: 0;
   left: 0;
   width: 100%;
@@ -20,7 +20,7 @@ const StyledBackground = styled.div`
 
 const StyledContainer = styled.div`
   position: fixed;
-  z-index: 100;
+  z-index: 90;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

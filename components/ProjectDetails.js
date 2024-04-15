@@ -57,7 +57,6 @@ export default function ProjectDetails({
 
   return (
     <>
-      <StyledHeadline>DIY APP</StyledHeadline>
       <StyledProjectTitleContainer>
         <StyledHeadline2>{title}</StyledHeadline2>
         <FavoriteButton
@@ -117,12 +116,7 @@ export default function ProjectDetails({
   );
 }
 
-const StyledHeadline = styled.h1`
-  text-align: center;
-`;
-
 const StyledHeadline2 = styled.h2`
-  //background-color: var(--background-color-blue);
   text-align: left;
   border-radius: 10px;
   padding: 10px;
@@ -156,7 +150,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   padding: 5px;
   margin: 5px 0;
-
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -47,10 +47,20 @@ export default function Navigation({
       {!isNavigationOpen && (
         <>
           <StyledSearchMenu onClick={toggleSearchBar}>
-          <Image src={"/icons/search.png"} width={35}  height={35} alt= {"search icon"}/>
+            <Image
+              src={"/icons/search.png"}
+              width={35}
+              height={35}
+              alt={"search icon"}
+            />
           </StyledSearchMenu>
           <StyledNavigationMenu onClick={toggleNavigation}>
-          <Image src={"/icons/burger_menu.png"} width={35}  height={35} alt= {"burger menu icon"}/>
+            <Image
+              src={"/icons/burger_menu.png"}
+              width={35}
+              height={35}
+              alt={"burger menu icon"}
+            />
           </StyledNavigationMenu>
         </>
       )}
@@ -58,7 +68,12 @@ export default function Navigation({
       {isNavigationOpen && (
         <StyledNavigationMenuBar>
           <StyledNavigationMenu onClick={toggleNavigation}>
-          <Image src={"/icons/cancel.png"} width={35}  height={35} alt= {"cancel icon"}/>
+            <Image
+              src={"/icons/cancel.png"}
+              width={35}
+              height={35}
+              alt={"cancel icon"}
+            />
           </StyledNavigationMenu>
           <StyledNavigationLink href="/" onClick={toggleNavigation}>
             HomePage
@@ -116,33 +131,33 @@ const StyledSearchMenu = styled.div`
   top: 1rem;
   right: 4rem;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 200;
 `;
 
 const StyledSearchBar = styled.div`
   position: fixed;
-  z-index: 1000;
+  z-index: 200;
   top: 3.5rem;
   right: 4rem;
-  background-color: white;
+  background-color: var(--text-color);
+  color: var(--background-color);
   border: 1px solid black;
-  padding: 0px 20px 20px 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: #373a47;
 `;
 
 const StyledNavigationMenuBar = styled.nav`
   position: fixed;
-  z-index: 1000;
+  z-index: 300;
   top: 0;
   right: 0;
   width: 45%;
   height: 100vh;
-  background-color: #373a47;
+  background-color: var(--text-color);
+  color: var(--background-color);
   padding: 80px 0 0 40px;
-
   transition-duration: 1.2s;
   animation-duration: 1.2s;
   animation-name: slideInRight;

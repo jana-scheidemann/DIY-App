@@ -9,7 +9,6 @@ export default function FavoritesPage({ projects, onToggleFavorite }) {
 
   return (
     <>
-    <StyledHeadline>DIY APP</StyledHeadline>
       <StyledHeadline>Favorite Projects</StyledHeadline>
       <Navigation />
       <StyledSection>
@@ -37,6 +36,6 @@ const StyledSection = styled.section`
   gap: 20px;
 `;
 
-const StyledHeadline = styled.h1`
+const StyledHeadline = styled.h2`
   text-align: center;
 `;
