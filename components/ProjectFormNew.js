@@ -1,12 +1,15 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
+import useSWR from "swr";
 
 export default function ProjectFormNew({ onSubmit, onToggleAddModal }) {
   const [steps, setSteps] = useState([1]);
   const router = useRouter();
+  const { mutate } = useSWR("/api/project");
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
@@ -16,16 +19,31 @@ export default function ProjectFormNew({ onSubmit, onToggleAddModal }) {
         desc: data[`step${step}`],
       };
     });
+
     const newProject = {
       title: data.title,
+      slug: data.title.toLowerCase().replace(/ /g, "-"),
       description: data.description,
       materials: data.materials.split(","),
       duration: data.duration,
       complexity: data.complexity,
       steps: stepsData,
+      image: "/images/placeholder.png",
+      favorite: false,
     };
 
-    onSubmit(newProject);
+    const response = await fetch("/api/project", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProject),
+    });
+
+    if (response.ok) {
+      mutate();
+    }
+
     onToggleAddModal();
     router.push("/");
   }

@@ -3,16 +3,67 @@ import { useState } from "react";
 import { initialProjects } from "@/db/data";
 import GlobalStyle from "../styles";
 import Navigation from "../components/Navigation";
+import { SWRConfig } from "swr";
+import { useRouter } from "next/router";
+import { mutate } from "swr";
+import useSWR from "swr";
+
+const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
   const [projectFilter, setProjectFilter] = useState({});
+  const router = useRouter();
+  const { data, isLoading } = useSWR("/api/project");
 
-  function handleAddProject(newProject) {
-    setProjects([{ id: uid(), ...newProject }, ...projects]);
+  // function handleAddProject(newProject) {
+  //   setProjects([{ id: uid(), ...newProject }, ...projects]);
+  // }
+
+  async function handleAddProject(id) {
+    const response = await fetch(`/api/project/${id}`, { method: "DELETE" });
+
+    if (!response.ok) {
+      return;
+    }
+    router.push("/");
   }
-  function handleDeleteProject(id) {
-    setProjects(projects.filter((project) => project.id !== id));
+
+  async function handleEditProject(updatedProject) {
+    const id = updatedProject._id;
+
+    mutate(
+      `/api/project`,
+      projects.map((project) =>
+        project._id === id ? updatedProject : project
+      ),
+      false
+    );
+
+    const response = await fetch(`/api/project/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedProject),
+    });
+
+    if (response.ok) {
+      mutate("/api/project");
+      const slug = updatedProject.title.toLowerCase().replace(/ /g, "-");
+      router.push(`/projects/${slug}`);
+    } else {
+      mutate("/api/project");
+    }
+  }
+
+  async function handleDeleteProject(id) {
+    const response = await fetch(`/api/project/${id}`, { method: "DELETE" });
+
+    if (!response.ok) {
+      return;
+    }
+    router.push("/");
   }
 
   const complexityOrder = { Beginner: 0, Intermediate: 1, Advanced: 2 };
@@ -90,44 +141,68 @@ export default function App({ Component, pageProps }) {
   const displayedProjects =
     Object.keys(projectFilter) === 0 ? projects : filteredProjects;
 
-  function handleToggleFavorite(id) {
-    setProjects(
-      projects.map((project) =>
-        project.id === id
-          ? { ...project, favorite: !project.favorite }
-          : project
-      )
-    );
-  }
-  function handleEditProject(updatedProject) {
-    setProjects(
-      projects.map((project) =>
-        project.id === updatedProject.id ? updatedProject : project
-      )
-    );
+  async function handleToggleFavorite(_id) {
+    const projectToUpdate = data.find((project) => project._id === _id);
+    console.log("PROJECT TO UPDATE: ", projectToUpdate);
+    if (!projectToUpdate) return;
+
+    const updatedProject = {
+      ...projectToUpdate,
+      favorite: !projectToUpdate.favorite,
+    };
+
+    console.log("FAV TO UPDATE: ", updatedProject);
+
+    try {
+      const response = await fetch(`/api/project/${_id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedProject),
+      });
+
+      if (response.ok) {
+        mutate(
+          `/api/project`,
+          projects.map((project) =>
+            project._id === _id ? updatedProject : project
+          ),
+          false
+        );
+
+        mutate("/api/project");
+      } else {
+        throw new Error("Failed to update favorite status");
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
   }
 
   return (
     <>
       <Navigation onAddProject={handleAddProject} />
       <GlobalStyle />
-      <Component
-        {...pageProps}
-        projects={displayedProjects}
-        onAddProject={handleAddProject}
-        onDeleteProject={handleDeleteProject}
-        onFilterProjects={handleProjectFilter}
-        onResetFilters={resetProjectFilter}
-        onSortProjectsByComplexityStartHigh={
-          handleSortProjectsByComplexityStartHigh
-        }
-        onSortProjectsByComplexityStartLow={
-          handleSortProjectsByComplexityStartLow
-        }
-        onSortProjectsByDuration={handleSortProjectsByDuration}
-        onToggleFavorite={handleToggleFavorite}
-        onEditProject={handleEditProject}
-      />
+      <SWRConfig value={{ fetcher }}>
+        <Component
+          {...pageProps}
+          projects={displayedProjects}
+          onAddProject={handleAddProject}
+          onDeleteProject={handleDeleteProject}
+          onFilterProjects={handleProjectFilter}
+          onResetFilters={resetProjectFilter}
+          onSortProjectsByComplexityStartHigh={
+            handleSortProjectsByComplexityStartHigh
+          }
+          onSortProjectsByComplexityStartLow={
+            handleSortProjectsByComplexityStartLow
+          }
+          onSortProjectsByDuration={handleSortProjectsByDuration}
+          onToggleFavorite={handleToggleFavorite}
+          onEditProject={handleEditProject}
+        />
+      </SWRConfig>
     </>
   );
 }

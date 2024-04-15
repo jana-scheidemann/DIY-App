@@ -4,6 +4,9 @@ import Navigation from "@/components/Navigation";
 import { useState } from "react";
 import ModalSort from "@/components/ModalSort";
 import ModalFilter from "@/components/ModalFilter";
+import ModalAdd from "@/components/ModalAdd";
+import { useRouter } from "next/router";
+import useSWR from "swr";
 
 export default function HomePage({
   projects,
@@ -13,10 +16,20 @@ export default function HomePage({
   onSortProjectsByComplexityStartLow,
   onSortProjectsByDuration,
   onToggleFavorite,
-  onAddProject
+  onAddProject,
 }) {
   const [modalSort, setModalSort] = useState(false);
   const [modalFilter, setModalFilter] = useState(false);
+  const [modalAdd, setModalAdd] = useState(false);
+
+  const router = useRouter();
+  const { data, isLoading } = useSWR("/api/project");
+
+  if (isLoading) {
+    return <div>Loading data...</div>;
+  }
+
+  if (!data) return null;
 
   function toogleSortModal() {
     setModalSort(!modalSort);
@@ -26,6 +39,7 @@ export default function HomePage({
     onSortProjectsByComplexityStartHigh();
     toogleSortModal();
   }
+
   function handleSortComplexityStartLow() {
     onSortProjectsByComplexityStartLow();
     toogleSortModal();
@@ -39,10 +53,25 @@ export default function HomePage({
     setModalFilter(!modalFilter);
   }
 
+  function toggleAddModal() {
+    router.push("/");
+    setModalAdd(!modalAdd);
+    // setIsNavigationOpen(!isNavigationOpen);
+  }
+
   return (
     <>
       <StyledHeadline>DIY APP</StyledHeadline>
-      <Navigation onAddProject={onAddProject} />
+      <Navigation
+        onAddProject={onAddProject}
+        handletoggleModalAdd={toggleAddModal}
+      />
+      {modalAdd && (
+        <ModalAdd
+          onAddProject={onAddProject}
+          onToggleAddModal={toggleAddModal}
+        />
+      )}
 
       <button type="button" onClick={toogleSortModal}>
         sort projects by ...
@@ -70,20 +99,8 @@ export default function HomePage({
       </button>
       <span>{projects.length} projects</span>
 
-
       <StyledSection>
-        {projects.map((project) => (
-          <Project
-            key={project.id}
-            title={project.title}
-            slug={project.slug}
-            duration={project.duration}
-            complexity={project.complexity}
-            id={project.id}
-            onToggleFavorite={onToggleFavorite}
-            isFavorite={project.favorite}
-          />
-        ))}
+        <Project onToggleFavorite={onToggleFavorite} />
       </StyledSection>
     </>
   );

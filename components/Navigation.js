@@ -3,18 +3,11 @@ import NavigationMeuIcon from "../public/icons/icon-bruger-menu.svg";
 import NavigationMenuCloseIcon from "../public/icons/icon-cancel.svg";
 import styled from "styled-components";
 import { useState } from "react";
-import ModalAdd from "./ModalAdd";
 
-export default function Navigation({ onAddProject }) {
+export default function Navigation({ onAddProject, handletoggleModalAdd }) {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
-  const [modalAdd, setModalAdd] = useState(false);
 
   function toggleNavigation() {
-    setIsNavigationOpen(!isNavigationOpen);
-  }
-
-  function toggleAddModal() {
-    setModalAdd(!modalAdd);
     setIsNavigationOpen(!isNavigationOpen);
   }
 
@@ -34,14 +27,8 @@ export default function Navigation({ onAddProject }) {
           <StyledNavigationLink href="/" onClick={toggleNavigation}>
             HomePage
           </StyledNavigationLink>
-          <StyledNavigationLink href="" onClick={toggleAddModal}>
+          <StyledNavigationLink href="" onClick={handletoggleModalAdd}>
             Add New Project
-            {modalAdd && (
-              <ModalAdd
-                onAddProject={onAddProject}
-                onToggleAddModal={toggleAddModal}
-              />
-            )}
           </StyledNavigationLink>
           <StyledNavigationLink
             href="/projects/favorites"

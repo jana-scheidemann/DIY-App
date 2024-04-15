@@ -1,17 +1,26 @@
 import ProjectDetails from "@/components/ProjectDetails";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import useSWR from "swr";
 
 export default function ProjectDetailPage({
-  projects,
   onDeleteProject,
   onToggleFavorite,
   onEditProject,
 }) {
+  const { data, isLoading } = useSWR("/api/project");
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (!data) {
+    return;
+  }
   const router = useRouter();
   const { slug } = router.query;
 
-  const currentProject = projects.find((project) => project.slug === slug);
+  const currentProject = data.find((project) => project.slug === slug);
 
   if (!currentProject) {
     return null;

@@ -15,7 +15,7 @@ export default function ProjectDetails({
   const [modalEdit, setModalEdit] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
   const {
-    id,
+    _id,
     title,
     description,
     materials,
@@ -23,7 +23,6 @@ export default function ProjectDetails({
     complexity,
     steps,
     image,
-    favorite,
   } = currentProject;
 
   function handleEdit() {
@@ -48,7 +47,7 @@ export default function ProjectDetails({
   }
 
   function handleDeleteConfirm() {
-    onDeleteProject(id);
+    onDeleteProject(_id);
     setModalDelete(false);
     router.push("/");
   }
@@ -63,17 +62,12 @@ export default function ProjectDetails({
           <p>Complexity: {complexity}</p>
         </StyledProjectDetailsContainer>
         <FavoriteButton
-          id={id}
+          _id={_id}
           onToggleFavorite={onToggleFavorite}
           isFavorite={currentProject.favorite}
         />
 
-        <Image
-          src={image}
-          width={320}
-          height={213}
-          alt="dummy image with nails and hammer"
-        />
+        <Image src={image} width={320} height={213} alt="dummy image" />
 
         <p>
           Description:

@@ -1,14 +1,16 @@
 import { useState } from "react";
 
-export default function FavoriteButton({ onToggleFavorite, id, isFavorite }) {
+export default function FavoriteButton({ onToggleFavorite, _id, isFavorite }) {
   const [favorite, setFavorite] = useState(isFavorite);
 
-  function handleToggle(id) {
+  console.log("ID to update:", _id);
+
+  function handleToggle(_id) {
     setFavorite(!favorite);
-    onToggleFavorite(id);
+    onToggleFavorite(_id);
   }
   return (
-    <button type="button" onClick={() => handleToggle(id)}>
+    <button type="button" onClick={() => handleToggle(_id)}>
       {favorite ? "❤️" : "🤍"}
     </button>
   );
