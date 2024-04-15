@@ -5,6 +5,8 @@ import { useState } from "react";
 import ModalSort from "@/components/ModalSort";
 import ModalFilter from "@/components/ModalFilter";
 import Fuse from "fuse.js";
+import StyledModal from "@/components/StyledComponents/StyledModal";
+import Link from "next/link";
 
 export default function HomePage({
   projects,
@@ -71,6 +73,15 @@ export default function HomePage({
         showSearchField={showSearchField}
       />
 
+      {projects.length === 0 && (
+        <StyledModal>
+          <p>Oooops. No results for your filter. Try again.</p>
+          <StyledLink href={"/"} onClick={onResetFilters}>
+            Back to all Projects
+          </StyledLink>
+        </StyledModal>
+      )}
+
       {modalSort && (
         <ModalSort
           onToggleSortModal={toggleSortModal}
@@ -136,4 +147,12 @@ const StyledSearchField = styled.article`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const StyledLink = styled(Link)`
+  background-color: var(--background-color-blue);
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 0.5em;
+  border-radius: 0.5em;
 `;
