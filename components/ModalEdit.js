@@ -85,6 +85,7 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
               size="40"
               value={updateProject.title}
               onChange={handleChange}
+              maxLength={50}
               required
             />
           </label>

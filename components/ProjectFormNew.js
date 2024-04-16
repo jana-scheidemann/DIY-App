@@ -39,25 +39,23 @@ export default function ProjectFormNew({ onSubmit, onToggleAddModal }) {
       <h2>Create New Project</h2>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">
-          Title:
-          <input type="text" name="title" id="title" required />
-        </label>
+        <label htmlFor="title">Title: </label>
+        <input type="text" name="title" id="title" maxLength={50} required />
 
-        <label htmlFor="description">
-          Description:
-          <input type="text" name="description" id="description" required />
-        </label>
+        <label htmlFor="description">Description:</label>
+        <input type="text" name="description" id="description" required />
 
-        <label htmlFor="materials">
-          Materials:
-          <input type="text" name="materials" id="materials" required />
-        </label>
+        <label htmlFor="materials">Materials: </label>
+        <input type="text" name="materials" id="materials" required />
 
-        <label htmlFor="duration">
-          Duration:
-          <input type="text" name="duration" id="duration" required />
-        </label>
+        <label htmlFor="duration">Duration: </label>
+        <input
+          type="text"
+          name="duration"
+          id="duration"
+          placeholder="e.g. 3 hours"
+          required
+        />
 
         <h3>Complexity:</h3>
 
