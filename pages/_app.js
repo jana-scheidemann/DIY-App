@@ -110,7 +110,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <StyledGlobalContainer>
+      <StyledGlobalContainer onResetFilters={resetProjectFilter}>
         <Navigation onAddProject={handleAddProject} />
         <GlobalStyle />
         <Component

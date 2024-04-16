@@ -2,11 +2,11 @@ import styled from "styled-components";
 import Navigation from "../Navigation";
 import Link from "next/link";
 
-export default function StyledGlobalContainer({ children }) {
+export default function StyledGlobalContainer({ children, onResetFilters }) {
   return (
     <>
       <Header>
-        <StyledLink href={"/"}>
+        <StyledLink href={"/"} onClick={onResetFilters}>
           <StyledHeadline>DIY APP</StyledHeadline>
         </StyledLink>
         <Navigation />
