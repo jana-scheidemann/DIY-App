@@ -69,7 +69,7 @@ export default function Navigation({
         <StyledNavigationMenuBar>
           <StyledNavigationMenu onClick={toggleNavigation}>
             <Image
-              src={"/icons/cancel.png"}
+              src={"/icons/cancel_light.png"}
               width={35}
               height={35}
               alt={"cancel icon"}
