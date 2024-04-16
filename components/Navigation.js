@@ -18,13 +18,13 @@ export default function Navigation({
     setIsNavigationOpen(!isNavigationOpen);
   }
 
-  function toggleSearchBar() {
-    setIsSearchBarOpen(!isSearchBarOpen);
+  function toggleAddModal() {
+    toggleNavigation();
+    setModalAdd(!modalAdd);
   }
 
-  function toggleAddModal() {
-    setModalAdd(!modalAdd);
-    setIsNavigationOpen(!isNavigationOpen);
+  function toggleSearchBar() {
+    setIsSearchBarOpen(!isSearchBarOpen);
   }
 
   function openSearch() {
@@ -78,14 +78,8 @@ export default function Navigation({
           <StyledNavigationLink href="/" onClick={toggleNavigation}>
             HomePage
           </StyledNavigationLink>
-          <StyledNavigationLink href="" onClick={toggleAddModal}>
+          <StyledNavigationLink href="/" onClick={toggleAddModal}>
             Add New Project
-            {modalAdd && (
-              <ModalAdd
-                onAddProject={onAddProject}
-                onToggleAddModal={toggleAddModal}
-              />
-            )}
           </StyledNavigationLink>
           <StyledNavigationLink
             href="/projects/favorites"
@@ -94,6 +88,13 @@ export default function Navigation({
             Favorite Projects
           </StyledNavigationLink>
         </StyledNavigationMenuBar>
+      )}
+
+      {modalAdd && (
+        <ModalAdd
+          onAddProject={onAddProject}
+          onToggleAddModal={toggleAddModal}
+        />
       )}
 
       {isSearchBarOpen && (

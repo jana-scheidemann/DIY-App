@@ -5,7 +5,7 @@ export default function ModalAdd({ onAddProject, onToggleAddModal }) {
   return (
     <StyledModal>
       <ProjectFormNew
-        onSubmit={onAddProject}
+        onAddProject={onAddProject}
         onToggleAddModal={onToggleAddModal}
       />
     </StyledModal>
