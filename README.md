@@ -1,4 +1,6 @@
-# New Next Project
+### DIY APP Project
+
+### Key Features
 
 ### Local Development
 
@@ -17,3 +19,6 @@ You can use the following commands:
 - `npm run start` to start a production server
 - `npm run test` to run the tests
 - `npm run lint` to run the linter
+
+  
+### Technologies & Tools
