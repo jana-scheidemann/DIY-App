@@ -1,52 +1,54 @@
 import Project from "@/components/Project";
 import styled from "styled-components";
-import Navigation from "@/components/Navigation";
+//import Navigation from "@/components/Navigation";
 import { useState } from "react";
-import ModalSort from "@/components/ModalSort";
-import ModalFilter from "@/components/ModalFilter";
+// import ModalSort from "@/components/ModalSort";
+// import ModalFilter from "@/components/ModalFilter";
 import Fuse from "fuse.js";
-import StyledModal from "@/components/StyledComponents/StyledModal";
-import Link from "next/link";
+// import StyledModal from "@/components/StyledComponents/StyledModal";
+// import Link from "next/link";
 
 export default function HomePage({
   projects,
-  onFilterProjects,
-  onResetFilters,
-  onSortProjectsByComplexityStartHigh,
-  onSortProjectsByComplexityStartLow,
-  onSortProjectsByDuration,
   onToggleFavorite,
-  onAddProject,
+  isHidden,
+  // onFilterProjects,
+  // onResetFilters,
+  // onSortProjectsByComplexityStartHigh,
+  // onSortProjectsByComplexityStartLow,
+  // onSortProjectsByDuration,
+  // showSearchField,
+  // onAddProject,
 }) {
-  const [modalSort, setModalSort] = useState(false);
-  const [modalFilter, setModalFilter] = useState(false);
+  // const [modalSort, setModalSort] = useState(false);
+  // const [modalFilter, setModalFilter] = useState(false);
   const [query, setQuery] = useState("");
-  const [isHidden, setIsHidden] = useState(true);
+  // const [isHidden, setIsHidden] = useState(true);
 
-  function toggleSortModal() {
-    setModalSort(!modalSort);
-  }
+  // function toggleSortModal() {
+  //   setModalSort(!modalSort);
+  // }
 
-  function handleSortComplexityStartHigh() {
-    onSortProjectsByComplexityStartHigh();
-    toggleSortModal();
-  }
-  function handleSortComplexityStartLow() {
-    onSortProjectsByComplexityStartLow();
-    toggleSortModal();
-  }
-  function handleSortDuration(direction) {
-    onSortProjectsByDuration(direction);
-    toggleSortModal();
-  }
+  // function handleSortComplexityStartHigh() {
+  //   onSortProjectsByComplexityStartHigh();
+  //   toggleSortModal();
+  // }
+  // function handleSortComplexityStartLow() {
+  //   onSortProjectsByComplexityStartLow();
+  //   toggleSortModal();
+  // }
+  // function handleSortDuration(direction) {
+  //   onSortProjectsByDuration(direction);
+  //   toggleSortModal();
+  // }
 
-  function toggleFilterModal() {
-    setModalFilter(!modalFilter);
-  }
+  // function toggleFilterModal() {
+  //   setModalFilter(!modalFilter);
+  // }
 
-  function showSearchField() {
-    setIsHidden(!isHidden);
-  }
+  // function showSearchField() {
+  //   setIsHidden(!isHidden);
+  // }
 
   const fuse = new Fuse(projects, {
     keys: ["title", "description", "materials", "steps.desc"],
@@ -63,17 +65,17 @@ export default function HomePage({
     const { value } = event.target;
     setQuery(value);
   }
-
+  console.log("??", projects);
   return (
     <>
-      <Navigation
+      {/* <Navigation
         onAddProject={onAddProject}
         toggleSortModal={toggleSortModal}
         toggleFilterModal={toggleFilterModal}
         showSearchField={showSearchField}
-      />
+      /> */}
 
-      {projects.length === 0 && (
+      {/* {projects.length === 0 && (
         <StyledModal>
           <p>Oooops. No results for your filter. Try again.</p>
           <StyledLink href={"/"} onClick={onResetFilters}>
@@ -97,7 +99,7 @@ export default function HomePage({
           onFilterProjects={onFilterProjects}
           onResetFilters={onResetFilters}
         />
-      )}
+      )} */}
       <StyledSearchField>
         <label htmlFor="search" hidden={isHidden}>
           Search
@@ -111,7 +113,7 @@ export default function HomePage({
           placeholder="... for title, material etc."
           value={query}
           onChange={handleSearch}
-        ></input>
+        />
       </StyledSearchField>
 
       <StyledSection>
@@ -149,10 +151,10 @@ const StyledSearchField = styled.article`
   align-items: center;
 `;
 
-const StyledLink = styled(Link)`
-  background-color: var(--background-color-blue);
-  color: var(--text-color);
-  text-decoration: none;
-  padding: 0.5em;
-  border-radius: 0.5em;
-`;
+// const StyledLink = styled(Link)`
+//   background-color: var(--background-color-blue);
+//   color: var(--text-color);
+//   text-decoration: none;
+//   padding: 0.5em;
+//   border-radius: 0.5em;
+// `;

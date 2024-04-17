@@ -2,14 +2,26 @@ import styled from "styled-components";
 import Navigation from "../Navigation";
 import Link from "next/link";
 
-export default function StyledGlobalContainer({ children, onResetFilters }) {
+export default function StyledGlobalContainer({
+  children,
+  onResetFilters,
+  onAddProject,
+  toggleSortModal,
+  toggleFilterModal,
+  showSearchField,
+}) {
   return (
     <>
       <Header>
         <StyledLink href={"/"} onClick={onResetFilters}>
           <StyledHeadline>DIY APP</StyledHeadline>
         </StyledLink>
-        <Navigation />
+        <Navigation
+          onAddProject={onAddProject}
+          toggleSortModal={toggleSortModal}
+          toggleFilterModal={toggleFilterModal}
+          showSearchField={showSearchField}
+        />
       </Header>
 
       <Body>{children}</Body>

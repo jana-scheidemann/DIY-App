@@ -10,35 +10,41 @@ export default function Navigation({
   toggleFilterModal,
   showSearchField,
 }) {
+  // const [isOpen, setIsOpen] = useState(false);
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
 
+  // function toggleOpen() {
+  //   setIsOpen(!isOpen);
+  // }
   function toggleNavigation() {
     setIsNavigationOpen(!isNavigationOpen);
   }
 
   function toggleAddModal() {
-    toggleNavigation();
+    setIsNavigationOpen(!isNavigationOpen);
     setModalAdd(!modalAdd);
   }
-
+  function closeAddModal() {
+    setModalAdd(!modalAdd);
+  }
   function toggleSearchBar() {
     setIsSearchBarOpen(!isSearchBarOpen);
   }
 
   function openSearch() {
-    setIsSearchBarOpen(!isSearchBarOpen);
+    toggleSearchBar();
     showSearchField();
   }
 
   function openSortModal() {
-    setIsSearchBarOpen(!isSearchBarOpen);
+    toggleSearchBar();
     toggleSortModal();
   }
 
   function openFilterModal() {
-    setIsSearchBarOpen(!isSearchBarOpen);
+    toggleSearchBar();
     toggleFilterModal();
   }
 
@@ -93,7 +99,7 @@ export default function Navigation({
       {modalAdd && (
         <ModalAdd
           onAddProject={onAddProject}
-          onToggleAddModal={toggleAddModal}
+          onToggleAddModal={closeAddModal}
         />
       )}
 
