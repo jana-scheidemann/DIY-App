@@ -10,14 +10,10 @@ export default function Navigation({
   toggleFilterModal,
   showSearchField,
 }) {
-  // const [isOpen, setIsOpen] = useState(false);
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
 
-  // function toggleOpen() {
-  //   setIsOpen(!isOpen);
-  // }
   function toggleNavigation() {
     setIsNavigationOpen(!isNavigationOpen);
   }

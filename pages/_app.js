@@ -2,7 +2,6 @@ import { uid } from "uid";
 import { useState } from "react";
 import { initialProjects } from "@/db/data";
 import GlobalStyle from "../styles";
-import Navigation from "../components/Navigation";
 import StyledGlobalContainer from "@/components/StyledComponents/StyledGlobalContainer";
 import Link from "next/link";
 import StyledModal from "@/components/StyledComponents/StyledModal";
@@ -17,7 +16,7 @@ export default function App({ Component, pageProps }) {
   const [modalFilter, setModalFilter] = useState(false);
   const [isHidden, setIsHidden] = useState(true);
 
-  //Add, Delete, Edit
+  // --- ADD, DELETE, EDIT ---
   function handleAddProject(newProject) {
     setProjects([{ id: uid(), ...newProject }, ...projects]);
   }
@@ -32,12 +31,13 @@ export default function App({ Component, pageProps }) {
     );
   }
 
-  //Sort
+  // --- SORT ---
   function toggleSortModal() {
     setModalSort(!modalSort);
   }
 
   const complexityOrder = { Beginner: 0, Intermediate: 1, Advanced: 2 };
+
   function handleSortComplexityStartHigh() {
     setProjects(
       projects.toSorted((a, b) => {
@@ -46,22 +46,8 @@ export default function App({ Component, pageProps }) {
     );
     toggleSortModal();
   }
-  // function handleSortComplexityStartHigh() {
-  //   onSortProjectsByComplexityStartHigh();
-  //   toggleSortModal();
-  // }
-
-  // const complexityOrder = { Beginner: 0, Intermediate: 1, Advanced: 2 };
-  // function handleSortProjectsByComplexityStartHigh() {
-  //   setProjects(
-  //     projects.toSorted((a, b) => {
-  //       return complexityOrder[b.complexity] - complexityOrder[a.complexity];
-  //     })
-  //   );
-  // }
 
   function handleSortComplexityStartLow() {
-    // onSortProjectsByComplexityStartLow();
     setProjects(
       projects.toSorted((a, b) => {
         return complexityOrder[a.complexity] - complexityOrder[b.complexity];
@@ -69,13 +55,6 @@ export default function App({ Component, pageProps }) {
     );
     toggleSortModal();
   }
-  // function handleSortProjectsByComplexityStartLow() {
-  //   setProjects(
-  //     projects.toSorted((a, b) => {
-  //       return complexityOrder[a.complexity] - complexityOrder[b.complexity];
-  //     })
-  //   );
-  // }
 
   function durationToHours(duration) {
     const durationValue = parseInt(duration);
@@ -92,17 +71,7 @@ export default function App({ Component, pageProps }) {
     }
     return duration;
   }
-  // function handleSortProjectsByDuration(direction = "long") {
-  //   setProjects(
-  //     projects.toSorted((a, b) => {
-  //       const durationA = durationToHours(a.duration);
-  //       const durationB = durationToHours(b.duration);
-  //       return direction === "long"
-  //         ? durationB - durationA
-  //         : durationA - durationB;
-  //     })
-  //   );
-  // }
+
   function handleSortDuration(direction) {
     setProjects(
       projects.toSorted((a, b) => {
@@ -116,7 +85,7 @@ export default function App({ Component, pageProps }) {
     toggleSortModal();
   }
 
-  //Filter
+  // --- FILTER ---
   function toggleFilterModal() {
     setModalFilter(!modalFilter);
   }
@@ -152,12 +121,12 @@ export default function App({ Component, pageProps }) {
   const displayedProjects =
     Object.keys(projectFilter) === 0 ? projects : filteredProjects;
 
-  //Search
+  // --- SEARCH ---
   function showSearchField() {
     setIsHidden(!isHidden);
   }
 
-  //Favorite
+  // --- FAVORITE ---
   function handleToggleFavorite(id) {
     setProjects(
       projects.map((project) =>
@@ -185,13 +154,6 @@ export default function App({ Component, pageProps }) {
           onDeleteProject={handleDeleteProject}
           onFilterProjects={handleProjectFilter}
           onResetFilters={resetProjectFilter}
-          // onSortProjectsByComplexityStartHigh={
-          //   handleSortProjectsByComplexityStartHigh
-          // }
-          // onSortProjectsByComplexityStartLow={
-          //   handleSortProjectsByComplexityStartLow
-          // }
-          //onSortProjectsByDuration={handleSortProjectsByDuration}
           onToggleFavorite={handleToggleFavorite}
           onEditProject={handleEditProject}
           isHidden={isHidden}

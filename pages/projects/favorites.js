@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Navigation from "@/components/Navigation";
 import Project from "@/components/Project";
 
 export default function FavoritesPage({ projects, onToggleFavorite }) {
@@ -10,7 +9,6 @@ export default function FavoritesPage({ projects, onToggleFavorite }) {
   return (
     <>
       <StyledHeadline>Favorite Projects</StyledHeadline>
-      <Navigation />
       <StyledSection>
         {favoriteProjects.map((project) => (
           <Project
