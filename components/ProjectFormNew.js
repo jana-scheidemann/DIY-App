@@ -16,6 +16,7 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
         desc: data[`step${step}`],
       };
     });
+    const slug = data.title.toLowerCase().replace(/\s+/g, "-");
     const newProject = {
       title: data.title,
       description: data.description,
@@ -23,6 +24,7 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
       duration: data.duration,
       complexity: data.complexity,
       steps: stepsData,
+      slug: slug,
     };
 
     onAddProject(newProject);
