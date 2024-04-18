@@ -1,5 +1,18 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
+import {
+  StyledHeadlineH3,
+  StyledHeadlineH4,
+  StyledHeadlineH5,
+} from "./StyledComponents/StyledHeadline";
+import {
+  StyledFormContainer,
+  StyledFormContainerButtons,
+  StyledInputModal,
+  StyledRadioButton,
+  StyledRadioButtonLabel,
+} from "./StyledComponents/StyledInput";
+import { StyledButton } from "./StyledComponents/StyledButton";
 
 export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
   const [steps, setSteps] = useState([1]);
@@ -38,20 +51,44 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
 
   return (
     <>
-      <h2>Create New Project</h2>
+      <StyledHeadlineH3>Create New Project</StyledHeadlineH3>
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title: </label>
-        <input type="text" name="title" id="title" maxLength={50} required />
+      <StyledFormContainer onSubmit={handleSubmit}>
+        <label htmlFor="title">
+          <StyledHeadlineH4>Title</StyledHeadlineH4>
+        </label>
+        <StyledInputModal
+          type="text"
+          name="title"
+          id="title"
+          maxLength={50}
+          required
+        />
 
-        <label htmlFor="description">Description:</label>
-        <input type="text" name="description" id="description" required />
+        <label htmlFor="description">
+          <StyledHeadlineH4>Description</StyledHeadlineH4>
+        </label>
+        <StyledInputModal
+          type="text"
+          name="description"
+          id="description"
+          required
+        />
 
-        <label htmlFor="materials">Materials: </label>
-        <input type="text" name="materials" id="materials" required />
+        <label htmlFor="materials">
+          <StyledHeadlineH4>Materials</StyledHeadlineH4>
+        </label>
+        <StyledInputModal
+          type="text"
+          name="materials"
+          id="materials"
+          required
+        />
 
-        <label htmlFor="duration">Duration: </label>
-        <input
+        <label htmlFor="duration">
+          <StyledHeadlineH4>Duration</StyledHeadlineH4>
+        </label>
+        <StyledInputModal
           type="text"
           name="duration"
           id="duration"
@@ -59,34 +96,59 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
           required
         />
 
-        <h3>Complexity:</h3>
+        <StyledHeadlineH4>Complexity</StyledHeadlineH4>
 
-        <input type="radio" id="beginner" name="complexity" value="Beginner" />
-        <label htmlFor="beginner">Beginner</label>
+        <StyledRadioButtonLabel htmlFor="beginner">
+          <StyledRadioButton
+            type="radio"
+            id="beginner"
+            name="complexity"
+            value="Beginner"
+          />
+          Beginner
+        </StyledRadioButtonLabel>
 
-        <input
-          type="radio"
-          id="intermediate"
-          name="complexity"
-          value="Intermediate"
-          defaultChecked
-        />
-        <label htmlFor="intermediate">Intermediate</label>
+        <StyledRadioButtonLabel htmlFor="intermediate">
+          <StyledRadioButton
+            type="radio"
+            id="intermediate"
+            name="complexity"
+            value="Intermediate"
+            defaultChecked
+          />
+          Intermediate
+        </StyledRadioButtonLabel>
 
-        <input type="radio" id="advanced" name="complexity" value="Advanced" />
-        <label htmlFor="advanced">Advanced</label>
+        <StyledRadioButtonLabel htmlFor="advanced">
+          <StyledRadioButton
+            type="radio"
+            id="advanced"
+            name="complexity"
+            value="Advanced"
+          />
+          Advanced
+        </StyledRadioButtonLabel>
 
+        <StyledHeadlineH4>Steps</StyledHeadlineH4>
         {steps.map((step) => (
           <div key={step}>
-            <label htmlFor={`step${step}`}>Step {step}</label>
-            <input type="text" id={`step${step}`} name={`step${step}`} />
+            <StyledHeadlineH5 htmlFor={`step${step}`}>
+              Step {step}
+            </StyledHeadlineH5>
+            <StyledInputModal
+              type="text"
+              id={`step${step}`}
+              name={`step${step}`}
+            />
           </div>
         ))}
-        <button type="button" onClick={addStep}>
-          Add step
-        </button>
-        <button type="submit">Submit</button>
-      </form>
+        <StyledFormContainerButtons>
+          <StyledButton type="button" onClick={addStep}>
+            Add
+          </StyledButton>
+          <StyledButton type="submit">Submit</StyledButton>
+        </StyledFormContainerButtons>
+      </StyledFormContainer>
     </>
   );
 }

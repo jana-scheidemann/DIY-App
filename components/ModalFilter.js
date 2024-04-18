@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import StyledModal from "./StyledComponents/StyledModal";
 import { StyledButton } from "./StyledComponents/StyledButton";
 import { StyledButtonReset } from "./StyledComponents/StyledButton";
@@ -12,7 +11,6 @@ import {
   StyledHeadlineH3,
   StyledHeadlineH4,
 } from "./StyledComponents/StyledHeadline";
-import StyledModal from "./StyledComponents/StyledModal";
 
 export default function ModalFilter({
   toggleFilterModal,

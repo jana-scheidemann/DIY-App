@@ -5,8 +5,6 @@ import {
   StyledRadioButton,
   StyledRadioButtonLabel,
 } from "./StyledComponents/StyledInput";
-import styled from "styled-components";
-import StyledModal from "./StyledComponents/StyledModal";
 
 export default function ModalSort({
   onSortComplexityStartHigh,

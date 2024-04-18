@@ -29,11 +29,8 @@ export default function HomePage({ projects, onToggleFavorite, isHidden }) {
 
   return (
     <>
-      <StyledSearchField>
-        <label htmlFor="search" hidden={isHidden}>
-          Search
-        </label>
-        <input
+      <StyledInputSearch htmlFor="search" hidden={isHidden}>
+        <StyledInputSearchField
           type="search"
           hidden={isHidden}
           id="search"
@@ -43,7 +40,7 @@ export default function HomePage({ projects, onToggleFavorite, isHidden }) {
           value={query}
           onChange={handleSearch}
         />
-      </StyledSearchField>
+      </StyledInputSearch>
 
       <StyledSection>
         {searchResults.map((project) => (
@@ -64,16 +61,6 @@ export default function HomePage({ projects, onToggleFavorite, isHidden }) {
     </>
   );
 }
-
-const StyledSection = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin: 10px;
-  background-color: var(--background-color);
-  border-radius: 20px;
-`;
 
 const StyledSearchField = styled.article`
   width: 100%;

@@ -2,9 +2,6 @@ import { uid } from "uid";
 import { useState } from "react";
 import { initialProjects } from "@/db/data";
 import GlobalStyle from "../styles";
-import Navigation from "../components/Navigation";
-import { StyledGlobalContainer } from "@/components/StyledComponents/StyledGlobalContainer";
-import PageHeader from "@/components/PageHeader";
 import StyledGlobalContainer from "@/components/StyledComponents/StyledGlobalContainer";
 import Link from "next/link";
 import StyledModal from "@/components/StyledComponents/StyledModal";
@@ -19,7 +16,7 @@ export default function App({ Component, pageProps }) {
   const [modalFilter, setModalFilter] = useState(false);
   const [isHidden, setIsHidden] = useState(true);
 
-  // --- ADD, DELETE, EDIT ---
+  //NOTE: ADD, DELETE, EDIT
   function handleAddProject(newProject) {
     setProjects([{ id: uid(), ...newProject }, ...projects]);
   }
@@ -34,7 +31,7 @@ export default function App({ Component, pageProps }) {
     );
   }
 
-  // --- SORT ---
+  //NOTE: SORT
   function toggleSortModal() {
     setModalSort(!modalSort);
   }
@@ -124,12 +121,12 @@ export default function App({ Component, pageProps }) {
   const displayedProjects =
     Object.keys(projectFilter) === 0 ? projects : filteredProjects;
 
-  // --- SEARCH ---
+  //NOTE: SEARCH
   function showSearchField() {
     setIsHidden(!isHidden);
   }
 
-  // --- FAVORITE ---
+  //NOTE: FAVORITE
   function handleToggleFavorite(id) {
     setProjects(
       projects.map((project) =>
@@ -142,8 +139,6 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-
-      <PageHeader />
       <StyledGlobalContainer
         onResetFilters={resetProjectFilter}
         onAddProject={handleAddProject}
