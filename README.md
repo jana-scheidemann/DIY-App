@@ -22,7 +22,7 @@ Looking for something specific? Use our powerful search function to quickly find
 ### User-Friendly Interface:
 Enjoy a sleek and intuitive design that makes browsing, creating, and sharing projects a breeze. Connect with a vibrant community of makers and unleash your creativity together.
 
-Join DIY Craft Hub today and embark on a journey of creativity, innovation, and endless possibilities. Let's craft something extraordinary together!
+Join the DIY APP today and embark on a journey of creativity, innovation, and endless possibilities. Let's craft something extraordinary together!
 
 
 
