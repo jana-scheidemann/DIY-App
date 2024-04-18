@@ -1,14 +1,36 @@
 import styled from "styled-components";
 import Project from "@/components/Project";
+import SearchField from "@/components/SearchField";
 
-export default function FavoritesPage({ projects, onToggleFavorite }) {
-  const favoriteProjects = projects.filter((project) => {
+export default function FavoritesPage({
+  searchResults,
+  handleSearch,
+  query,
+  onSortComplexityStartHigh,
+  onSortComplexityStartLow,
+  onSortDuration,
+  onToggleFavorite,
+  onFilterProjects,
+  onResetFilters,
+}) {
+  const favoriteProjects = searchResults.filter((project) => {
     return project.favorite;
   });
 
   return (
     <>
       <StyledHeadline>Favorite Projects</StyledHeadline>
+
+      <SearchField
+        handleSearch={handleSearch}
+        query={query}
+        onSortComplexityStartHigh={onSortComplexityStartHigh}
+        onSortComplexityStartLow={onSortComplexityStartLow}
+        onSortDuration={onSortDuration}
+        onFilterProjects={onFilterProjects}
+        onResetFilters={onResetFilters}
+      />
+
       <StyledSection>
         {favoriteProjects.map((project) => (
           <Project
