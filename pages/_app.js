@@ -8,6 +8,7 @@ import StyledModal from "@/components/StyledComponents/StyledModal";
 import ModalSort from "@/components/ModalSort";
 import ModalFilter from "@/components/ModalFilter";
 import styled from "styled-components";
+import Fuse from "fuse.js";
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
@@ -15,6 +16,7 @@ export default function App({ Component, pageProps }) {
   const [modalSort, setModalSort] = useState(false);
   const [modalFilter, setModalFilter] = useState(false);
   const [isHidden, setIsHidden] = useState(true);
+  const [query, setQuery] = useState("");
 
   // --- ADD, DELETE, EDIT ---
   function handleAddProject(newProject) {
@@ -125,6 +127,21 @@ export default function App({ Component, pageProps }) {
   function showSearchField() {
     setIsHidden(!isHidden);
   }
+  const fuse = new Fuse(projects, {
+    keys: ["title", "description", "materials", "steps.desc"],
+    includeScore: true,
+    threshold: 0.3,
+    shouldSort: true,
+    ignoreLocation: true,
+    ignoreFieldNorm: true,
+  });
+  const results = fuse.search(query);
+  const searchResults = query ? results.map((result) => result.item) : projects;
+
+  function handleSearch(event) {
+    const { value } = event.target;
+    setQuery(value);
+  }
 
   // --- FAVORITE ---
   function handleToggleFavorite(id) {
@@ -150,13 +167,15 @@ export default function App({ Component, pageProps }) {
         <Component
           {...pageProps}
           projects={displayedProjects}
+          searchResults={searchResults}
+          query={query}
+          handleSearch={handleSearch}
           showSearchField={showSearchField}
           onDeleteProject={handleDeleteProject}
           onFilterProjects={handleProjectFilter}
           onResetFilters={resetProjectFilter}
           onToggleFavorite={handleToggleFavorite}
           onEditProject={handleEditProject}
-          isHidden={isHidden}
         />
 
         {projects.length === 0 && (
