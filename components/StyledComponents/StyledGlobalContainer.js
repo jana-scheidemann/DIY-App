@@ -6,5 +6,4 @@ export const StyledGlobalContainer = styled.div`
   color: var(--text-color);
   width: 100%;
   height: 100%;
-  padding: 20px;
 `;
