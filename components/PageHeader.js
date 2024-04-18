@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-export default function PageHeader() {
+export default function PageHeader({ onResetFilters }) {
   return (
     <>
-      <Link href="/">
+      <Link href="/" onClick={onResetFilters}>
         <StyledPageHeader>DIY.</StyledPageHeader>
       </Link>
     </>

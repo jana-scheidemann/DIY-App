@@ -17,7 +17,6 @@ import {
   StyledArticleTagDescription,
 } from "./StyledComponents/StyledArticle";
 import { StyledInputSearchDummy } from "./StyledComponents/StyledInput";
-import StyledButton from "./StyledComponents/StyledButtons";
 import Link from "next/link";
 
 export default function ProjectDetails({

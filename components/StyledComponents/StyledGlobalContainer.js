@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Navigation from "../Navigation";
-import Link from "next/link";
+import PageHeader from "../PageHeader";
 
 export default function StyledGlobalContainer({
   children,
@@ -12,40 +12,17 @@ export default function StyledGlobalContainer({
 }) {
   return (
     <>
-      <Header>
-        <StyledLink href={"/"} onClick={onResetFilters}>
-          <StyledHeadline>DIY APP</StyledHeadline>
-        </StyledLink>
-        <Navigation
-          onAddProject={onAddProject}
-          toggleSortModal={toggleSortModal}
-          toggleFilterModal={toggleFilterModal}
-          showSearchField={showSearchField}
-        />
-      </Header>
-
+      <PageHeader onResetFilters={onResetFilters} />
+      <Navigation
+        onAddProject={onAddProject}
+        toggleSortModal={toggleSortModal}
+        toggleFilterModal={toggleFilterModal}
+        showSearchField={showSearchField}
+      />
       <Body>{children}</Body>
     </>
   );
 }
-
-const Header = styled.header`
-  position: fixed;
-  z-index: 100;
-  background-color: var(--background-color-yellow);
-  top: 0;
-  height: 5rem;
-  width: 100vw;
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
-
-const StyledHeadline = styled.h1`
-  text-align: center;
-  color: var(--text-color);
-`;
 
 const Body = styled.div`
   display: flex;

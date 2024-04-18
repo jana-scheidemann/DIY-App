@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styled from "styled-components";
 import { uid } from "uid";
 import StyledModal from "./StyledComponents/StyledModal";
 import {
