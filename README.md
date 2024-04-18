@@ -22,3 +22,5 @@ You can use the following commands:
 
   
 ### Technologies & Tools
+
+- Basic Stack: “React”, “Next.js”, “Styled Components”
