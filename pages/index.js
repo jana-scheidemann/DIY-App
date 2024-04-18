@@ -1,51 +1,10 @@
 import Project from "@/components/Project";
 import styled from "styled-components";
-import Navigation from "@/components/Navigation";
 import { useState } from "react";
-import ModalSort from "@/components/ModalSort";
-import ModalFilter from "@/components/ModalFilter";
 import Fuse from "fuse.js";
-import StyledButton from "@/components/StyledComponents.js/StyledButtons";
 
-export default function HomePage({
-  projects,
-  onFilterProjects,
-  onResetFilters,
-  onSortProjectsByComplexityStartHigh,
-  onSortProjectsByComplexityStartLow,
-  onSortProjectsByDuration,
-  onToggleFavorite,
-  onAddProject,
-}) {
-  const [modalSort, setModalSort] = useState(false);
-  const [modalFilter, setModalFilter] = useState(false);
+export default function HomePage({ projects, onToggleFavorite, isHidden }) {
   const [query, setQuery] = useState("");
-  const [isHidden, setIsHidden] = useState(true);
-
-  function toggleSortModal() {
-    setModalSort(!modalSort);
-  }
-
-  function handleSortComplexityStartHigh() {
-    onSortProjectsByComplexityStartHigh();
-    toggleSortModal();
-  }
-  function handleSortComplexityStartLow() {
-    onSortProjectsByComplexityStartLow();
-    toggleSortModal();
-  }
-  function handleSortDuration(direction) {
-    onSortProjectsByDuration(direction);
-    toggleSortModal();
-  }
-
-  function toggleFilterModal() {
-    setModalFilter(!modalFilter);
-  }
-
-  function showSearchField() {
-    setIsHidden(!isHidden);
-  }
 
   const fuse = new Fuse(projects, {
     keys: ["title", "description", "materials", "steps.desc"],
@@ -65,30 +24,6 @@ export default function HomePage({
 
   return (
     <>
-      <StyledHeadline>DIY APP</StyledHeadline>
-      <Navigation
-        onAddProject={onAddProject}
-        toggleSortModal={toggleSortModal}
-        toggleFilterModal={toggleFilterModal}
-        showSearchField={showSearchField}
-      />
-
-      {modalSort && (
-        <ModalSort
-          onToggleSortModal={toggleSortModal}
-          onSortComplexityStartHigh={handleSortComplexityStartHigh}
-          onSortComplexityStartLow={handleSortComplexityStartLow}
-          onSortDuration={handleSortDuration}
-        />
-      )}
-
-      {modalFilter && (
-        <ModalFilter
-          toggleFilterModal={toggleFilterModal}
-          onFilterProjects={onFilterProjects}
-          onResetFilters={onResetFilters}
-        />
-      )}
       <StyledSearchField>
         <label htmlFor="search" hidden={isHidden}>
           Search
@@ -102,7 +37,7 @@ export default function HomePage({
           placeholder="... for title, material etc."
           value={query}
           onChange={handleSearch}
-        ></input>
+        />
       </StyledSearchField>
 
       <StyledSection>
@@ -131,10 +66,6 @@ const StyledSection = styled.section`
   margin: 10px;
   background-color: var(--background-color);
   border-radius: 20px;
-  `;
-
-const StyledHeadline = styled.h1`
-  text-align: center;
 `;
 
 const StyledSearchField = styled.article`

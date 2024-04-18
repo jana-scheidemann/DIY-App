@@ -12,9 +12,19 @@ export default function FavoriteButton({ onToggleFavorite, id, isFavorite }) {
   return (
     <StyledFavButton type="button" onClick={() => handleToggle(id)}>
       {favorite ? (
-        <Image src={"/icons/heart_filled.png"} width={30}  height={30} alt= {"heart icon"}/>
+        <Image
+          src={"/icons/heart_red.png"}
+          width={30}
+          height={30}
+          alt={"heart icon"}
+        />
       ) : (
-        <Image src={"/icons/heart_empty.png"} width={30}  height={30} alt= {"heart icon"}/>
+        <Image
+          src={"/icons/heart_empty.png"}
+          width={30}
+          height={30}
+          alt={"heart icon"}
+        />
       )}
     </StyledFavButton>
   );

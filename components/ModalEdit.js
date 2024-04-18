@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { uid } from "uid";
-import StyledModal from "./StyledComponents.js/StyledModal";
+import StyledModal from "./StyledComponents/StyledModal";
 
 export default function ModalEdit({ currentProject, onSave, onCancel }) {
   const [updateProject, setUpdateProject] = useState(currentProject);
@@ -85,6 +85,7 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
               size="40"
               value={updateProject.title}
               onChange={handleChange}
+              maxLength={50}
               required
             />
           </label>

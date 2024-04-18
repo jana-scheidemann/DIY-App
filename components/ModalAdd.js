@@ -1,11 +1,11 @@
-import StyledModal from "./StyledComponents.js/StyledModal";
+import StyledModal from "./StyledComponents/StyledModal";
 import ProjectFormNew from "@/components/ProjectFormNew";
 
 export default function ModalAdd({ onAddProject, onToggleAddModal }) {
   return (
     <StyledModal>
       <ProjectFormNew
-        onSubmit={onAddProject}
+        onAddProject={onAddProject}
         onToggleAddModal={onToggleAddModal}
       />
     </StyledModal>

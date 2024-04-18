@@ -2,34 +2,58 @@ import { uid } from "uid";
 import { useState } from "react";
 import { initialProjects } from "@/db/data";
 import GlobalStyle from "../styles";
-import Navigation from "../components/Navigation";
-import { StyledGlobalContainer } from "@/components/StyledComponents.js/StyledGlobalContainer";
+import StyledGlobalContainer from "@/components/StyledComponents/StyledGlobalContainer";
+import Link from "next/link";
+import StyledModal from "@/components/StyledComponents/StyledModal";
+import ModalSort from "@/components/ModalSort";
+import ModalFilter from "@/components/ModalFilter";
+import styled from "styled-components";
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
   const [projectFilter, setProjectFilter] = useState({});
+  const [modalSort, setModalSort] = useState(false);
+  const [modalFilter, setModalFilter] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
 
+  // --- ADD, DELETE, EDIT ---
   function handleAddProject(newProject) {
     setProjects([{ id: uid(), ...newProject }, ...projects]);
   }
   function handleDeleteProject(id) {
     setProjects(projects.filter((project) => project.id !== id));
   }
+  function handleEditProject(updatedProject) {
+    setProjects(
+      projects.map((project) =>
+        project.id === updatedProject.id ? updatedProject : project
+      )
+    );
+  }
+
+  // --- SORT ---
+  function toggleSortModal() {
+    setModalSort(!modalSort);
+  }
 
   const complexityOrder = { Beginner: 0, Intermediate: 1, Advanced: 2 };
-  function handleSortProjectsByComplexityStartHigh() {
+
+  function handleSortComplexityStartHigh() {
     setProjects(
       projects.toSorted((a, b) => {
         return complexityOrder[b.complexity] - complexityOrder[a.complexity];
       })
     );
+    toggleSortModal();
   }
-  function handleSortProjectsByComplexityStartLow() {
+
+  function handleSortComplexityStartLow() {
     setProjects(
       projects.toSorted((a, b) => {
         return complexityOrder[a.complexity] - complexityOrder[b.complexity];
       })
     );
+    toggleSortModal();
   }
 
   function durationToHours(duration) {
@@ -47,7 +71,8 @@ export default function App({ Component, pageProps }) {
     }
     return duration;
   }
-  function handleSortProjectsByDuration(direction = "long") {
+
+  function handleSortDuration(direction) {
     setProjects(
       projects.toSorted((a, b) => {
         const durationA = durationToHours(a.duration);
@@ -57,8 +82,13 @@ export default function App({ Component, pageProps }) {
           : durationA - durationB;
       })
     );
+    toggleSortModal();
   }
 
+  // --- FILTER ---
+  function toggleFilterModal() {
+    setModalFilter(!modalFilter);
+  }
   function resetProjectFilter() {
     setProjectFilter({});
   }
@@ -91,6 +121,12 @@ export default function App({ Component, pageProps }) {
   const displayedProjects =
     Object.keys(projectFilter) === 0 ? projects : filteredProjects;
 
+  // --- SEARCH ---
+  function showSearchField() {
+    setIsHidden(!isHidden);
+  }
+
+  // --- FAVORITE ---
   function handleToggleFavorite(id) {
     setProjects(
       projects.map((project) =>
@@ -100,37 +136,63 @@ export default function App({ Component, pageProps }) {
       )
     );
   }
-  function handleEditProject(updatedProject) {
-    setProjects(
-      projects.map((project) =>
-        project.id === updatedProject.id ? updatedProject : project
-      )
-    );
-  }
 
   return (
     <>
-      <StyledGlobalContainer >
-        <Navigation onAddProject={handleAddProject} />
+      <StyledGlobalContainer
+        onResetFilters={resetProjectFilter}
+        onAddProject={handleAddProject}
+        toggleSortModal={toggleSortModal}
+        toggleFilterModal={toggleFilterModal}
+        showSearchField={showSearchField}
+      >
         <GlobalStyle />
         <Component
           {...pageProps}
           projects={displayedProjects}
-          onAddProject={handleAddProject}
+          showSearchField={showSearchField}
           onDeleteProject={handleDeleteProject}
           onFilterProjects={handleProjectFilter}
           onResetFilters={resetProjectFilter}
-          onSortProjectsByComplexityStartHigh={
-            handleSortProjectsByComplexityStartHigh
-          }
-          onSortProjectsByComplexityStartLow={
-            handleSortProjectsByComplexityStartLow
-          }
-          onSortProjectsByDuration={handleSortProjectsByDuration}
           onToggleFavorite={handleToggleFavorite}
           onEditProject={handleEditProject}
+          isHidden={isHidden}
         />
+
+        {projects.length === 0 && (
+          <StyledModal>
+            <p>Oooops. No results for your filter. Try again.</p>
+            <StyledLink href={"/"} onClick={onResetFilters}>
+              Back to all Projects
+            </StyledLink>
+          </StyledModal>
+        )}
+
+        {modalSort && (
+          <ModalSort
+            onToggleSortModal={toggleSortModal}
+            onSortComplexityStartHigh={handleSortComplexityStartHigh}
+            onSortComplexityStartLow={handleSortComplexityStartLow}
+            onSortDuration={handleSortDuration}
+          />
+        )}
+
+        {modalFilter && (
+          <ModalFilter
+            toggleFilterModal={toggleFilterModal}
+            onFilterProjects={handleProjectFilter}
+            onResetFilters={resetProjectFilter}
+          />
+        )}
       </StyledGlobalContainer>
     </>
   );
 }
+
+const StyledLink = styled(Link)`
+  background-color: var(--background-color-blue);
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 0.5em;
+  border-radius: 0.5em;
+`;
