@@ -5,7 +5,6 @@ import GlobalStyle from "../styles";
 import StyledGlobalContainer from "@/components/StyledComponents/StyledGlobalContainer";
 import Link from "next/link";
 import StyledModal from "@/components/StyledComponents/StyledModal";
-import ModalSort from "@/components/ModalSort";
 import ModalFilter from "@/components/ModalFilter";
 import styled from "styled-components";
 import Fuse from "fuse.js";
@@ -34,10 +33,6 @@ export default function App({ Component, pageProps }) {
   }
 
   // --- SORT ---
-  function toggleSortModal() {
-    setModalSort(!modalSort);
-  }
-
   const complexityOrder = { Beginner: 0, Intermediate: 1, Advanced: 2 };
 
   function handleSortComplexityStartHigh() {
@@ -46,7 +41,6 @@ export default function App({ Component, pageProps }) {
         return complexityOrder[b.complexity] - complexityOrder[a.complexity];
       })
     );
-    toggleSortModal();
   }
 
   function handleSortComplexityStartLow() {
@@ -55,7 +49,6 @@ export default function App({ Component, pageProps }) {
         return complexityOrder[a.complexity] - complexityOrder[b.complexity];
       })
     );
-    toggleSortModal();
   }
 
   function durationToHours(duration) {
@@ -73,7 +66,6 @@ export default function App({ Component, pageProps }) {
     }
     return duration;
   }
-
   function handleSortDuration(direction) {
     setProjects(
       projects.toSorted((a, b) => {
@@ -84,13 +76,9 @@ export default function App({ Component, pageProps }) {
           : durationA - durationB;
       })
     );
-    toggleSortModal();
   }
 
   // --- FILTER ---
-  function toggleFilterModal() {
-    setModalFilter(!modalFilter);
-  }
   function resetProjectFilter() {
     setProjectFilter({});
   }
@@ -124,9 +112,6 @@ export default function App({ Component, pageProps }) {
     Object.keys(projectFilter) === 0 ? projects : filteredProjects;
 
   // --- SEARCH ---
-  function showSearchField() {
-    setIsHidden(!isHidden);
-  }
   const fuse = new Fuse(projects, {
     keys: ["title", "description", "materials", "steps.desc"],
     includeScore: true,
@@ -159,9 +144,6 @@ export default function App({ Component, pageProps }) {
       <StyledGlobalContainer
         onResetFilters={resetProjectFilter}
         onAddProject={handleAddProject}
-        toggleSortModal={toggleSortModal}
-        toggleFilterModal={toggleFilterModal}
-        showSearchField={showSearchField}
       >
         <GlobalStyle />
         <Component
@@ -170,12 +152,14 @@ export default function App({ Component, pageProps }) {
           searchResults={searchResults}
           query={query}
           handleSearch={handleSearch}
-          showSearchField={showSearchField}
           onDeleteProject={handleDeleteProject}
           onFilterProjects={handleProjectFilter}
           onResetFilters={resetProjectFilter}
           onToggleFavorite={handleToggleFavorite}
           onEditProject={handleEditProject}
+          onSortComplexityStartHigh={handleSortComplexityStartHigh}
+          onSortComplexityStartLow={handleSortComplexityStartLow}
+          onSortDuration={handleSortDuration}
         />
 
         {projects.length === 0 && (
@@ -185,15 +169,6 @@ export default function App({ Component, pageProps }) {
               Back to all Projects
             </StyledLink>
           </StyledModal>
-        )}
-
-        {modalSort && (
-          <ModalSort
-            onToggleSortModal={toggleSortModal}
-            onSortComplexityStartHigh={handleSortComplexityStartHigh}
-            onSortComplexityStartLow={handleSortComplexityStartLow}
-            onSortDuration={handleSortDuration}
-          />
         )}
 
         {modalFilter && (

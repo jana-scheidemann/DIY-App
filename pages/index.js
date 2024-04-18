@@ -5,12 +5,21 @@ import SearchField from "@/components/SearchField";
 export default function HomePage({
   handleSearch,
   query,
+  onSortComplexityStartHigh,
+  onSortComplexityStartLow,
+  onSortDuration,
   searchResults,
   onToggleFavorite,
 }) {
   return (
     <>
-      <SearchField handleSearch={handleSearch} query={query} />
+      <SearchField
+        handleSearch={handleSearch}
+        query={query}
+        onSortComplexityStartHigh={onSortComplexityStartHigh}
+        onSortComplexityStartLow={onSortComplexityStartLow}
+        onSortDuration={onSortDuration}
+      />
       <StyledSection>
         {searchResults.map((project) => (
           <Project
