@@ -2,6 +2,11 @@ import Project from "@/components/Project";
 import styled from "styled-components";
 import { useState } from "react";
 import Fuse from "fuse.js";
+import { StyledSection } from "@/components/StyledComponents/StyledSection";
+import {
+  StyledInputSearch,
+  StyledInputSearchField,
+} from "@/components/StyledComponents/StyledInput";
 
 export default function HomePage({ projects, onToggleFavorite, isHidden }) {
   const [query, setQuery] = useState("");
@@ -34,7 +39,7 @@ export default function HomePage({ projects, onToggleFavorite, isHidden }) {
           id="search"
           name="search"
           size={30}
-          placeholder="... for title, material etc."
+          placeholder="search for title, material etc."
           value={query}
           onChange={handleSearch}
         />
@@ -45,6 +50,8 @@ export default function HomePage({ projects, onToggleFavorite, isHidden }) {
           <Project
             key={project.id}
             title={project.title}
+            image={project.image}
+            description={project.description}
             slug={project.slug}
             duration={project.duration}
             complexity={project.complexity}
