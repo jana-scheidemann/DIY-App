@@ -86,6 +86,10 @@ export default function App({ Component, pageProps }) {
     setProjectFilter(filterData);
   }
 
+  // function toggleFilterModal() {
+  //   setModalFilter(!modalFilter);
+  // }
+
   const filteredProjects = projects.filter((project) => {
     let durationMatch = true;
     if (projectFilter.duration) {
@@ -121,7 +125,9 @@ export default function App({ Component, pageProps }) {
     ignoreFieldNorm: true,
   });
   const results = fuse.search(query);
-  const searchResults = query ? results.map((result) => result.item) : projects;
+  const searchResults = query
+    ? results.map((result) => result.item)
+    : displayedProjects;
 
   function handleSearch(event) {
     const { value } = event.target;
@@ -171,13 +177,13 @@ export default function App({ Component, pageProps }) {
           </StyledModal>
         )}
 
-        {modalFilter && (
+        {/* {modalFilter && (
           <ModalFilter
             toggleFilterModal={toggleFilterModal}
             onFilterProjects={handleProjectFilter}
             onResetFilters={resetProjectFilter}
           />
-        )}
+        )} */}
       </StyledGlobalContainer>
     </>
   );

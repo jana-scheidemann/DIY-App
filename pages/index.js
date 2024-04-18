@@ -10,6 +10,9 @@ export default function HomePage({
   onSortDuration,
   searchResults,
   onToggleFavorite,
+  onFilterProjects,
+  onResetFilters,
+  // toggleFilterModal,
 }) {
   return (
     <>
@@ -19,6 +22,9 @@ export default function HomePage({
         onSortComplexityStartHigh={onSortComplexityStartHigh}
         onSortComplexityStartLow={onSortComplexityStartLow}
         onSortDuration={onSortDuration}
+        onFilterProjects={onFilterProjects}
+        onResetFilters={onResetFilters}
+        // toggleFilterModal={toggleFilterModal}
       />
       <StyledSection>
         {searchResults.map((project) => (
