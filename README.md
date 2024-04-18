@@ -1,4 +1,4 @@
-## DIY APP Project
+# DIY APP Project
 
 Introducing The DIY APP, your go-to app for sharing and managing DIY projects! Whether you're a crafting enthusiast or just starting your DIY journey, our app is designed to make your creative experience seamless and enjoyable.
 
