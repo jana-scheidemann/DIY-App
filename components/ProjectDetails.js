@@ -1,12 +1,22 @@
 import styled from "styled-components";
+import { useState } from "react";
+import router from "next/router";
 import Image from "next/image";
 import ModalDelete from "@/components/ModalDelete";
 import ModalEdit from "@/components/ModalEdit";
-import { useState } from "react";
-import router from "next/router";
 import FavoriteButton from "./FavoriteButton";
-import StyledButton from "./StyledComponents.js/StyledButtons";
-import Link from "next/link";
+import { StyledButtonLink } from "./StyledComponents/StyledButton";
+import { StyledButton } from "./StyledComponents/StyledButton";
+import {
+  StyledArticle,
+  StyledArticleHeadlineH2,
+  StyledArticleHeadlineH3,
+  StyledArticleDescription,
+  StyledArticleTags,
+  StyledArticleTag,
+  StyledArticleTagDescription,
+} from "./StyledComponents/StyledArticle";
+import { StyledInputSearchDummy } from "./StyledComponents/StyledInput";
 
 export default function ProjectDetails({
   currentProject,
@@ -25,7 +35,6 @@ export default function ProjectDetails({
     complexity,
     steps,
     image,
-    favorite,
   } = currentProject;
 
   function handleEdit() {
@@ -57,19 +66,18 @@ export default function ProjectDetails({
 
   return (
     <>
-      <StyledHeadline>DIY APP</StyledHeadline>
-      <StyledProjectTitleContainer>
-        <StyledHeadline2>{title}</StyledHeadline2>
+      <StyledInputSearchDummy />
+
+      <StyledArticle>
+        <StyledArticleHeadlineH2>{title}</StyledArticleHeadlineH2>
         <FavoriteButton
           id={id}
           onToggleFavorite={onToggleFavorite}
           isFavorite={currentProject.favorite}
         />
-      </StyledProjectTitleContainer>
-      <StyledProjectDetailsContainer>
-        <h4>Duration: {duration}</h4>
-        <h4>Complexity: {complexity}</h4>
-      </StyledProjectDetailsContainer>
+      </StyledArticle>
+
+      <StyledArticleDescription>{description}</StyledArticleDescription>
 
       <Image
         style={{ marginBlockStart: "1.33em" }}
@@ -77,25 +85,30 @@ export default function ProjectDetails({
         width={320}
         height={213}
         layout="responsive"
-        alt="dummy image with nails and hammer"
+        alt="dummy image"
       />
 
-      <h4>Description:</h4>
-      <StyledDescription>{description}</StyledDescription>
-      <h4>Materials:</h4>
+      <StyledArticleTags>
+        <StyledArticleTagDescription>Duration: </StyledArticleTagDescription>
+        <StyledArticleTag>{duration}</StyledArticleTag>
+        <StyledArticleTagDescription>Complexity: </StyledArticleTagDescription>
+        <StyledArticleTag>{complexity}</StyledArticleTag>
+      </StyledArticleTags>
+
+      <StyledArticleHeadlineH3>Materials:</StyledArticleHeadlineH3>
       <ul>
         {materials.map((material, index) => (
           <li key={index}>{material}</li>
         ))}
       </ul>
-      <h4>Steps:</h4>
+      <StyledArticleHeadlineH3>Steps:</StyledArticleHeadlineH3>
       <ol>
         {steps.map((step) => (
           <li key={step.id}>{step.desc}</li>
         ))}
       </ol>
       <StyledProjectDetailsContainer>
-        <StyledLink href={"/"}>Back to all Projects</StyledLink>
+        <StyledButtonLink href={"/"}>Back</StyledButtonLink>
         <StyledButton onClick={handleEdit}>Edit</StyledButton>
         <StyledButton onClick={handleDelete}>Delete</StyledButton>
       </StyledProjectDetailsContainer>
@@ -117,47 +130,10 @@ export default function ProjectDetails({
   );
 }
 
-const StyledHeadline = styled.h1`
-  text-align: center;
-`;
-
-const StyledHeadline2 = styled.h2`
-  //background-color: var(--background-color-blue);
-  text-align: left;
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 20px;
-  margin: 0;
-`;
-
 const StyledProjectDetailsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   text-align: center;
-`;
-
-const StyledProjectTitleContainer = styled.div`
-  background-color: var(--background-color-blue);
-  display: flex;
-  justify-content: space-between;
-  border-radius: 15px;
-`;
-
-const StyledDescription = styled.p`
-  padding-left: 40px;
-`;
-
-const StyledLink = styled(Link)`
-  background-color: var(--background-color-blue);
-  color: var(--text-color);
-  font-size: 14px;
-  border-radius: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  padding: 5px;
-  margin: 5px 0;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  margin: 20px 0px 20px 0px;
+  padding: 0px 20px 0px 20px;
 `;

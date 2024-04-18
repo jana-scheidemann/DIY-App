@@ -1,7 +1,21 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { uid } from "uid";
-import StyledModal from "./StyledComponents.js/StyledModal";
+import StyledModal from "./StyledComponents/StyledModal";
+import {
+  StyledInputModal,
+  StyledFormContainer,
+  StyledRadioButton,
+  StyledRadioButtonLabel,
+  StyledCheckbox,
+  StyledCheckboxLabel,
+} from "./StyledComponents/StyledInput";
+import { StyledButton } from "./StyledComponents/StyledButton";
+import {
+  StyledHeadlineH3,
+  StyledHeadlineH4,
+  StyledHeadlineH5,
+} from "./StyledComponents/StyledHeadline";
 
 export default function ModalEdit({ currentProject, onSave, onCancel }) {
   const [updateProject, setUpdateProject] = useState(currentProject);
@@ -73,63 +87,61 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
 
   return (
     <StyledModal>
-      <StyledContainerForm>
-        <form onSubmit={handleSubmit}>
-          <StyledHeading>Edit Project</StyledHeading>
-          <label htmlFor="title">
-            <StyledTitle>Title</StyledTitle>
-            <StyledInput
-              type="text"
-              name="title"
-              id="title"
-              size="40"
-              value={updateProject.title}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label htmlFor="description">
-            <StyledTitle>Description</StyledTitle>
-            <StyledInput
-              type="text"
-              name="description"
-              id="description"
-              size="40"
-              value={updateProject.description}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <label htmlFor="materials">
-            <StyledTitle>Materials</StyledTitle>
-            <StyledInput
-              type="text"
-              name="materials"
-              id="materials"
-              size="40"
-              value={updateMaterials}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <label htmlFor="duration">
-            <StyledTitle>Duration</StyledTitle>
-            <StyledInput
-              type="text"
-              name="duration"
-              id="duration"
-              size="40"
-              value={updateProject.duration}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <StyledTitle>Complexity</StyledTitle>
-          {complexityLevels.map((complexityLevel) => (
-            <div key={complexityLevel}>
-              <input
+      <StyledFormContainer onSubmit={handleSubmit}>
+        <StyledHeadlineH3>Edit Project</StyledHeadlineH3>
+        <label htmlFor="title">
+          <StyledHeadlineH4>Title</StyledHeadlineH4>
+        </label>
+        <StyledInputModal
+          type="text"
+          name="title"
+          id="title"
+          size="40"
+          value={updateProject.title}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="description">
+          <StyledHeadlineH4>Description</StyledHeadlineH4>
+        </label>
+        <StyledInputModal
+          type="text"
+          name="description"
+          id="description"
+          size="40"
+          value={updateProject.description}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="materials">
+          <StyledHeadlineH4>Materials</StyledHeadlineH4>
+        </label>
+        <StyledInputModal
+          type="text"
+          name="materials"
+          id="materials"
+          size="40"
+          value={updateMaterials}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="duration">
+          <StyledHeadlineH4>Duration</StyledHeadlineH4>
+        </label>
+        <StyledInputModal
+          type="text"
+          name="duration"
+          id="duration"
+          size="40"
+          value={updateProject.duration}
+          onChange={handleChange}
+          required
+        />
+        <StyledHeadlineH4>Complexity</StyledHeadlineH4>
+        {complexityLevels.map((complexityLevel) => (
+          <div key={complexityLevel}>
+            <StyledRadioButtonLabel htmlFor={complexityLevel}>
+              <StyledRadioButton
                 type="radio"
                 name="complexity"
                 id={complexityLevel}
@@ -137,41 +149,31 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
                 defaultChecked={updateProject.complexity === complexityLevel}
                 onChange={handleChange}
               />
-              <label htmlFor={complexityLevel}>{complexityLevel}</label>
-            </div>
-          ))}
-          <StyledTitle>Steps</StyledTitle>
-          {updateSteps ? (
-            <>
-              <StyledContainerSteps>
-                <ul>
-                  <li>To add a step, click the &quot;Add Step&quot; button</li>
-                  <li>
-                    To delete a step, select the checkbox of the step to delete
-                    and confirm the deletetion by clicking the &quot;Delete
-                    Step&quot; button
-                  </li>
-                </ul>
-              </StyledContainerSteps>
-              <button onClick={handleStepAdd}>Add Step</button>
-              <button onClick={handleStepDelete}>Delete Step</button>
-              <button onClick={handleStepEditCancel}>Close Update Steps</button>
-            </>
-          ) : (
-            <button onClick={handleStepEdit}>Update Steps</button>
-          )}
-          {updateProject.steps.map((step, stepIndex) => (
-            <div key={step.id}>
-              <label htmlFor={`step${stepIndex + 1}`}>
-                <StyledTitleStep>Step {stepIndex + 1} &nbsp;</StyledTitleStep>
-              </label>
+              {complexityLevel}
+            </StyledRadioButtonLabel>
+          </div>
+        ))}
+        <StyledHeadlineH4>Steps</StyledHeadlineH4>
+        {updateSteps ? (
+          <p>
+            <StyledButton onClick={handleStepAdd}>Add</StyledButton>
+            <StyledButton onClick={handleStepDelete}>Delete</StyledButton>
+            <StyledButton onClick={handleStepEditCancel}>Close</StyledButton>
+          </p>
+        ) : (
+          <StyledButton onClick={handleStepEdit}>Update</StyledButton>
+        )}
+        {updateProject.steps.map((step, stepIndex) => (
+          <div key={step.id}>
+            <StyledHeadlineH5>Step {stepIndex + 1} &nbsp;</StyledHeadlineH5>
+            <StyledCheckboxLabel htmlFor={`step${stepIndex + 1}`}>
               {updateSteps && (
-                <input
+                <StyledCheckbox
                   type="checkbox"
                   onChange={() => handleStepSelect(step.id)}
                 />
               )}
-              <StyledInput
+              <StyledInputModal
                 type="text"
                 name={`step${stepIndex + 1}`}
                 id={`step${stepIndex + 1}`}
@@ -188,47 +190,15 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
                 }
                 size="40"
               />
-            </div>
-          ))}
-          <p>
-            <StyledTitle>Confirm Changes</StyledTitle>
-            <button type="submit">Update Project</button>
-            <button onClick={onCancel}>Cancel Update Project</button>
-          </p>
-        </form>
-      </StyledContainerForm>
+            </StyledCheckboxLabel>
+          </div>
+        ))}
+        <p>
+          <StyledHeadlineH4>Confirm Changes</StyledHeadlineH4>
+          <StyledButton type="submit">Save</StyledButton>
+          <StyledButton onClick={onCancel}>Cancel</StyledButton>
+        </p>
+      </StyledFormContainer>
     </StyledModal>
   );
 }
-const StyledContainerForm = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-`;
-
-const StyledContainerSteps = styled.div`
-  width: 60%;
-`;
-
-const StyledHeading = styled.div`
-  font-size: 48px;
-  font-weight: bold;
-  margin: 0 0 0.2em 0;
-`;
-
-const StyledTitle = styled.div`
-  font-size: 2.7em;
-  font-weight: bold;
-  margin: 1em 0 0.2em 0;
-`;
-
-const StyledTitleStep = styled.div`
-  font-size: 14px;
-  margin: 0.5em 0 0.2em 0;
-`;
-
-const StyledInput = styled.input`
-  width: 90%;
-  box-sizing: border-box;
-  padding: 0.3em 0.3em 0.3em 0.2em;
-`;
