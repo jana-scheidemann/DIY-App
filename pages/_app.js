@@ -5,16 +5,12 @@ import GlobalStyle from "../styles";
 import StyledGlobalContainer from "@/components/StyledComponents/StyledGlobalContainer";
 import Link from "next/link";
 import StyledModal from "@/components/StyledComponents/StyledModal";
-import ModalFilter from "@/components/ModalFilter";
 import styled from "styled-components";
 import Fuse from "fuse.js";
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
   const [projectFilter, setProjectFilter] = useState({});
-  const [modalSort, setModalSort] = useState(false);
-  const [modalFilter, setModalFilter] = useState(false);
-  const [isHidden, setIsHidden] = useState(true);
   const [query, setQuery] = useState("");
 
   // --- ADD, DELETE, EDIT ---
@@ -85,10 +81,6 @@ export default function App({ Component, pageProps }) {
   function handleProjectFilter(filterData) {
     setProjectFilter(filterData);
   }
-
-  // function toggleFilterModal() {
-  //   setModalFilter(!modalFilter);
-  // }
 
   const filteredProjects = projects.filter((project) => {
     let durationMatch = true;
@@ -168,22 +160,14 @@ export default function App({ Component, pageProps }) {
           onSortDuration={handleSortDuration}
         />
 
-        {projects.length === 0 && (
+        {displayedProjects.length === 0 && (
           <StyledModal>
             <p>Oooops. No results for your filter. Try again.</p>
-            <StyledLink href={"/"} onClick={onResetFilters}>
+            <StyledLink href={"/"} onClick={resetProjectFilter}>
               Back to all Projects
             </StyledLink>
           </StyledModal>
         )}
-
-        {/* {modalFilter && (
-          <ModalFilter
-            toggleFilterModal={toggleFilterModal}
-            onFilterProjects={handleProjectFilter}
-            onResetFilters={resetProjectFilter}
-          />
-        )} */}
       </StyledGlobalContainer>
     </>
   );

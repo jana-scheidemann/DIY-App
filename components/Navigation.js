@@ -4,14 +4,8 @@ import { useState } from "react";
 import ModalAdd from "./ModalAdd";
 import Image from "next/image";
 
-export default function Navigation({
-  onAddProject,
-  toggleSortModal,
-  toggleFilterModal,
-  showSearchField,
-}) {
+export default function Navigation({ onAddProject }) {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
-  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
 
   function toggleNavigation() {
@@ -25,46 +19,18 @@ export default function Navigation({
   function closeAddModal() {
     setModalAdd(!modalAdd);
   }
-  function toggleSearchBar() {
-    setIsSearchBarOpen(!isSearchBarOpen);
-  }
-
-  function openSearch() {
-    toggleSearchBar();
-    showSearchField();
-  }
-
-  function openSortModal() {
-    toggleSearchBar();
-    toggleSortModal();
-  }
-
-  function openFilterModal() {
-    toggleSearchBar();
-    toggleFilterModal();
-  }
 
   return (
     <>
       {!isNavigationOpen && (
-        <>
-          <StyledSearchMenu onClick={toggleSearchBar}>
-            <Image
-              src={"/icons/search.png"}
-              width={35}
-              height={35}
-              alt={"search icon"}
-            />
-          </StyledSearchMenu>
-          <StyledNavigationMenu onClick={toggleNavigation}>
-            <Image
-              src={"/icons/burger_menu.png"}
-              width={35}
-              height={35}
-              alt={"burger menu icon"}
-            />
-          </StyledNavigationMenu>
-        </>
+        <StyledNavigationMenu onClick={toggleNavigation}>
+          <Image
+            src={"/icons/burger_menu.png"}
+            width={35}
+            height={35}
+            alt={"burger menu icon"}
+          />
+        </StyledNavigationMenu>
       )}
 
       {isNavigationOpen && (
@@ -98,20 +64,6 @@ export default function Navigation({
           onToggleAddModal={closeAddModal}
         />
       )}
-
-      {isSearchBarOpen && (
-        <StyledSearchBar>
-          <StyledNavigationLink href="/" onClick={openSearch}>
-            Search
-          </StyledNavigationLink>
-          <StyledNavigationLink href="/" onClick={openSortModal}>
-            Sort Projects
-          </StyledNavigationLink>
-          <StyledNavigationLink href="/" onClick={openFilterModal}>
-            Filter Projects
-          </StyledNavigationLink>
-        </StyledSearchBar>
-      )}
     </>
   );
 }
@@ -127,28 +79,6 @@ const StyledNavigationMenu = styled.div`
   top: 1rem;
   right: 2rem;
   cursor: pointer;
-`;
-
-const StyledSearchMenu = styled.div`
-  position: fixed;
-  top: 1rem;
-  right: 4rem;
-  cursor: pointer;
-  z-index: 200;
-`;
-
-const StyledSearchBar = styled.div`
-  position: fixed;
-  z-index: 200;
-  top: 3.5rem;
-  right: 4rem;
-  background-color: var(--text-color);
-  color: var(--background-color);
-  border: 1px solid black;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 `;
 
 const StyledNavigationMenuBar = styled.nav`

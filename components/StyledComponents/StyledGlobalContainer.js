@@ -6,9 +6,6 @@ export default function StyledGlobalContainer({
   children,
   onResetFilters,
   onAddProject,
-  toggleSortModal,
-  toggleFilterModal,
-  showSearchField,
 }) {
   return (
     <>
@@ -16,12 +13,7 @@ export default function StyledGlobalContainer({
         <StyledLink href={"/"} onClick={onResetFilters}>
           <StyledHeadline>DIY APP</StyledHeadline>
         </StyledLink>
-        <Navigation
-          onAddProject={onAddProject}
-          toggleSortModal={toggleSortModal}
-          toggleFilterModal={toggleFilterModal}
-          showSearchField={showSearchField}
-        />
+        <Navigation onAddProject={onAddProject} />
       </Header>
 
       <Body>{children}</Body>
