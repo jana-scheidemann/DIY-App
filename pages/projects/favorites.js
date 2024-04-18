@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Navigation from "@/components/Navigation";
 import Project from "@/components/Project";
+import { StyledSection } from "@/components/StyledComponents/StyledSection";
+import { StyledInputSearchDummy } from "@/components/StyledComponents/StyledInput";
 
 export default function FavoritesPage({ projects, onToggleFavorite }) {
   const favoriteProjects = projects.filter((project) => {
@@ -9,14 +9,15 @@ export default function FavoritesPage({ projects, onToggleFavorite }) {
 
   return (
     <>
-    <StyledHeadline>DIY APP</StyledHeadline>
-      <StyledHeadline>Favorite Projects</StyledHeadline>
-      <Navigation />
+      <StyledInputSearchDummy />
+
       <StyledSection>
         {favoriteProjects.map((project) => (
           <Project
             key={project.id}
             title={project.title}
+            image={project.image}
+            description={project.description}
             slug={project.slug}
             duration={project.duration}
             complexity={project.complexity}
@@ -29,14 +30,3 @@ export default function FavoritesPage({ projects, onToggleFavorite }) {
     </>
   );
 }
-
-const StyledSection = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-`;
-
-const StyledHeadline = styled.h1`
-  text-align: center;
-`;

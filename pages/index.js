@@ -1,11 +1,14 @@
 import Project from "@/components/Project";
-import styled from "styled-components";
 import Navigation from "@/components/Navigation";
 import { useState } from "react";
 import ModalSort from "@/components/ModalSort";
 import ModalFilter from "@/components/ModalFilter";
 import Fuse from "fuse.js";
-import StyledButton from "@/components/StyledComponents.js/StyledButtons";
+import { StyledSection } from "@/components/StyledComponents/StyledSection";
+import {
+  StyledInputSearch,
+  StyledInputSearchField,
+} from "@/components/StyledComponents/StyledInput";
 
 export default function HomePage({
   projects,
@@ -65,7 +68,6 @@ export default function HomePage({
 
   return (
     <>
-      <StyledHeadline>DIY APP</StyledHeadline>
       <Navigation
         onAddProject={onAddProject}
         toggleSortModal={toggleSortModal}
@@ -89,27 +91,27 @@ export default function HomePage({
           onResetFilters={onResetFilters}
         />
       )}
-      <StyledSearchField>
-        <label htmlFor="search" hidden={isHidden}>
-          Search
-        </label>
-        <input
+      <StyledInputSearch>
+        <label htmlFor="search" hidden={isHidden} />
+        <StyledInputSearchField
           type="search"
           hidden={isHidden}
           id="search"
           name="search"
           size={30}
-          placeholder="... for title, material etc."
+          placeholder="search for title, material etc."
           value={query}
           onChange={handleSearch}
-        ></input>
-      </StyledSearchField>
+        />
+      </StyledInputSearch>
 
       <StyledSection>
         {searchResults.map((project) => (
           <Project
             key={project.id}
             title={project.title}
+            image={project.image}
+            description={project.description}
             slug={project.slug}
             duration={project.duration}
             complexity={project.complexity}
@@ -122,24 +124,3 @@ export default function HomePage({
     </>
   );
 }
-
-const StyledSection = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin: 10px;
-  background-color: var(--background-color);
-  border-radius: 20px;
-  `;
-
-const StyledHeadline = styled.h1`
-  text-align: center;
-`;
-
-const StyledSearchField = styled.article`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
