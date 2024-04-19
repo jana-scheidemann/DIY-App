@@ -1,15 +1,35 @@
 import Project from "@/components/Project";
+import SearchField from "@/components/SearchField";
 import { StyledSection } from "@/components/StyledComponents/StyledSection";
-import { StyledInputSearchDummy } from "@/components/StyledComponents/StyledInput";
+import { StyledHeadlineH3 } from "@/components/StyledComponents/StyledHeadline";
 
-export default function FavoritesPage({ projects, onToggleFavorite }) {
-  const favoriteProjects = projects.filter((project) => {
+export default function FavoritesPage({
+  searchResults,
+  handleSearch,
+  query,
+  onSortComplexityStartHigh,
+  onSortComplexityStartLow,
+  onSortDuration,
+  onToggleFavorite,
+  onFilterProjects,
+  onResetFilters,
+}) {
+  const favoriteProjects = searchResults.filter((project) => {
     return project.favorite;
   });
 
   return (
     <>
-      <StyledInputSearchDummy />
+      <SearchField
+        handleSearch={handleSearch}
+        query={query}
+        onSortComplexityStartHigh={onSortComplexityStartHigh}
+        onSortComplexityStartLow={onSortComplexityStartLow}
+        onSortDuration={onSortDuration}
+        onFilterProjects={onFilterProjects}
+        onResetFilters={onResetFilters}
+      />
+      <StyledHeadlineH3>Favorite Projects</StyledHeadlineH3>
 
       <StyledSection>
         {favoriteProjects.map((project) => (

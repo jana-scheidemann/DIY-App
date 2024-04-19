@@ -1,46 +1,30 @@
 import Project from "@/components/Project";
 import styled from "styled-components";
-import { useState } from "react";
-import Fuse from "fuse.js";
+import SearchField from "@/components/SearchField";
 import { StyledSection } from "@/components/StyledComponents/StyledSection";
-import {
-  StyledInputSearch,
-  StyledInputSearchField,
-} from "@/components/StyledComponents/StyledInput";
 
-export default function HomePage({ projects, onToggleFavorite, isHidden }) {
-  const [query, setQuery] = useState("");
-
-  const fuse = new Fuse(projects, {
-    keys: ["title", "description", "materials", "steps.desc"],
-    includeScore: true,
-    threshold: 0.3,
-    shouldSort: true,
-    ignoreLocation: true,
-    ignoreFieldNorm: true,
-  });
-  const results = fuse.search(query);
-  const searchResults = query ? results.map((result) => result.item) : projects;
-
-  function handleSearch(event) {
-    const { value } = event.target;
-    setQuery(value);
-  }
-
+export default function HomePage({
+  handleSearch,
+  query,
+  onSortComplexityStartHigh,
+  onSortComplexityStartLow,
+  onSortDuration,
+  searchResults,
+  onToggleFavorite,
+  onFilterProjects,
+  onResetFilters,
+}) {
   return (
     <>
-      <StyledInputSearch htmlFor="search" hidden={isHidden}>
-        <StyledInputSearchField
-          type="search"
-          hidden={isHidden}
-          id="search"
-          name="search"
-          size={30}
-          placeholder="search for title, material etc."
-          value={query}
-          onChange={handleSearch}
-        />
-      </StyledInputSearch>
+      <SearchField
+        handleSearch={handleSearch}
+        query={query}
+        onSortComplexityStartHigh={onSortComplexityStartHigh}
+        onSortComplexityStartLow={onSortComplexityStartLow}
+        onSortDuration={onSortDuration}
+        onFilterProjects={onFilterProjects}
+        onResetFilters={onResetFilters}
+      />
 
       <StyledSection>
         {searchResults.map((project) => (

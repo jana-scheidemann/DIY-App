@@ -6,18 +6,12 @@ export default function StyledGlobalContainer({
   children,
   onResetFilters,
   onAddProject,
-  toggleSortModal,
-  toggleFilterModal,
-  showSearchField,
 }) {
   return (
     <>
       <PageHeader onResetFilters={onResetFilters} />
       <Navigation
         onAddProject={onAddProject}
-        toggleSortModal={toggleSortModal}
-        toggleFilterModal={toggleFilterModal}
-        showSearchField={showSearchField}
       />
       <Body>{children}</Body>
     </>
