@@ -14,7 +14,7 @@ export default function SearchField({
   const [isOpenSort, setIsOpenSort] = useState(false);
   const [isOpenFilter, setIsOpenFilter] = useState(false);
 
-  function handleChange(event) {
+  function handleSort(event) {
     event.preventDefault();
     const searchOption = event.target.value;
     if (searchOption === "duration-short") {
@@ -85,7 +85,7 @@ export default function SearchField({
           <>
             <label htmlFor="sort" />
 
-            <select name="sort" id="sort" onChange={handleChange}>
+            <select name="sort" id="sort" onChange={handleSort}>
               <option value="">-- choose sort option --</option>
               <option value="duration-short">Duration: short to long</option>
               <option value="duration-long">Duration: long to short</option>
