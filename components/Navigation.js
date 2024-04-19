@@ -23,24 +23,26 @@ export default function Navigation({ onAddProject }) {
   return (
     <>
       {!isNavigationOpen && (
-        <StyledNavigationMenu onClick={toggleNavigation}>
-          <Image
-            src={"/icons/burger_menu.png"}
-            width={35}
-            height={35}
-            alt={"burger menu icon"}
-          />
-        </StyledNavigationMenu>
+        <>
+          <StyledNavigationMenu onClick={toggleNavigation}>
+            <Image
+              src="/icons/burger-menu.svg"
+              width={50}
+              height={50}
+              alt="open navigation menu"
+            />
+          </StyledNavigationMenu>
+        </>
       )}
 
       {isNavigationOpen && (
         <StyledNavigationMenuBar>
           <StyledNavigationMenu onClick={toggleNavigation}>
             <Image
-              src={"/icons/cancel_light.png"}
-              width={35}
-              height={35}
-              alt={"cancel icon"}
+              src="/icons/cancel.svg"
+              width={50}
+              height={50}
+              alt="close navigation menu"
             />
           </StyledNavigationMenu>
           <StyledNavigationLink href="/" onClick={toggleNavigation}>
@@ -68,44 +70,44 @@ export default function Navigation({ onAddProject }) {
   );
 }
 
-const StyledNavigationLink = styled(Link)`
-  color: #b8b7ad;
-  font-size: 1.3rem;
-  margin: 0.4rem;
-`;
-
-const StyledNavigationMenu = styled.div`
-  position: fixed;
-  top: 1rem;
-  right: 2rem;
-  cursor: pointer;
-`;
-
 const StyledNavigationMenuBar = styled.nav`
   position: fixed;
   z-index: 300;
   top: 0;
   right: 0;
-  width: 45%;
-  height: 100vh;
-  background-color: var(--text-color);
-  color: var(--background-color);
-  padding: 80px 0 0 40px;
-  transition-duration: 1.2s;
-  animation-duration: 1.2s;
-  animation-name: slideInRight;
-
-  @keyframes slideInRight {
+  width: 100%;
+  height: 45%;
+  background-color: var(--burger-menu-background);
+  transition-duration: 0.6s;
+  animation-duration: 0.6s;
+  animation-name: slideDown;
+  @keyframes slideDown {
     from {
-      transform: translateX(100%);
+      transform: translateY(-100%);
     }
     to {
-      transform: translateX(0);
+      transform: translateY(0);
     }
   }
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+`;
+
+const StyledNavigationLink = styled(Link)`
+  color: var(--menu-color);
+  text-decoration: none;
+  margin: 20px 0 0 20px;
+  padding-top: 10px;
+  font-size: 1.9em;
+  font-weight: 500;
+  margin: 25px 0px 0px 30px;
+`;
+
+const StyledNavigationMenu = styled.div`
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
 `;

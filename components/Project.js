@@ -1,70 +1,61 @@
-import styled from "styled-components";
-import Link from "next/link";
 import FavoriteButton from "./FavoriteButton";
+import Image from "next/image";
+import { StyledLink } from "./StyledComponents/StyledLink";
+import {
+  StyledArticle,
+  StyledArticleHeadlineH3,
+  StyledArticleDescription,
+  StyledArticleTags,
+  StyledArticleTag,
+  StyledArticleTagDescription,
+} from "./StyledComponents/StyledArticle";
 
 export default function Project({
   title,
+  description,
   slug,
   duration,
   complexity,
   id,
   onToggleFavorite,
   isFavorite,
+  image,
 }) {
+  const truncate = (input) =>
+    input.length > 100 ? `${input.substring(0, 100)} ...` : input;
+
   return (
-    <StyledArticle>
-      <StyledProjectTitleContainer>
-      <StyledLink href={`/projects/${slug}`}>
-        <StyledHeadline>{title}</StyledHeadline>
-      </StyledLink>
-      <FavoriteButton
-        id={id}
-        onToggleFavorite={onToggleFavorite}
-        isFavorite={isFavorite}
+    <>
+      <StyledArticle>
+        <StyledLink href={`/projects/${slug}`}>
+          <StyledArticleHeadlineH3>{title}</StyledArticleHeadlineH3>
+        </StyledLink>
+        <FavoriteButton
+          id={id}
+          onToggleFavorite={onToggleFavorite}
+          isFavorite={isFavorite}
+        />
+      </StyledArticle>
+
+      <StyledArticleDescription>
+        {truncate(description)}
+      </StyledArticleDescription>
+
+      <Image
+        style={{ marginBlockStart: "1.33em" }}
+        src={image}
+        width={320}
+        height={213}
+        layout="responsive"
+        alt="dummy image"
       />
-     </StyledProjectTitleContainer>
-     
-      <StyledParagraph>Duration: {duration}</StyledParagraph>
-      <StyledParagraph>Complexity: {complexity}</StyledParagraph>
-   
-    </StyledArticle>
+
+      <StyledArticleTags>
+        <StyledArticleTagDescription>Duration: </StyledArticleTagDescription>
+        <StyledArticleTag>{duration}</StyledArticleTag>
+        <StyledArticleTagDescription>Complexity: </StyledArticleTagDescription>
+        <StyledArticleTag>{complexity}</StyledArticleTag>
+      </StyledArticleTags>
+    </>
   );
 }
-
-const StyledArticle = styled.article`
-  background-color: white;
-  border-radius: 20px;
-  width: 90vw;
-  transform: scale(0.9);
-  transition: 0.3s;
-  &:hover {
-    transform: scale(1);
-    transition: 0.5s;
-  }
-`;
-
-const StyledLink = styled(Link)`
-  color: var(--text-color);
-  border-radius: 10px;
-  text-decoration: none;
-`;
-const StyledHeadline = styled.h2`
-  font-size: 20px;
-  color: #282828;
-  margin: 7px;
-  `;
-
-const StyledParagraph = styled.p`
-  text-align: left;
-  font-size: 15px;
-  color: #282828;
-  margin: 7px;
-  text-decoration: none;
-`;
-const StyledProjectTitleContainer = styled.div`
-  background-color: var(--background-color-blue);
-  display: flex;
-  justify-content: space-between;
-  border-radius: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-`;

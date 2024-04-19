@@ -1,5 +1,5 @@
-import { useState } from "react";
 import styled from "styled-components";
+import { useState } from "react";
 import Image from "next/image";
 
 export default function FavoriteButton({ onToggleFavorite, id, isFavorite }) {
@@ -9,30 +9,23 @@ export default function FavoriteButton({ onToggleFavorite, id, isFavorite }) {
     setFavorite(!favorite);
     onToggleFavorite(id);
   }
+
   return (
-    <StyledFavButton type="button" onClick={() => handleToggle(id)}>
-      {favorite ? (
-        <Image
-          src={"/icons/heart_red.png"}
-          width={30}
-          height={30}
-          alt={"heart icon"}
-        />
-      ) : (
-        <Image
-          src={"/icons/heart_empty.png"}
-          width={30}
-          height={30}
-          alt={"heart icon"}
-        />
-      )}
-    </StyledFavButton>
+    <StyledButtonFavorite onClick={() => handleToggle(id)}>
+      <Image
+        src={
+          favorite
+            ? "/icons/icon-heart-filled-red.svg"
+            : "/icons/icon-heart-red.svg"
+        }
+        alt={favorite ? "favorite checked" : "favorite unchecked"}
+        height={50}
+        width={50}
+      />
+    </StyledButtonFavorite>
   );
 }
-const StyledFavButton = styled.button`
-  border: none;
-  border-radius: 30%;
-  background-color: transparent;
-  width: 40px;
-  height: 40px;
+
+const StyledButtonFavorite = styled.div`
+  margin: 10px 10px 0px 0px;
 `;

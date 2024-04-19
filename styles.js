@@ -5,24 +5,35 @@ const figtree = Figtree({ subsets: ["latin"] });
 
 export default createGlobalStyle`
 
-
 :root{
-    --background-color: #F2F2F2; //F2F2F2 = Off-white color
-    --font-size: 16px;
+    --background-color: #f2f2f2;
+    --font-size: 18px;
     --text-color: #282828; 
-    //--background-color-accent: #FF5733;
-    --background-color-yellow: #DBF22E;
-    --background-color-blue: #2ABFB0;
-    
-    //--secondary-color: #2abfb0;
-    --border: 1px solid black;
-    --border-radius: 70px;
+    --background-color-yellow: #dbf22e;
+    --background-color-blue: #2abfb0;
+    --border: 1px solid #282828;
+
+    --search-menu-background: #6c74d5;
+    --search-menu-text: #282828;
+    --burger-menu-background: #2abfb0;
+    --burger-menu-text: #282828;
+
+    --modal-background: rgba(0, 0, 0, 0.5);
+    --modal-menu-background: #f2f2f2;
+    --modal-menu-color: #282828;
+
+    --button-background: #6c74d5;
+    --button-text: #f2f2f2;
+
+    --tag-background: #2abfb0;
+    --link-text: #282828; 
+
+    --radio-button-background: #2abfb0;
+    --radio-button-border: #939393;
+    --checkbox-background: #2abfb0;
+    --checkbox-border: #939393;
+
   }
-  //F2F2F2 = Off-white color --Background
-  //#282828 = Blackish color -- Text
-  //#FF5733 = Orange color --Highlight
-  //#dbf22e = Yellow color
-  //#2abfb0 = türkis color
 
   *,
   *::before,
@@ -33,10 +44,11 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family: ${figtree.style.fontFamily};
+    font-size: var(--font-size);
     background-color: var(--background-color);
   }
-h4{
-  margin-block-end: 0;
-  font-size: 16px;
-  }
+
+ a {
+   text-decoration: none;
+ }
 `;

@@ -1,6 +1,6 @@
-import styled from "styled-components";
 import Project from "@/components/Project";
 import SearchField from "@/components/SearchField";
+import { StyledSection } from "@/components/StyledComponents/StyledSection";
 
 export default function FavoritesPage({
   searchResults,
@@ -36,6 +36,8 @@ export default function FavoritesPage({
           <Project
             key={project.id}
             title={project.title}
+            image={project.image}
+            description={project.description}
             slug={project.slug}
             duration={project.duration}
             complexity={project.complexity}
@@ -48,14 +50,3 @@ export default function FavoritesPage({
     </>
   );
 }
-
-const StyledSection = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-`;
-
-const StyledHeadline = styled.h2`
-  text-align: center;
-`;

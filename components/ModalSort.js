@@ -1,5 +1,10 @@
-import styled from "styled-components";
 import StyledModal from "./StyledComponents/StyledModal";
+import { StyledButton } from "./StyledComponents/StyledButton";
+import { StyledHeadlineH3 } from "./StyledComponents/StyledHeadline";
+import {
+  StyledRadioButton,
+  StyledRadioButtonLabel,
+} from "./StyledComponents/StyledInput";
 
 export default function ModalSort({
   onSortComplexityStartHigh,
@@ -9,55 +14,54 @@ export default function ModalSort({
 }) {
   return (
     <StyledModal>
-      <p>Sort projects by ...</p>
-      <input
-        type="radio"
-        id="duration-short"
-        name="sort"
-        value="duration"
-        onClick={() => onSortDuration("short")}
-      />
-      <label htmlFor="duration-short">Duration: short to long</label>
-      <br />
+      <StyledHeadlineH3>Sort projects by ...</StyledHeadlineH3>
+      <StyledRadioButtonLabel htmlFor="duration-short">
+        <StyledRadioButton
+          type="radio"
+          id="duration-short"
+          name="sort"
+          value="duration"
+          onClick={() => onSortDuration("short")}
+        />
+        Duration: short to long
+      </StyledRadioButtonLabel>
 
-      <input
-        type="radio"
-        id="duration-long"
-        name="sort"
-        value="duration"
-        onClick={() => onSortDuration("long")}
-      />
-      <label htmlFor="duration-long">Duration: long to short</label>
-      <br />
+      <StyledRadioButtonLabel htmlFor="duration-long">
+        <StyledRadioButton
+          type="radio"
+          id="duration-long"
+          name="sort"
+          value="duration"
+          onClick={() => onSortDuration("long")}
+        />
+        Duration: long to short
+      </StyledRadioButtonLabel>
 
-      <input
-        type="radio"
-        id="complexity-low"
-        name="sort"
-        value="complexity"
-        onClick={onSortComplexityStartLow}
-      />
-      <label htmlFor="complexity-low">Complexity: Beginner to Advanced</label>
-      <br />
+      <StyledRadioButtonLabel htmlFor="complexity-low">
+        <StyledRadioButton
+          type="radio"
+          id="complexity-low"
+          name="sort"
+          value="complexity"
+          onClick={onSortComplexityStartLow}
+        />
+        Complexity: Beginner to Advanced
+      </StyledRadioButtonLabel>
 
-      <input
-        type="radio"
-        id="complexity-high"
-        name="sort"
-        value="complexityd"
-        onClick={onSortComplexityStartHigh}
-      />
-      <label htmlFor="complexity-high">Complexity: Adcanced to Beginner</label>
+      <StyledRadioButtonLabel htmlFor="complexity-high">
+        <StyledRadioButton
+          type="radio"
+          id="complexity-high"
+          name="sort"
+          value="complexityd"
+          onClick={onSortComplexityStartHigh}
+        />
+        Complexity: Adcanced to Beginner
+      </StyledRadioButtonLabel>
 
-      <hr />
-      <button type="button" onClick={onToggleSortModal}>
-        Cancel sorting
-      </button>
+      <StyledButton type="button" onClick={onToggleSortModal}>
+        Cancel
+      </StyledButton>
     </StyledModal>
   );
 }
-
-const StyledSortButton = styled.button`
-  border: none;
-  background-color: white;
-`;

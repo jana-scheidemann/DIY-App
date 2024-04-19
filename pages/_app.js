@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
   const [projectFilter, setProjectFilter] = useState({});
   const [query, setQuery] = useState("");
 
-  // --- ADD, DELETE, EDIT ---
+  //NOTE: ADD, DELETE, EDIT
   function handleAddProject(newProject) {
     setProjects([{ id: uid(), ...newProject }, ...projects]);
   }
@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }) {
     );
   }
 
-  // --- SORT ---
+  //NOTE: SORT
   const complexityOrder = { Beginner: 0, Intermediate: 1, Advanced: 2 };
 
   function handleSortComplexityStartHigh() {
@@ -107,7 +107,7 @@ export default function App({ Component, pageProps }) {
   const displayedProjects =
     Object.keys(projectFilter) === 0 ? projects : filteredProjects;
 
-  // --- SEARCH ---
+  //NOTE: SEARCH
   const fuse = new Fuse(projects, {
     keys: ["title", "description", "materials", "steps.desc"],
     includeScore: true,
@@ -126,7 +126,7 @@ export default function App({ Component, pageProps }) {
     setQuery(value);
   }
 
-  // --- FAVORITE ---
+  //NOTE: FAVORITE
   function handleToggleFavorite(id) {
     setProjects(
       projects.map((project) =>
