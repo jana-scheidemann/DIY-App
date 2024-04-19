@@ -16,7 +16,6 @@ export default function HomePage({
 }) {
   return (
     <>
-
       <SearchField
         handleSearch={handleSearch}
         query={query}
@@ -46,15 +45,6 @@ export default function HomePage({
     </>
   );
 }
-
-const StyledSection = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin: 10px;
-  background-color: var(--background-color);
-  border-radius: 20px;
 
 const StyledSearchField = styled.article`
   width: 100%;
