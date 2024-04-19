@@ -45,35 +45,42 @@ export default function SearchField({
   return (
     <>
       <StyledSearchField>
-        <button type="button" onClick={openSort}>
-          <Image
-            src={"/icons/sort.svg"}
-            width={20}
-            height={20}
-            alt={"Sort projects"}
-          />
-        </button>
+        <StyledSearchItem>
+          <button type="button" onClick={openSort}>
+            <Image
+              src={"/icons/sort.svg"}
+              width={10}
+              height={10}
+              alt={"Sort projects"}
+            />
+          </button>
+        </StyledSearchItem>
 
-        <button type="button" onClick={openFilter}>
-          <Image
-            src={"/icons/filter.svg"}
-            width={20}
-            height={20}
-            alt={"Filter projects"}
-          />
-        </button>
+        <StyledSearchItem>
+          <button type="button" onClick={openFilter}>
+            <Image
+              src={"/icons/filter.svg"}
+              width={10}
+              height={10}
+              alt={"Filter projects"}
+            />
+          </button>
+        </StyledSearchItem>
 
-        <label htmlFor="search"></label>
-        <input
-          type="search"
-          id="search"
-          name="search"
-          size={30}
-          placeholder="🔍 for title, material etc."
-          value={query}
-          onChange={handleSearch}
-        />
+        <StyledSearchItem>
+          <label htmlFor="search"></label>
+          <input
+            type="search"
+            id="search"
+            name="search"
+            size={35}
+            placeholder="🔍 for title, material etc."
+            value={query}
+            onChange={handleSearch}
+          />
+        </StyledSearchItem>
         <br />
+
         {isOpenSort && (
           <>
             <label htmlFor="sort" />
@@ -154,8 +161,13 @@ export default function SearchField({
   );
 }
 
-const StyledSearchField = styled.article`
+const StyledSearchField = styled.section`
   display: flex;
+  gap: 1em;
   flex-wrap: wrap;
-  justify-content: space-between;
+`;
+
+const StyledSearchItem = styled.article`
+  width: fit-content;
+  justify-content: flex-start;
 `;
