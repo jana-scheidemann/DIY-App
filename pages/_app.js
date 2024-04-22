@@ -7,6 +7,8 @@ import Link from "next/link";
 import StyledModal from "@/components/StyledComponents/StyledModal";
 import styled from "styled-components";
 import Fuse from "fuse.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
@@ -16,9 +18,11 @@ export default function App({ Component, pageProps }) {
   //NOTE: ADD, DELETE, EDIT
   function handleAddProject(newProject) {
     setProjects([{ id: uid(), ...newProject }, ...projects]);
+    notify("New Project added!");
   }
   function handleDeleteProject(id) {
     setProjects(projects.filter((project) => project.id !== id));
+    notify("Project Deleted");
   }
   function handleEditProject(updatedProject) {
     setProjects(
@@ -26,6 +30,10 @@ export default function App({ Component, pageProps }) {
         project.id === updatedProject.id ? updatedProject : project
       )
     );
+    notify("Project Edited");
+  }
+  function notify(message) {
+    toast(message);
   }
 
   //NOTE: SORT
@@ -143,6 +151,18 @@ export default function App({ Component, pageProps }) {
         onResetFilters={resetProjectFilter}
         onAddProject={handleAddProject}
       >
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <GlobalStyle />
         <Component
           {...pageProps}
