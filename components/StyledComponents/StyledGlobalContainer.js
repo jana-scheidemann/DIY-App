@@ -10,9 +10,7 @@ export default function StyledGlobalContainer({
   return (
     <>
       <PageHeader onResetFilters={onResetFilters} />
-      <Navigation
-        onAddProject={onAddProject}
-      />
+      <Navigation onAddProject={onAddProject} />
       <Body>{children}</Body>
     </>
   );
