@@ -27,14 +27,6 @@ export const StyledSearchIcon = styled.div`
   height: 20px;
 `;
 
-export const StyledInputSearchDummy = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-  margin: 20px 0px 20px 0px;
-`;
-
 export const StyledInputModal = styled.input`
   width: 85%;
   height: 40px;
@@ -53,8 +45,9 @@ export const StyledFormContainer = styled.form`
   // align-items: start;
 `;
 
-export const StyledFormContainerButtons = styled.form`
+export const StyledFormContainerButtons = styled.div`
   display: flex;
+  justify-content: space-between;
 `;
 
 export const StyledRadioButton = styled.input`

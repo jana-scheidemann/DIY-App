@@ -1,7 +1,7 @@
 import Project from "@/components/Project";
 import SearchField from "@/components/SearchField";
 import { StyledSection } from "@/components/StyledComponents/StyledSection";
-import { StyledHeadlineH3 } from "@/components/StyledComponents/StyledHeadline";
+import { StyledHeadlineH2 } from "@/components/StyledComponents/StyledHeadline";
 
 export default function FavoritesPage({
   searchResults,
@@ -29,7 +29,7 @@ export default function FavoritesPage({
         onFilterProjects={onFilterProjects}
         onResetFilters={onResetFilters}
       />
-      <StyledHeadlineH3>Favorite Projects</StyledHeadlineH3>
+      <StyledHeadlineH2>Favorite Projects</StyledHeadlineH2>
 
       <StyledSection>
         {favoriteProjects.map((project) => (
