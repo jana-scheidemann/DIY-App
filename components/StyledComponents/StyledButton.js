@@ -15,6 +15,11 @@ export const StyledButton = styled.button`
   margin: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+
+  &:hover {
+    background-color: var(--button-text);
+    color: var(--button-background);
+  }
 `;
 
 export const StyledButtonReset = styled.input`

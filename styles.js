@@ -15,7 +15,7 @@ export default createGlobalStyle`
 
     --search-menu-background: #6c74d5;
     --search-menu-text: #282828;
-    --burger-menu-background: #2abfb0;
+    --burger-menu-background: #2AE6A2;
     --burger-menu-text: #282828;
 
     --modal-background: rgba(0, 0, 0, 0.5);
