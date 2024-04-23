@@ -205,7 +205,6 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
         <StyledHeadlineH4>Confirm Changes</StyledHeadlineH4>
         <div>
           <StyledButton type="submit">Save</StyledButton>
-          {/* <StyledButton onClick={onCancel}>Cancel</StyledButton> */}
         </div>
       </StyledFormContainer>
     </StyledModal>

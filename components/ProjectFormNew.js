@@ -46,6 +46,7 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
       steps: stepsData,
       slug: slug,
       image: url,
+      favorite: false,
     };
 
     onAddProject(newProject);
