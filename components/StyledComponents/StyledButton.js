@@ -61,3 +61,19 @@ export const StyledButtonFavorite = styled.button`
   width: 100px;
   height: 80px;
 `;
+
+export const StyledButtonFilter = styled.button`
+  background-color: transparent;
+  border: none;
+`;
+
+export const StyledButtonSort = styled.button`
+  background-color: transparent;
+  border: none;
+`;
+
+export const StyledButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+`;

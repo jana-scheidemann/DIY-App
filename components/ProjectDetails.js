@@ -5,8 +5,11 @@ import Image from "next/image";
 import ModalDelete from "@/components/ModalDelete";
 import ModalEdit from "@/components/ModalEdit";
 import FavoriteButton from "./FavoriteButton";
-import { StyledButtonLink } from "./StyledComponents/StyledButton";
-import { StyledButton } from "./StyledComponents/StyledButton";
+import {
+  StyledButton,
+  StyledButtonContainer,
+  StyledButtonLink,
+} from "./StyledComponents/StyledButton";
 import {
   StyledArticle,
   StyledArticleHeadlineH2,
@@ -126,9 +129,3 @@ export default function ProjectDetails({
     </>
   );
 }
-
-const StyledButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 20px;
-`;
