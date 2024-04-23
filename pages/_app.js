@@ -9,6 +9,7 @@ import styled from "styled-components";
 import Fuse from "fuse.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { StyledButtonLink } from "@/components/StyledComponents/StyledButton";
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState(initialProjects);
@@ -182,10 +183,10 @@ export default function App({ Component, pageProps }) {
 
         {displayedProjects.length === 0 && (
           <StyledModal>
-            <p>Oooops. No results for your filter. Try again.</p>
-            <StyledLink href={"/"} onClick={resetProjectFilter}>
-              Back to all Projects
-            </StyledLink>
+            <p>No results found, adjust your filter settings.</p>
+            <StyledButtonLink href={"/"} onClick={resetProjectFilter}>
+              &nbsp; Back &nbsp;
+            </StyledButtonLink>
           </StyledModal>
         )}
       </StyledGlobalContainer>

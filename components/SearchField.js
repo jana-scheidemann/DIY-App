@@ -1,6 +1,27 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { useState } from "react";
+import {
+  StyledInputSearch,
+  StyledSearchIcon,
+  StyledSearchItem,
+  StyledInputSearchField,
+  StyledInputSearchFieldContainer,
+  StyledRadioButtonLabel,
+  StyledRadioButton,
+} from "./StyledComponents/StyledInput";
+import {
+  StyledButton,
+  StyledButtonContainer,
+  StyledButtonReset,
+  StyledButtonFilter,
+  StyledButtonSort,
+} from "./StyledComponents/StyledButton";
+import {
+  StyledHeadlineH4,
+  StyledHeadlineH5,
+} from "./StyledComponents/StyledHeadline";
+import { StyledDropdown } from "./StyledComponents/StyledDropdown";
 
 export default function SearchField({
   onSortComplexityStartHigh,
@@ -44,130 +65,157 @@ export default function SearchField({
 
   return (
     <>
-      <StyledSearchField>
-        <StyledSearchItem>
-          <button type="button" onClick={openSort}>
-            <Image
-              src={"/icons/sort.svg"}
-              width={10}
-              height={10}
-              alt={"Sort projects"}
-            />
-          </button>
-        </StyledSearchItem>
-
-        <StyledSearchItem>
-          <button type="button" onClick={openFilter}>
-            <Image
-              src={"/icons/filter.svg"}
-              width={10}
-              height={10}
-              alt={"Filter projects"}
-            />
-          </button>
-        </StyledSearchItem>
-
-        <StyledSearchItem>
-          <label htmlFor="search"></label>
-          <input
+      <StyledInputSearch>
+        <label htmlFor="search"></label>
+        <StyledInputSearchFieldContainer>
+          <StyledInputSearchField
             type="search"
             id="search"
             name="search"
-            size={35}
-            placeholder="🔍 for title, material etc."
+            placeholder="for title, material etc."
             value={query}
             onChange={handleSearch}
           />
+          <StyledSearchIcon>
+            <Image
+              src={"/icons/icon-magnifier.svg"}
+              width={20}
+              height={20}
+              alt={"search projects"}
+            />
+          </StyledSearchIcon>
+        </StyledInputSearchFieldContainer>
+        <StyledSearchItem>
+          <StyledButtonFilter type="button" onClick={openFilter}>
+            <Image
+              src={"/icons/icon-filter.svg"}
+              width={30}
+              height={30}
+              alt={"Filter projects"}
+            />
+          </StyledButtonFilter>
         </StyledSearchItem>
-        <br />
 
-        {isOpenSort && (
-          <>
-            <label htmlFor="sort" />
+        <StyledSearchItem>
+          <StyledButtonSort type="button" onClick={openSort}>
+            <Image
+              src={"/icons/icon-sort.svg"}
+              width={30}
+              height={30}
+              alt={"Sort projects"}
+            />
+          </StyledButtonSort>
+        </StyledSearchItem>
+      </StyledInputSearch>
 
-            <select name="sort" id="sort" onChange={handleSort}>
-              <option value="">-- choose sort option --</option>
-              <option value="duration-short">Duration: short to long</option>
-              <option value="duration-long">Duration: long to short</option>
-              <option value="complexity-low">
-                Complexity: Beginner to Advanced
-              </option>
-              <option value="complexity-high">
-                Complexity: Adcanced to Beginner
-              </option>
-            </select>
-          </>
-        )}
+      {isOpenSort && (
+        <>
+          <label htmlFor="sort" />
 
-        {isOpenFilter && (
-          <form onSubmit={handleFilterSubmit}>
-            <p>Filter projects by ...</p>
+          <StyledDropdown name="sort" id="sort" onChange={handleSort}>
+            <option value="">-- choose sort option --</option>
+            <option value="duration-short">Duration: short to long</option>
+            <option value="duration-long">Duration: long to short</option>
+            <option value="complexity-low">
+              Complexity: Beginner to Advanced
+            </option>
+            <option value="complexity-high">
+              Complexity: Adcanced to Beginner
+            </option>
+          </StyledDropdown>
+        </>
+      )}
 
-            <p>Duration:</p>
-            <input
-              type="radio"
-              id="duration-short"
-              name="duration"
-              value="short"
-            />
-            <label htmlFor="duration-short">&lt; 2 hours</label>
-            <input
-              type="radio"
-              id="duration-medium"
-              name="duration"
-              value="medium"
-            />
-            <label htmlFor="duration-medium">2 - 23 hours</label>
-            <input
-              type="radio"
-              id="duration-long"
-              name="duration"
-              value="long"
-            />
-            <label htmlFor="duration-long">&gt; 23 hours</label>
+      {isOpenFilter && (
+        <form onSubmit={handleFilterSubmit}>
+          <StyledFilterContainerHeader>
+            <StyledHeadlineH4>Filter projects by ...</StyledHeadlineH4>
+          </StyledFilterContainerHeader>
 
-            <p>Complexity:</p>
-            <input
-              type="radio"
-              id="beginner"
-              name="complexity"
-              value="Beginner"
-            />
-            <label htmlFor="beginner">Beginner</label>
-            <input
-              type="radio"
-              id="intermediate"
-              name="complexity"
-              value="Intermediate"
-            />
-            <label htmlFor="intermediate">Intermediate</label>
-            <input
-              type="radio"
-              id="advanced"
-              name="complexity"
-              value="Advanced"
-            />
-            <label htmlFor="advanced">Advanced</label>
-            <hr />
-            <button type="submit">Apply filter</button>
-            <input type="reset" value="Clear all filter" />
-            <button type="button" onClick={onResetFilters}>
-              reset filter
-            </button>
-          </form>
-        )}
-      </StyledSearchField>
+          <StyledFilterContainer>
+            <StyledFilterContainerItem>
+              <StyledHeadlineH5>Duration:</StyledHeadlineH5>
+              <StyledRadioButtonLabel htmlFor="duration-short">
+                <StyledRadioButton
+                  type="radio"
+                  id="duration-short"
+                  name="duration"
+                  value="short"
+                />
+                &lt; 2 hours
+              </StyledRadioButtonLabel>
+              <StyledRadioButtonLabel htmlFor="duration-medium">
+                <StyledRadioButton
+                  type="radio"
+                  id="duration-medium"
+                  name="duration"
+                  value="medium"
+                />
+                2 - 23 hours
+              </StyledRadioButtonLabel>
+              <StyledRadioButtonLabel htmlFor="duration-long">
+                <StyledRadioButton
+                  type="radio"
+                  id="duration-long"
+                  name="duration"
+                  value="long"
+                />
+                &gt; 23 hours
+              </StyledRadioButtonLabel>
+            </StyledFilterContainerItem>
+
+            <StyledFilterContainerItem>
+              <StyledHeadlineH5>Complexity:</StyledHeadlineH5>
+              <StyledRadioButtonLabel htmlFor="beginner">
+                <StyledRadioButton
+                  type="radio"
+                  id="beginner"
+                  name="complexity"
+                  value="Beginner"
+                />
+                Beginner
+              </StyledRadioButtonLabel>
+              <StyledRadioButtonLabel htmlFor="intermediate">
+                <StyledRadioButton
+                  type="radio"
+                  id="intermediate"
+                  name="complexity"
+                  value="Intermediate"
+                />
+                Intermediate
+              </StyledRadioButtonLabel>
+              <StyledRadioButtonLabel htmlFor="advanced">
+                <StyledRadioButton
+                  type="radio"
+                  id="advanced"
+                  name="complexity"
+                  value="Advanced"
+                />
+                Advanced
+              </StyledRadioButtonLabel>
+            </StyledFilterContainerItem>
+          </StyledFilterContainer>
+          <StyledButtonContainer>
+            <StyledButton type="submit">Apply</StyledButton>
+            <StyledButtonReset type="reset" value="Clear" />
+            <StyledButton type="button" onClick={onResetFilters}>
+              Reset
+            </StyledButton>
+          </StyledButtonContainer>
+        </form>
+      )}
     </>
   );
 }
 
-const StyledSearchField = styled.section`
+const StyledFilterContainer = styled.div`
   display: flex;
-  gap: 1em;
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0px 0px 0px 25px;
 `;
 
-const StyledSearchItem = styled.article`
-  width: fit-content;
-  justify-content: flex-start;
+const StyledFilterContainerItem = styled.div``;
+
+const StyledFilterContainerHeader = styled.div`
+  margin: 0px 0px 0px 25px;
 `;

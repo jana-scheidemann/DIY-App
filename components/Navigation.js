@@ -40,8 +40,8 @@ export default function Navigation({ onAddProject }) {
           <StyledNavigationMenu onClick={toggleNavigation}>
             <Image
               src="/icons/cancel.svg"
-              width={50}
-              height={50}
+              width={40}
+              height={40}
               alt="close navigation menu"
             />
           </StyledNavigationMenu>
@@ -49,13 +49,13 @@ export default function Navigation({ onAddProject }) {
             Home
           </StyledNavigationLink>
           <StyledNavigationLink href="/" onClick={toggleAddModal}>
-            add new project
+            Add new project
           </StyledNavigationLink>
           <StyledNavigationLink
             href="/projects/favorites"
             onClick={toggleNavigation}
           >
-            favorite projects
+            Favorite projects
           </StyledNavigationLink>
         </StyledNavigationMenuBar>
       )}
@@ -72,7 +72,7 @@ export default function Navigation({ onAddProject }) {
 
 const StyledNavigationMenuBar = styled.nav`
   position: fixed;
-  z-index: 300;
+  z-index: 1000;
   top: 0;
   right: 0;
   width: 100%;
@@ -105,6 +105,7 @@ const StyledNavigationLink = styled(Link)`
 
 const StyledNavigationMenu = styled.div`
   position: fixed;
+  z-index: 900;
   top: 25px;
   right: 25px;
   cursor: pointer;

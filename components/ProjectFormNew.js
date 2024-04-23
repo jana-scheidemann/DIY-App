@@ -43,7 +43,8 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
       complexity: data.complexity,
       steps: stepsData,
       slug: slug,
-      image: url,
+      image: "/images/diy-birdhouse.png",
+      favorite: false,
     };
 
     onAddProject(newProject);
@@ -163,9 +164,7 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
           <StyledButton type="button" onClick={addStep}>
             Add
           </StyledButton>
-          <StyledButton type="submit">
-            <strong>Submit</strong>
-          </StyledButton>
+          <StyledButton type="submit">Submit</StyledButton>
         </StyledFormContainerButtons>
       </StyledFormContainer>
     </>

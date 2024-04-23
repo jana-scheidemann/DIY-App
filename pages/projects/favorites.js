@@ -1,7 +1,8 @@
 import Project from "@/components/Project";
 import SearchField from "@/components/SearchField";
 import { StyledSection } from "@/components/StyledComponents/StyledSection";
-import { StyledHeadlineH2 } from "@/components/StyledComponents/StyledHeadline";
+import { StyledHeadlineH3 } from "@/components/StyledComponents/StyledHeadline";
+import styled from "styled-components";
 
 export default function FavoritesPage({
   searchResults,
@@ -29,7 +30,10 @@ export default function FavoritesPage({
         onFilterProjects={onFilterProjects}
         onResetFilters={onResetFilters}
       />
-      <StyledHeadlineH2>Favorite Projects</StyledHeadlineH2>
+
+      <StyledFavoriteHeader>
+        <StyledFavoriteHeadline>Favorite Projects</StyledFavoriteHeadline>
+      </StyledFavoriteHeader>
 
       <StyledSection>
         {favoriteProjects.map((project) => (
@@ -50,3 +54,13 @@ export default function FavoritesPage({
     </>
   );
 }
+
+const StyledFavoriteHeader = styled.article`
+  margin: 0px 0px 20px 25px;
+`;
+
+const StyledFavoriteHeadline = styled.h3`
+  font-size: 2.3em;
+  font-weight: 500;
+  margin: 7px;
+`;
