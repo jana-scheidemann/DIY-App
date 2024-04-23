@@ -45,6 +45,7 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
+    padding-top: 125px;
     font-family: ${figtree.style.fontFamily};
     font-size: var(--font-size);
     background-color: var(--background-color);
