@@ -5,6 +5,7 @@ import GlobalStyle from "../styles";
 import StyledGlobalContainer from "@/components/StyledComponents/StyledGlobalContainer";
 import Link from "next/link";
 import StyledModal from "@/components/StyledComponents/StyledModal";
+import StyledErrorModal from "@/components/StyledComponents/StyledErrorModal";
 import styled from "styled-components";
 import Fuse from "fuse.js";
 import { ToastContainer, toast } from "react-toastify";
@@ -180,13 +181,13 @@ export default function App({ Component, pageProps }) {
           onSortDuration={handleSortDuration}
         />
 
-        {displayedProjects.length === 0 && (
-          <StyledModal>
+        {searchResults.length === 0 && (
+          <StyledErrorModal>
             <p>Oooops. No results for your filter. Try again.</p>
             <StyledLink href={"/"} onClick={resetProjectFilter}>
               Back to all Projects
             </StyledLink>
-          </StyledModal>
+          </StyledErrorModal>
         )}
       </StyledGlobalContainer>
     </>
