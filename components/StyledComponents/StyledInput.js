@@ -4,27 +4,38 @@ export const StyledInputSearch = styled.label`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  width: 100%;
-  margin: 20px 0px 20px 0px;
+  width: 88%;
+  margin: 0px 0px 20px 30px;
 `;
 
 export const StyledInputSearchField = styled.input`
-  width: 80%;
+  width: 100%;
   height: 40px;
   font-size: 1em;
   border: none;
   border-radius: 24px;
-  padding-left: 30px;
+  padding-left: 45px;
+  padding-right: 10px;
   outline-width: 0;
+`;
+
+export const StyledInputSearchFieldContainer = styled.div`
+  position: relative;
+  width: 100%;
 `;
 
 export const StyledSearchIcon = styled.div`
   position: absolute;
-  left: 55%;
-  margin-left: -25px;
-  margin-top: -10;
-  width: 20px;
-  height: 20px;
+  left: 10px;
+  top: 25%;
+  transform: translateX(20%);
+  width: 25px;
+  height: 25px;
+`;
+
+export const StyledSearchItem = styled.article`
+  width: fit-content;
+  justify-content: flex-start;
 `;
 
 export const StyledInputModal = styled.input`
