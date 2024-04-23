@@ -43,7 +43,7 @@ export const StyledArticleTagDescription = styled.p`
 `;
 
 export const StyledArticleTag = styled.p`
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 600;
   margin: 0;
 `;
