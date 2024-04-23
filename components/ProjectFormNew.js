@@ -146,7 +146,9 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
           <StyledButton type="button" onClick={addStep}>
             Add
           </StyledButton>
-          <StyledButton type="submit">Submit</StyledButton>
+          <StyledButton type="submit">
+            <strong>Submit</strong>
+          </StyledButton>
         </StyledFormContainerButtons>
       </StyledFormContainer>
     </>

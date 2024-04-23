@@ -47,7 +47,7 @@ export default function Project({
         width={320}
         height={213}
         layout="responsive"
-        alt="dummy image"
+        alt={`Image of ${title} in comic style`}
       />
 
       <StyledArticleTags>

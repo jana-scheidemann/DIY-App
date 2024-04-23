@@ -22,7 +22,7 @@ export const StyledArticleHeadlineH3 = styled.h3`
   margin: 7px 0px 7px 25px;
 `;
 
-export const StyledArticleDescription = styled.div`
+export const StyledArticleDescription = styled.p`
   font-size: 1.2em;
   font-weight: 400;
   margin: 20px 25px 0px 25px;
@@ -36,22 +36,14 @@ export const StyledArticleTags = styled.div`
   margin: 10px;
 `;
 
-export const StyledArticleTagDescription = styled.div`
+export const StyledArticleTagDescription = styled.p`
   font-size: 0.9em;
   font-weight: 500;
-  margin: 10px 10px 10px 15px;
+  margin: 3px 10px 10px 15px;
 `;
 
-export const StyledArticleTag = styled.span`
-  // background-color: var(--tag-background);
-  // color: var(--tag-text);
-  // width: 100px;
-  // text-align: center;
+export const StyledArticleTag = styled.p`
   font-size: 1.2em;
   font-weight: 600;
-  // border-radius: 5px;
-  // border: none;
-  padding: 5px 0px 8px 0px;
-  // margin: 5px;
-  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0;
 `;

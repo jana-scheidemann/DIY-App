@@ -46,16 +46,16 @@ export default function Navigation({ onAddProject }) {
             />
           </StyledNavigationMenu>
           <StyledNavigationLink href="/" onClick={toggleNavigation}>
-            HomePage
+            Home
           </StyledNavigationLink>
           <StyledNavigationLink href="/" onClick={toggleAddModal}>
-            Add New Project
+            add new project
           </StyledNavigationLink>
           <StyledNavigationLink
             href="/projects/favorites"
             onClick={toggleNavigation}
           >
-            Favorite Projects
+            favorite projects
           </StyledNavigationLink>
         </StyledNavigationMenuBar>
       )}
@@ -98,11 +98,9 @@ const StyledNavigationMenuBar = styled.nav`
 const StyledNavigationLink = styled(Link)`
   color: var(--menu-color);
   text-decoration: none;
-  margin: 20px 0 0 20px;
-  padding-top: 10px;
-  font-size: 1.9em;
+  font-size: 1.4em;
   font-weight: 500;
-  margin: 25px 0px 0px 30px;
+  margin: 30px 0px 0px 30px;
 `;
 
 const StyledNavigationMenu = styled.div`

@@ -154,11 +154,11 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
         ))}
         <StyledHeadlineH4>Steps</StyledHeadlineH4>
         {updateSteps ? (
-          <p>
+          <div>
             <StyledButton onClick={handleStepAdd}>Add</StyledButton>
             <StyledButton onClick={handleStepDelete}>Delete</StyledButton>
             <StyledButton onClick={handleStepEditCancel}>Close</StyledButton>
-          </p>
+          </div>
         ) : (
           <StyledButton onClick={handleStepEdit}>Update</StyledButton>
         )}
@@ -192,11 +192,11 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
             </StyledCheckboxLabel>
           </div>
         ))}
-        <p>
-          <StyledHeadlineH4>Confirm Changes</StyledHeadlineH4>
+        <StyledHeadlineH4>Confirm Changes</StyledHeadlineH4>
+        <div>
           <StyledButton type="submit">Save</StyledButton>
           <StyledButton onClick={onCancel}>Cancel</StyledButton>
-        </p>
+        </div>
       </StyledFormContainer>
     </StyledModal>
   );
