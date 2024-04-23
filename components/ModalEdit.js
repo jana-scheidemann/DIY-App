@@ -217,4 +217,5 @@ const StyledCancelButton = styled.button`
   right: 40px;
   cursor: pointer;
   border: none;
+  background-color: transparent;
 `;
