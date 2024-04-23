@@ -18,7 +18,7 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
   const [steps, setSteps] = useState([1]);
   const router = useRouter();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
@@ -30,6 +30,11 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
       };
     });
     const slug = data.title.toLowerCase().replace(/\s+/g, "-");
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+    const { url } = await response.json();
     const newProject = {
       title: data.title,
       description: data.description,
@@ -38,6 +43,7 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
       complexity: data.complexity,
       steps: stepsData,
       slug: slug,
+      image: url,
     };
 
     onAddProject(newProject);
@@ -93,6 +99,17 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
           name="duration"
           id="duration"
           placeholder="e.g. 3 hours"
+          required
+        />
+
+        <label htmlFor="image">
+          <StyledHeadlineH4>Image</StyledHeadlineH4>
+        </label>
+        <StyledInputModal
+          type="file"
+          id="image"
+          name="image"
+          accept="image/*"
           required
         />
 
