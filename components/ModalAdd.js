@@ -3,7 +3,7 @@ import ProjectFormNew from "@/components/ProjectFormNew";
 
 export default function ModalAdd({ onAddProject, onToggleAddModal }) {
   return (
-    <StyledModal>
+    <StyledModal onCancel={onToggleAddModal}>
       <ProjectFormNew
         onAddProject={onAddProject}
         onToggleAddModal={onToggleAddModal}
