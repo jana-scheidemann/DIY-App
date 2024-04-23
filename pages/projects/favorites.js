@@ -53,10 +53,12 @@ export default function FavoritesPage({
 
       {favoriteProjects.length === 0 && (
         <StyledErrorModal>
-          <p>Oooops. No results for your filter. Try again.</p>
+          <p>Oooops. No results. Try again.</p>
           <StyledLink href={"/projects/favorites"} onClick={onResetFilters}>
-            Back to all favorites
+            Back to your favorites
           </StyledLink>
+          <br />
+          <StyledLink href={"/"}>Back to all projects</StyledLink>
         </StyledErrorModal>
       )}
     </>
@@ -69,4 +71,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   padding: 0.5em;
   border-radius: 0.5em;
+  width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
 `;

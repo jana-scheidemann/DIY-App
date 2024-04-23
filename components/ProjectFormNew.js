@@ -13,6 +13,8 @@ import {
   StyledRadioButtonLabel,
 } from "./StyledComponents/StyledInput";
 import { StyledButton } from "./StyledComponents/StyledButton";
+import Image from "next/image";
+import styled from "styled-components";
 
 export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
   const [steps, setSteps] = useState([1]);
@@ -57,7 +59,15 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
 
   return (
     <>
-      <StyledHeadlineH3>Create New Project</StyledHeadlineH3>
+      <StyledCancelButton type="button" onClick={onToggleAddModal}>
+        <Image
+          src="/icons/cancel.svg"
+          width={30}
+          height={30}
+          alt="close form"
+        />
+      </StyledCancelButton>
+      <StyledHeadlineH3>Add New Project</StyledHeadlineH3>
 
       <StyledFormContainer onSubmit={handleSubmit}>
         <label htmlFor="title">
@@ -171,3 +181,11 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
     </>
   );
 }
+
+const StyledCancelButton = styled.button`
+  position: fixed;
+  top: 60px;
+  right: 40px;
+  cursor: pointer;
+  border: none;
+`;

@@ -15,6 +15,8 @@ import {
   StyledHeadlineH4,
   StyledHeadlineH5,
 } from "./StyledComponents/StyledHeadline";
+import Image from "next/image";
+import styled from "styled-components";
 
 export default function ModalEdit({ currentProject, onSave, onCancel }) {
   const [updateProject, setUpdateProject] = useState(currentProject);
@@ -86,6 +88,14 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
 
   return (
     <StyledModal>
+      <StyledCancelButton type="button" onClick={onCancel}>
+        <Image
+          src="/icons/cancel.svg"
+          width={30}
+          height={30}
+          alt="close form"
+        />
+      </StyledCancelButton>
       <StyledFormContainer onSubmit={handleSubmit}>
         <StyledHeadlineH3>Edit Project</StyledHeadlineH3>
         <label htmlFor="title">
@@ -195,9 +205,17 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
         <StyledHeadlineH4>Confirm Changes</StyledHeadlineH4>
         <div>
           <StyledButton type="submit">Save</StyledButton>
-          <StyledButton onClick={onCancel}>Cancel</StyledButton>
+          {/* <StyledButton onClick={onCancel}>Cancel</StyledButton> */}
         </div>
       </StyledFormContainer>
     </StyledModal>
   );
 }
+
+const StyledCancelButton = styled.button`
+  position: fixed;
+  top: 60px;
+  right: 40px;
+  cursor: pointer;
+  border: none;
+`;
