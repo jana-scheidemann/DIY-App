@@ -53,7 +53,7 @@ export const StyledFormContainer = styled.form`
   // align-items: start;
 `;
 
-export const StyledFormContainerButtons = styled.form`
+export const StyledFormContainerButtons = styled.div`
   display: flex;
 `;
 

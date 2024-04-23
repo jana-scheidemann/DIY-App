@@ -33,6 +33,8 @@ export default createGlobalStyle`
     --checkbox-background: #2abfb0;
     --checkbox-border: #939393;
 
+
+
   }
 
   *,
@@ -51,4 +53,13 @@ export default createGlobalStyle`
  a {
    text-decoration: none;
  }
+
+ .Toastify__toast-body {
+    font-family: ${figtree.style.fontFamily};
+    font-size: var(--font-size);
+    font-weight: 500;
+    color: var(--text-color);
+    text-align: center;
+  }
+
 `;
