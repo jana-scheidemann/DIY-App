@@ -85,7 +85,7 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
   }
 
   return (
-    <StyledModal>
+    <StyledModal onCancel={onCancel}>
       <StyledFormContainer onSubmit={handleSubmit}>
         <StyledHeadlineH3>Edit Project</StyledHeadlineH3>
         <label htmlFor="title">
@@ -195,7 +195,6 @@ export default function ModalEdit({ currentProject, onSave, onCancel }) {
         <StyledHeadlineH4>Confirm Changes</StyledHeadlineH4>
         <div>
           <StyledButton type="submit">Save</StyledButton>
-          <StyledButton onClick={onCancel}>Cancel</StyledButton>
         </div>
       </StyledFormContainer>
     </StyledModal>

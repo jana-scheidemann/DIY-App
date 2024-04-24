@@ -1,8 +1,9 @@
 import Project from "@/components/Project";
 import SearchField from "@/components/SearchField";
 import { StyledSection } from "@/components/StyledComponents/StyledSection";
-import { StyledHeadlineH3 } from "@/components/StyledComponents/StyledHeadline";
+import StyledErrorModal from "@/components/StyledComponents/StyledErrorModal";
 import styled from "styled-components";
+import Link from "next/link";
 
 export default function FavoritesPage({
   searchResults,
@@ -51,9 +52,31 @@ export default function FavoritesPage({
           />
         ))}
       </StyledSection>
+
+      {favoriteProjects.length === 0 && (
+        <StyledErrorModal>
+          <p>Oooops. No results. Try again.</p>
+          <StyledLink href={"/projects/favorites"} onClick={onResetFilters}>
+            Back to your favorites
+          </StyledLink>
+          <br />
+          <StyledLink href={"/"}>Back to all projects</StyledLink>
+        </StyledErrorModal>
+      )}
     </>
   );
 }
+
+const StyledLink = styled(Link)`
+  background-color: var(--background-color-blue);
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  `;
 
 const StyledFavoriteHeader = styled.article`
   margin: 0px 0px 20px 25px;

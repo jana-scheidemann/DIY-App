@@ -1,12 +1,31 @@
 import styled from "styled-components";
+import Image from "next/image";
 
-export default function StyledModal({ children }) {
+export default function StyledModal({ children, onCancel }) {
   return (
     <StyledPageBackground>
-      <StyledModalContainer>{children}</StyledModalContainer>
+      <StyledModalContainer>
+        <StyledCancelButton type="button" onClick={onCancel}>
+          <Image
+            src="/icons/cancel.svg"
+            width={30}
+            height={30}
+            alt="close form"
+          />
+        </StyledCancelButton>
+        {children}
+      </StyledModalContainer>
     </StyledPageBackground>
   );
 }
+const StyledCancelButton = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+`;
 
 const StyledPageBackground = styled.div`
   position: fixed;

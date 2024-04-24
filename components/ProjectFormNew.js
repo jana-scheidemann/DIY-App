@@ -43,7 +43,8 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
       complexity: data.complexity,
       steps: stepsData,
       slug: slug,
-      image: "/images/diy-birdhouse.png",
+
+      image: url,
       favorite: false,
     };
 
@@ -58,7 +59,7 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
 
   return (
     <>
-      <StyledHeadlineH3>Create New Project</StyledHeadlineH3>
+      <StyledHeadlineH3>Add New Project</StyledHeadlineH3>
 
       <StyledFormContainer onSubmit={handleSubmit}>
         <label htmlFor="title">
