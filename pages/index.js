@@ -45,10 +45,3 @@ export default function HomePage({
     </>
   );
 }
-
-const StyledSearchField = styled.article`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;

@@ -4,7 +4,6 @@ import { initialProjects } from "@/db/data";
 import GlobalStyle from "../styles";
 import StyledGlobalContainer from "@/components/StyledComponents/StyledGlobalContainer";
 import Link from "next/link";
-import StyledModal from "@/components/StyledComponents/StyledModal";
 import StyledErrorModal from "@/components/StyledComponents/StyledErrorModal";
 import styled from "styled-components";
 import Fuse from "fuse.js";
@@ -184,21 +183,15 @@ export default function App({ Component, pageProps }) {
 
         {searchResults.length === 0 && (
           <StyledErrorModal>
-            <p>No results found, adjust your filter settings.</p>
-            <StyledLink href={"/"} onClick={resetProjectFilter}>
+            <p>
+              No results found. <br /> Please adjust your filter settings.
+            </p>
+            <StyledButtonLink href={"/"} onClick={resetProjectFilter}>
               &nbsp; Back &nbsp;
-            </StyledLink>
+            </StyledButtonLink>
           </StyledErrorModal>
         )}
       </StyledGlobalContainer>
     </>
   );
 }
-
-const StyledLink = styled(Link)`
-  background-color: var(--background-color-blue);
-  color: var(--text-color);
-  text-decoration: none;
-  padding: 0.5em;
-  border-radius: 0.5em;
-`;
