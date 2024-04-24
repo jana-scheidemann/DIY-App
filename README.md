@@ -1,6 +1,6 @@
 # Capstone project: DIY.
 
-Introducing The DIY appP, your go-to app for sharing and managing DIY projects! Whether you're a crafting enthusiast or just starting your DIY journey, our app is designed to make your creative experience seamless and enjoyable.
+Introducing The DIY App, your go-to app for sharing and managing DIY projects! Whether you're a crafting enthusiast or just starting your DIY journey, our app is designed to make your creative experience seamless and enjoyable.
 
 ## Key Features:
 
