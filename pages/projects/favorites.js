@@ -4,6 +4,7 @@ import { StyledSection } from "@/components/StyledComponents/StyledSection";
 import StyledErrorModal from "@/components/StyledComponents/StyledErrorModal";
 import styled from "styled-components";
 import Link from "next/link";
+import { StyledButtonLink } from "@/components/StyledComponents/StyledButton";
 
 export default function FavoritesPage({
   searchResults,
@@ -55,12 +56,16 @@ export default function FavoritesPage({
 
       {favoriteProjects.length === 0 && (
         <StyledErrorModal>
-          <p>Oooops. No results. Try again.</p>
-          <StyledLink href={"/projects/favorites"} onClick={onResetFilters}>
-            Back to your favorites
-          </StyledLink>
-          <br />
-          <StyledLink href={"/"}>Back to all projects</StyledLink>
+          <p>
+            No results found. <br /> Please adjust your filter settings.
+          </p>
+          <StyledButtonLink
+            href={"/projects/favorites"}
+            onClick={onResetFilters}
+          >
+            Back to favorites
+          </StyledButtonLink>
+          <StyledButtonLink href={"/"}>Home</StyledButtonLink>
         </StyledErrorModal>
       )}
     </>
@@ -76,7 +81,7 @@ const StyledLink = styled(Link)`
   width: fit-content;
   display: flex;
   flex-wrap: wrap;
-  `;
+`;
 
 const StyledFavoriteHeader = styled.article`
   margin: 0px 0px 20px 25px;

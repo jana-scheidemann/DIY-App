@@ -20,11 +20,11 @@ export default function App({ Component, pageProps }) {
   //NOTE: ADD, DELETE, EDIT
   function handleAddProject(newProject) {
     setProjects([{ id: uid(), ...newProject }, ...projects]);
-    notify("New Project added!");
+    notify("Congratulations. You successfully added a new project!");
   }
   function handleDeleteProject(id) {
     setProjects(projects.filter((project) => project.id !== id));
-    notify("Project Deleted");
+    notify("Project successfully deleted.");
   }
   function handleEditProject(updatedProject) {
     setProjects(
@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }) {
         project.id === updatedProject.id ? updatedProject : project
       )
     );
-    notify("Project Edited");
+    notify("You successfully edited this project.");
   }
   function notify(message) {
     toast(message);
