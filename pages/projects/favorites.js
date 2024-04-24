@@ -72,17 +72,6 @@ export default function FavoritesPage({
   );
 }
 
-const StyledLink = styled(Link)`
-  background-color: var(--background-color-blue);
-  color: var(--text-color);
-  text-decoration: none;
-  padding: 0.5em;
-  border-radius: 0.5em;
-  width: fit-content;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
 const StyledFavoriteHeader = styled.article`
   margin: 0px 0px 20px 25px;
 `;
