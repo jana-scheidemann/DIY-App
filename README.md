@@ -48,5 +48,5 @@ You can use the following commands:
 
 ## Technologies & Tools
 
-- Basic Stack: “React”, “Next.js”
-- Frameworks/Libraries: “Styled Components”, "Fuse.js", "Toastify"
+- Basic Stack: “React”/ “Next.js”
+- Frameworks/Libraries: “Styled Components”/ "Fuse.js"/ "Toastify"/ "Cloudinary"
