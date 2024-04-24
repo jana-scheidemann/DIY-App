@@ -57,10 +57,11 @@ export default createGlobalStyle`
 
  .Toastify__toast-body {
     font-family: ${figtree.style.fontFamily};
-    font-size: var(--font-size);
+    font-size: 1.4em;
     font-weight: 500;
     color: var(--text-color);
     text-align: center;
+    height: 100px;
   }
 
 `;

@@ -49,4 +49,4 @@ You can use the following commands:
 ## Technologies & Tools
 
 - Basic Stack: “React”, “Next.js”
-- Frameworks/Libraries: “Styled Components”, "Fuse.js", "Toastify"
+- Frameworks/Libraries: “Styled Components”, "Fuse.js", "Toastify", "Cloudinary"

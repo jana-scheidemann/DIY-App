@@ -10,7 +10,7 @@ export default function StyledErrorModal({ children }) {
 
 const StyledPageBackground = styled.div`
   position: fixed;
-  z-index: 100;
+  z-index: 1100;
   top: 0;
   left: 0;
   width: 100%;
@@ -23,7 +23,7 @@ const StyledModalContainer = styled.div`
   height: fit-content;
   position: fixed;
   z-index: 101;
-  top: calc(5%);
+  top: calc(40%);
   right: calc(5%);
   bottom: calc(5%);
   left: calc(5%);
