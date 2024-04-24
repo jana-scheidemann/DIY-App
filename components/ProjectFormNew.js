@@ -43,6 +43,7 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
       complexity: data.complexity,
       steps: stepsData,
       slug: slug,
+
       image: url,
       favorite: false,
     };
@@ -164,9 +165,7 @@ export default function ProjectFormNew({ onAddProject, onToggleAddModal }) {
           <StyledButton type="button" onClick={addStep}>
             Add
           </StyledButton>
-          <StyledButton type="submit">
-            <strong>Submit</strong>
-          </StyledButton>
+          <StyledButton type="submit">Submit</StyledButton>
         </StyledFormContainerButtons>
       </StyledFormContainer>
     </>

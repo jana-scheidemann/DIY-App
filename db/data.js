@@ -173,7 +173,7 @@ export const initialProjects = [
       { id: 4, desc: "Allow the glue to dry completely." },
       { id: 5, desc: "Hang the finished wall art on your wall." },
     ],
-    image: "/images/wall-art.jpg",
+    image: "/images/wall-art.png",
     favorite: false,
   },
   {
@@ -306,7 +306,7 @@ export const initialProjects = [
         desc: "Cut cork sheets into circles slightly smaller than the coaster diameter and glue them to the bottom of the rope coil.",
       },
     ],
-    image: "/images/rope-coasters.jpeg",
+    image: "/images/rope-coasters.jpg",
     favorite: false,
   },
   {
@@ -370,7 +370,7 @@ export const initialProjects = [
         desc: "Use the beeswax wraps to cover bowls, wrap sandwiches, or store food items.",
       },
     ],
-    image: "/images/beeswax-wrap.jpg",
+    image: "/images/beeswax-wraps.jpg",
     favorite: false,
   },
   {
